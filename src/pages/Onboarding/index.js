@@ -48,35 +48,30 @@ const pages = [
         title: 'Pick your industry',
         description: 'Knowing your industry will help us pick symbols, colors, and more.',
         id: 0,
-        btn: 0,
         layout: 0,
     },
     {
         title: 'Pick some logos you like',
         description: `We'll use these as inspiration. These were all made with Looka.`,
         id: 1,
-        btn: 1,
         layout: 1,
     },
     {
         title: 'Pick some colors you like',
         description: 'Colors help convey emotion in your logo',
         id: 2,
-        btn: 0,
         layout: 2,
     },
     {
         title: 'Enter your company name',
         description: 'You can always change these later',
         id: 3,
-        btn: 0,
         layout: 3,
     },
     {
         title: 'Pick some symbol types',
         description: `We've hand-curated symbols for these types`,
         id: 4,
-        btn: 1,
         layout: 4,
     },
 ];
@@ -201,15 +196,17 @@ const colors = [
 
 function Onboarding() {
     const [pick, setPick] = useState('');
+    const [pick1, setPick1] = useState('');
+    const [pick2, setPick2] = useState('');
     const [showOption, setShowOption] = useState(false);
     const [progress, setProgress] = useState(20);
     const [title, setTitle] = useState(pages[0].title);
     const [description, setDescription] = useState(pages[0].description);
-    const [btn, setBtn] = useState(0);
     const [id, setId] = useState(pages[0].id);
     const [layout, setLayout] = useState(pages[0].layout);
     const [color, setColor] = useState('');
     const [count, setCount] = useState(-1);
+    const [logic, setLogic] = useState(0);
 
     const tablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
     const mobile = useMediaQuery({ maxWidth: 767 });
@@ -218,12 +215,21 @@ function Onboarding() {
         pages.filter((item) => item.id === id && setTitle(item.title));
         pages.filter((item) => item.id === id && setDescription(item.description));
         pages.filter((item) => item.id === id && setId(item.id));
-        pages.filter((item) => item.id === id && setBtn(item.btn));
         pages.filter((item) => item.id === id && setLayout(item.layout));
     }, [id]);
 
+    useEffect(() => {
+        setLogic(pick.length);
+    }, [pick.length]);
+
+    useEffect(() => {
+        setLogic(pick1.length);
+    }, [pick1.length]);
+
     const handleContinue = () => {
-        if (pick.length > 0) {
+        pick.length > 0 && setLogic(pick1.length);
+        pick1.length > 0 && setLogic(pick2.length);
+        if (logic > 0) {
             setId(id + 1);
             progress < 100 && setProgress(progress + 20);
             setShowOption(false);
@@ -233,6 +239,7 @@ function Onboarding() {
     const handleBack = () => {
         setId(id - 1);
         progress > 0 && setProgress(progress - 20);
+        setColor('#000');
     };
 
     const handleColor = (color, index) => {
@@ -269,20 +276,10 @@ function Onboarding() {
                             </span>
                             <span className={cx('description')}>{description}</span>
                         </div>
-                        {btn === 0 ? (
-                            <div
-                                onClick={() => handleContinue()}
-                                className={cx('btn-continue', pick.length > 0 && 'btn-active')}
-                            >
-                                <span className={cx('btn-title')}>Continue</span>
-                                <FontAwesomeIcon className={cx('icon-right')} icon={faArrowRight} />
-                            </div>
-                        ) : (
-                            <div onClick={() => handleContinue()} className={cx('btn-skip')}>
-                                <span className={cx('btn-title')}>Skip</span>
-                                <FontAwesomeIcon className={cx('icon-right')} icon={faArrowRight} />
-                            </div>
-                        )}
+                        <div onClick={() => handleContinue()} className={cx('btn-continue', logic > 0 && 'btn-active')}>
+                            <span className={cx('btn-title')}>Continue</span>
+                            <FontAwesomeIcon className={cx('icon-right')} icon={faArrowRight} />
+                        </div>
                     </div>
                     {layout === 0 && (
                         <>
@@ -307,6 +304,11 @@ function Onboarding() {
                                     ))}
                                 </div>
                             )}
+                        </>
+                    )}
+                    {layout === 1 && (
+                        <>
+                            <button onClick={() => setPick1('Dat')}>Xin chao</button>
                         </>
                     )}
                     {layout === 2 && (
