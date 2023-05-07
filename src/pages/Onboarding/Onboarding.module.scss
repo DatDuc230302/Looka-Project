@@ -171,41 +171,6 @@
     }
 }
 
-.btn-skip {
-    width: 167.19px;
-    padding: 20px 50px;
-    background-color: #f2f2f2;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 60.4px;
-    border-radius: 10px;
-    cursor: pointer;
-    margin-top: 23px;
-    transition: all linear 0.1s;
-
-    &:hover {
-        background-color: #e4e4e4;
-    }
-
-    &:active {
-        transform: scale(0.95);
-    }
-
-    & .btn-title {
-        color: #5f4efe;
-        font-size: 2rem;
-        transform: translateY(1px);
-    }
-
-    & .icon-right {
-        width: 16px;
-        height: 16px;
-        color: #5f4efe;
-        margin-left: 11px;
-    }
-}
-
 .select {
     margin-top: 58px;
     height: 71px;
