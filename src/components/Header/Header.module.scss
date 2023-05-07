@@ -1,0 +1,203 @@
+.header {
+    user-select: none;
+    height: 70px;
+    position: fixed;
+    width: 100%;
+    background-color: #fff;
+    border-bottom: 1px solid #f9f9f9;
+    padding: 10px 24px;
+    display: flex;
+    align-items: center;
+    z-index: 2000;
+}
+
+.header-logo {
+    width: 134px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 90.76px;
+    height: 20px;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+.nav-list {
+    padding-top: 1px;
+    display: flex;
+    margin: 0 auto;
+    padding-left: 7px;
+}
+
+.navList-item {
+    font-size: 1.4rem;
+    margin-right: 32px;
+    height: 100%;
+    display: flex;
+
+    &:last-child {
+        margin-right: 0;
+    }
+}
+
+.nav-btn {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-top: 1px;
+}
+
+.nav-login {
+    font-size: 1.4rem;
+    width: 38.61px;
+    display: flex;
+    cursor: pointer;
+}
+
+.nav-signup {
+    cursor: pointer;
+    margin-left: 24px;
+    height: 48px;
+    background-color: #5340ff;
+    color: #fbfbff;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 95.46px;
+    border-radius: 4px;
+    transition: all linear 0.2s;
+
+    &:hover {
+        background-color: #2f1af1;
+        font-size: 1.44rem;
+        transform: scale(1.02);
+    }
+}
+
+.more {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    height: 100%;
+    align-items: center;
+}
+
+.more-icon {
+    position: relative;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+
+    &::before {
+        content: '';
+        position: absolute;
+        width: 20.6px;
+        height: 1px;
+        background-color: black;
+        top: 6px;
+        transition: all linear 0.2s;
+    }
+
+    &::after {
+        content: '';
+        position: absolute;
+        width: 21px;
+        height: 2.4px;
+        background-color: black;
+        top: 15px;
+        transition: all linear 0.2s;
+    }
+
+    &.fade::before {
+        transform: rotate(-45deg);
+        height: 2.4px;
+    }
+
+    &.fade::after {
+        transform: rotate(45deg);
+        top: 6px;
+    }
+}
+
+.more-modal {
+    user-select: none;
+    background: #fff;
+    position: fixed;
+    top: 69px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 30px;
+    padding-top: 31px;
+}
+
+.more-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.moreList-item {
+    display: flex;
+    align-items: center;
+    font-size: 2.4rem;
+    padding: 5px 10px 10px 0;
+    height: 41px;
+
+    &:nth-child(2) {
+        transform: translateY(0.4px);
+    }
+
+    &:last-child {
+        transform: translateY(0.4px);
+    }
+}
+
+.more-btn {
+    margin-top: 56px;
+    width: 100%;
+}
+
+.more-signup {
+    width: 100%;
+    height: 48px;
+    font-size: 1.4rem;
+    background-color: #5340ff;
+    border-radius: 4px;
+    color: #fbfbff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all linear 0.2s;
+
+    &:hover {
+        background-color: #2f1af1;
+        font-size: 1.44rem;
+        transform: scale(1.02);
+    }
+}
+
+.more-login {
+    width: 100%;
+    height: 48px;
+    font-size: 1.4rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+html *::-webkit-scrollbar {
+    border-radius: 0;
+    width: 0px;
+}

@@ -1,0 +1,37 @@
+:root {
+    --text-color: #090b17;
+    --primary-color: #5340ff;
+    --font-family: 'Circular', 'Arial', sans-serif;
+    --white: #fff;
+    --black: #000;
+
+    //header
+    --header-bg: #fff;
+    --header-height: 70px;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: var(--font-family);
+}
+
+@font-face {
+    font-family: Circular;
+    src: url('../../assets/fonts/lineto-circular-bold.woff2');
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: Circular;
+    src: url('../../assets/fonts/lineto-circular-book.woff2');
+    font-weight: 400;
+}
