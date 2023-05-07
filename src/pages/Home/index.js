@@ -4,7 +4,6 @@ import GetStart from '../../components/GetStart';
 import CarouselComp from '../../components/Carousel';
 import imgFlex from '../../assets/images/imgFlex';
 import Button from '../../components/Button';
-import { Link } from 'react-router-dom';
 import GetStartFlex from '../../components/GetStartFlex';
 
 const cx = classNames.bind(styles);
@@ -411,7 +410,7 @@ function Home() {
                     frameborder="0"
                     allowfullscreen="1"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-title="YouTube video player"
+                    title="YouTube video player"
                     width="100%"
                     height="100%"
                     src="https://www.youtube.com/embed/zcoSY-bVxAk?autoplay=1&amp;modestbranding=1&amp;color=white&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1&amp;origin=https%3A%2F%2Flooka.com&amp;widgetid=1"
