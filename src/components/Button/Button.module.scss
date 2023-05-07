@@ -1,58 +1,74 @@
 .wrapper {
-  font-family: var(--font-family);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  border: 1px solid transparent;
-  user-select: none;
-  transition: all 0.2s ease-in-out;
+    font-family: var(--font-family);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid transparent;
+    user-select: none;
+    transition: all 0.2s ease-in-out;
 
-  &.disable {
-    pointer-events: none;
-    opacity: 0.5;
-  }
+    &.disable {
+        pointer-events: none;
+        opacity: 0.5;
+    }
 
-  + .wrapper {
-    margin-left: 2.4rem;
-  }
+    + .wrapper {
+        margin-left: 2.4rem;
+    }
 }
 
 //Button types
 
 .primary {
-  color: var(--white);
-  background-color: var(--primary-color);
-  border-color: var(--primary-color);
-  border-radius: 4px;
+    color: var(--white);
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    border-radius: 4px;
 
-  &:hover {
-    background-color: #1800f3;
-    transform: scale(1.03);
-  }
+    &:hover {
+        background-color: #1800f3;
+        transform: scale(1.03);
+    }
 }
 
 //Button size
 .small {
-  min-width: 88px;
-  padding: 12px 23px;
+    min-width: 88px;
+    padding: 12px 23px;
 }
 
+.medium {
+    padding: 11px 35px;
+    font-size: 1.6rem;
+}
 .large {
-  min-width: 140px;
-  padding: 21px 24px;
-  height: 64px;
-  font-size: 1.6rem;
+    min-width: 140px;
+    padding: 21px 24px;
+    height: 64px;
+    font-size: 1.6rem;
+}
+
+// color + bg
+.black {
+    background-color: #090b17;
+    color: #fff;
+    border-radius: 8px;
+    font-size: 1.6rem;
+
+    &:hover {
+        transform: scale(1.03);
+    }
 }
 
 //Icon
 .icon + .title,
 .title + .icon {
-  margin-left: 8px;
+    margin-left: 8px;
 }
 
 .icon {
-  display: inline-block;
-  width: 24px;
-  text-align: center;
+    display: inline-block;
+    width: 24px;
+    text-align: center;
 }

@@ -5,12 +5,14 @@ import CarouselComp from '../../components/Carousel';
 import imgFlex from '../../assets/images/imgFlex';
 import Button from '../../components/Button';
 import GetStartFlex from '../../components/GetStartFlex';
+import ModalLogin from '../../components/ModalLogin';
 
 const cx = classNames.bind(styles);
 
 function Home() {
     return (
         <div className={cx('wrapper')}>
+            <ModalLogin />
             <GetStart
                 title={'Design your own beautiful brand'}
                 desc={"Use Looka's AI-powered platform to design a logo and build a brand you love."}
