@@ -6,13 +6,15 @@ import imgFlex from '../../assets/images/imgFlex';
 import Button from '../../components/Button';
 import GetStartFlex from '../../components/GetStartFlex';
 import ModalLogin from '../../components/ModalLogin';
+import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 
 function Home() {
+    const [showModal, setShowmodal] = useState(false);
     return (
         <div className={cx('wrapper')}>
-            <ModalLogin />
+            {showModal ?? <ModalLogin />}
             <GetStart
                 title={'Design your own beautiful brand'}
                 desc={"Use Looka's AI-powered platform to design a logo and build a brand you love."}

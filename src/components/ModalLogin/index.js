@@ -5,9 +5,20 @@ import { useState } from 'react';
 const cx = classNames.bind(styles);
 
 function ModalLogin() {
-
     return (
-        <div className=''></div>
+        <div className={cx('wrapper')}>
+            <div className={cx('overlay')}></div>
+            <div className={cx('inner')}>
+                <div className={cx('heading')}></div>
+                <div className={cx('body')}></div>
+                <div class="modal__outside">
+                    Don't have an account yet?
+                    <a href="#signupModal" data-plugin="MODAL_TRIGGER">
+                        Sign up
+                    </a>
+                </div>
+            </div>
+        </div>
     );
 }
 
