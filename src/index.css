@@ -30,5 +30,5 @@ code {
 }
 
 .ct-item-3-col {
-  @apply w-full md:w-[48%] lg:max-w-[35.8rem] min-h-[34rem] mt-[4rem];
+  @apply w-full md:w-[48%] lg:w-[30%] min-h-[34rem] mt-[4rem];
 }
