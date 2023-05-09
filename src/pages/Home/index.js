@@ -6,10 +6,13 @@ import imgFlex from '../../assets/images/imgFlex';
 import Button from '../../components/Button';
 import { Link } from 'react-router-dom';
 import GetStartFlex from '../../components/GetStartFlex';
+import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 
 function Home() {
+    document.title = 'Logo Design &amp; Brand Identity for Entrepreneurs | Looka';
+
     return (
         <div className={cx('wrapper')}>
             <GetStart
