@@ -11,7 +11,7 @@ function GetStart({ title, desc, className, classNameInput, fontText }) {
     const navigate = useNavigate();
 
     const submitInput = () => {
-        navigate(`/onboarding/${valueInput}`);
+        valueInput.length > 0 && navigate(`/onboarding/${valueInput}`);
     };
 
     document.onkeydown = function (e) {
