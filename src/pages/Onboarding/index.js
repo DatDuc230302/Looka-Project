@@ -323,8 +323,6 @@ function Onboarding() {
         setPick2(key);
     };
 
-    // alert('');
-
     return (
         <div className={cx('wrapper')}>
             <div className={cx('inner')}>
