@@ -17,6 +17,8 @@
         "react-responsive": "^9.0.2",
         "react-router-dom": "^6.11.0",
         "react-scripts": "^5.0.1",
+        "react-sticky": "^6.0.3",
+        "react-use-sticky": "^0.1.4",
         "sass": "^1.62.1",
         "web-vitals": "^2.1.4"
     },
