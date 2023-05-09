@@ -269,6 +269,10 @@ function Onboarding() {
 
     // add header
 
+    const handleNotify = () => {
+        // hihi
+    };
+
     const handleContinue = () => {
         if (logic > 0) {
             setId(id + 1);
