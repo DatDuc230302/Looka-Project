@@ -8,6 +8,9 @@ import { Link } from 'react-router-dom';
 import GetStartFlex from '../../components/GetStartFlex';
 import { useState } from 'react';
 
+
+
+// ád
 const cx = classNames.bind(styles);
 
 function Home() {
