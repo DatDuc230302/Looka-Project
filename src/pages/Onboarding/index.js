@@ -267,6 +267,12 @@ function Onboarding() {
         id === 3 && setLogic(pick3.length);
     }, [pick3.length]);
 
+    // add header
+
+    const handleNotify = () => {
+        // hihi
+    };
+
     const handleContinue = () => {
         if (logic > 0) {
             setId(id + 1);
