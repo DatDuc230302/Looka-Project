@@ -8,9 +8,6 @@ import { Link } from 'react-router-dom';
 import GetStartFlex from '../../components/GetStartFlex';
 import { useState } from 'react';
 
-
-
-// ád
 const cx = classNames.bind(styles);
 
 function Home() {
@@ -436,7 +433,7 @@ title="YouTube video player"
                 <div className="demo-heading text-[3rem] md:text-[4rem] text-center w-full font-bold mb-[7.2rem]">
                     Cool brands designed with Looka
                 </div>
-                <div className="demo-wrapper md:flex px-[3.2rem] gap-[4rem]">
+                <div className="demo-wrapper md:flex px-[3.2rem] gap-[4rem] justify-center">
                     <div className="col-left basic-1/2">
                         <div className="wrapper">
                             <div className="w-full md:h-[39rem] lg:h-[55.3rem]">
