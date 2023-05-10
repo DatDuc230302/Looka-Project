@@ -3,10 +3,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
 function CarouselComp() {
-  const adsadsa = () => {
-    console.log('khang');
-  }
-  adsadsa()
+
     const slides = [
         {
             img: 'https://cdn.logojoy.com/wp-content/uploads/20201117163112/birdland_banner-2048x1024.jpg',
