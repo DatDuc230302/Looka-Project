@@ -18,13 +18,9 @@
         "react-responsive": "^9.0.2",
         "react-router-dom": "^6.11.0",
         "react-scripts": "^5.0.1",
-<<<<<<< HEAD
-=======
         "react-slick": "^0.29.0",
         "react-use-sticky": "^0.1.4",
->>>>>>> dbfa4cbba736ff5688174ed50e2c16fbe1e13439
         "sass": "^1.62.1",
-        "react-slick": "^0.29.0",
         "slick-carousel": "^1.8.1",
         "web-vitals": "^2.1.4"
     },

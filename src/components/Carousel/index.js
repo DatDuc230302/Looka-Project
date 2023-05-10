@@ -1,13 +1,10 @@
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import styles from './Carousel.css';
+
 
 function CarouselComp() {
-
-  const adsa = () => {
-    console.log('lkhang');
-  }
-
     const slides = [
         {
             img: 'https://cdn.logojoy.com/wp-content/uploads/20201117163112/birdland_banner-2048x1024.jpg',
@@ -27,16 +24,19 @@ function CarouselComp() {
         slidesToScroll: 1,
         focusOnSelect: false,
         accessibility: false,
+        arrows: false,
     };
 
     return (
-        <Slider {...settings}>
-            {slides.map((slide, index) => (
-                <div key={index} tabIndex="-1">
-                    <img src={slide.img} alt="" />
-                </div>
-            ))}
-        </Slider>
+        <div className="mb-[5rem]">
+            <Slider {...settings}>
+                {slides.map((slide, index) => (
+                    <div key={index} tabIndex="-1">
+                        <img src={slide.img} alt="" className='rounded-[1rem]'/>
+                    </div>
+                ))}
+            </Slider>
+        </div>
     );
 }
 
