@@ -5,7 +5,6 @@ import { faArrowLeft, faArrowRight, faBars, faChevronDown, faChevronUp } from '@
 import { useEffect, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { useParams, useNavigate } from 'react-router-dom';
-import { useSticky } from 'react-use-sticky';
 
 const cx = classNames.bind(styles);
 
@@ -237,13 +236,6 @@ function Onboarding() {
     const tablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
     const mobile = useMediaQuery({ maxWidth: 767 });
 
-    const [headerBarRef, sticky] = useSticky();
-
-    const style = {
-        position: 'sticky',
-        top: 69,
-    };
-
     useEffect(() => {
         pages.filter((item) => item.id === id && setTitle(item.title));
         pages.filter((item) => item.id === id && setDescription(item.description));
@@ -266,12 +258,6 @@ function Onboarding() {
     useEffect(() => {
         id === 3 && setLogic(pick3.length);
     }, [pick3.length]);
-
-    // add header
-
-    const handleNotify = () => {
-        // hihi
-    };
 
     const handleContinue = () => {
         if (logic > 0) {
@@ -353,17 +339,13 @@ function Onboarding() {
                     <div style={{ width: `${progress}%` }} className={cx('progress')}></div>
                 </div>
                 <div className={cx('body')}>
-                    <div
-                        ref={headerBarRef}
-                        style={style}
-                        className={cx('box-sticky', sticky && 'sticky', mobile && 'mobile')}
-                    >
-                        <div className={cx('box', sticky && 'sticky', tablet && 'tablet', mobile && 'mobile')}>
+                    <div className={cx('box-sticky', mobile && 'mobile')}>
+                        <div className={cx('box', tablet && 'tablet', mobile && 'mobile')}>
                             <div className={cx('content')}>
                                 <span style={{ color: color }} className={cx('title')}>
                                     {title}
                                 </span>
-                                {!sticky && <span className={cx('description')}>{description}</span>}
+                                <span className={cx('description')}>{description}</span>
                             </div>
                             <div
                                 onClick={() => handleContinue()}
