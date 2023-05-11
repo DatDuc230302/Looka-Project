@@ -1,10 +1,24 @@
 import Button from '../Button';
 import classNames from 'classnames/bind';
 import styles from './GetStartFlex.module.scss';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 
 const cx = classNames.bind(styles);
 
 function GetStartFlex({ title, desc, className, classNameInput, fontText, black }) {
+    const [valueInput, setValueInput] = useState('');
+    const navigate = useNavigate();
+
+    const submitInput = () => {
+        valueInput.length > 0 && navigate(`/onboarding/${valueInput}`);
+    };
+
+    document.onkeydown = function (e) {
+        if (e.which === 13 && valueInput.length > 0) {
+            navigate(`/onboarding/${valueInput}`);
+        }
+    };
     return (
         <div className={`wrapper px-[2.4rem] py-[8.8rem] pb-[6rem] flex ${className}`}>
             <div className="w-full pl-[5rem]">
@@ -21,8 +35,9 @@ function GetStartFlex({ title, desc, className, classNameInput, fontText, black 
                 <input
                     className={cx('input', `md:max-w-[424px] ${classNameInput && '!bg-white'}`)}
                     placeholder="Enter your company name"
+                    onChange={(e) => setValueInput(e.target.value)}
                 />
-                <Button black large className={'md:ml-2 w-full md:w-auto mt-3 md:mt-0'}>
+                <Button onClick={submitInput} black large className={'md:ml-2 w-full md:w-auto mt-3 md:mt-0'}>
                     Get started
                 </Button>
             </div>
