@@ -6,6 +6,7 @@ import { useState } from 'react';
 import HeadlessTippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css';
 import { useMediaQuery } from 'react-responsive';
+import { useNavigate } from 'react-router-dom';
 
 const cx = className.bind(styles);
 
@@ -49,18 +50,18 @@ const colors = [
 ];
 
 const imgs = [
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', key: 'img1' },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', key: 'img2' },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', key: 'img3' },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', key: 'img4' },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', key: 'img5' },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', key: 'img6' },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', key: 'img1' },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', key: 'img2' },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', key: 'img3' },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', key: 'img4' },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', key: 'img5' },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', key: 'img6' },
+    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 1 },
+    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 2 },
+    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 3 },
+    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 4 },
+    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 5 },
+    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 6 },
+    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 7 },
+    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 8 },
+    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 9 },
+    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 10 },
+    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 11 },
+    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 12 },
 ];
 
 function Explore() {
@@ -72,6 +73,8 @@ function Explore() {
 
     const tablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
     const mobile = useMediaQuery({ maxWidth: 767 });
+
+    const navigate = useNavigate();
 
     const handleColor = (item, id) => {
         setColor(item);
@@ -92,9 +95,10 @@ function Explore() {
         }
     };
 
-    const handleImg = () => {
-        console.log('Dat');
+    const handleImg = (id) => {
+        navigate(`/editor/${id}`);
     };
+
     return (
         <div className={cx('wrapper')}>
             <div className={cx('inner')}>
@@ -153,6 +157,7 @@ function Explore() {
                             </div>
                             <div className={cx('control-select')}>
                                 <HeadlessTippy
+                                    appendTo={'parent'}
                                     zIndex={0}
                                     interactive={true}
                                     placement="bottom-start"
@@ -222,7 +227,7 @@ function Explore() {
                         {imgs.map((item, index) => (
                             <div key={index} className={cx('box-empty', mobile && 'mobile')}>
                                 <img
-                                    onClick={() => handleImg()}
+                                    onClick={() => handleImg(item.id)}
                                     className={cx(
                                         'item-img',
                                         index === countImg && 'active',
@@ -232,7 +237,12 @@ function Explore() {
                                     alt=""
                                 />
                                 <div className={cx('buy')}>
-                                    <div className={cx('buy-btn', tablet && 'tablet')}>Customize</div>
+                                    <div
+                                        onClick={() => handleImg(item.id)}
+                                        className={cx('buy-btn', tablet && 'tablet')}
+                                    >
+                                        Customize
+                                    </div>
                                     <div className={cx('buy-cart')}>
                                         <svg
                                             width="22.05px"

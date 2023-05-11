@@ -5,6 +5,7 @@ import { faArrowLeft, faArrowRight, faBars, faChevronDown, faChevronUp } from '@
 import { useEffect, useState } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { useParams, useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 
 const cx = classNames.bind(styles);
 
@@ -222,7 +223,7 @@ function Onboarding() {
     const [pick2, setPick2] = useState('');
     const [pick3, setPick3] = useState(params.key);
     const [showOption, setShowOption] = useState(false);
-    const [progress, setProgress] = useState(20);
+    const [progress, setProgress] = useState(100 / (pages.length + 1));
     const [title, setTitle] = useState(pages[0].title);
     const [description, setDescription] = useState(pages[0].description);
     const [id, setId] = useState(pages[0].id);
@@ -235,6 +236,8 @@ function Onboarding() {
 
     const tablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
     const mobile = useMediaQuery({ maxWidth: 767 });
+
+    const pickTest = useSelector((state) => state.pick0);
 
     useEffect(() => {
         pages.filter((item) => item.id === id && setTitle(item.title));
@@ -262,7 +265,7 @@ function Onboarding() {
     const handleContinue = () => {
         if (logic > 0) {
             setId(id + 1);
-            progress < 100 && setProgress(progress + 20);
+            progress < 100 && setProgress(progress + 100 / (pages.length + 1));
             switch (id) {
                 case 0:
                     setShowOption(false);
