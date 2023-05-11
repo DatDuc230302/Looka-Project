@@ -7,11 +7,13 @@ import Button from '../../components/Button';
 import { Link } from 'react-router-dom';
 import GetStartFlex from '../../components/GetStartFlex';
 import { useState } from 'react';
+import ModalLogin from '../../components/ModalLogin';
 
 const cx = classNames.bind(styles);
 
 function Home() {
     document.title = 'Logo Design &amp; Brand Identity for Entrepreneurs | Looka';
+    const [showModal, setShowModal] = useState(false);
 
     return (
         <div className={cx('wrapper')}>
@@ -393,7 +395,9 @@ function Home() {
                 </div>
             </div>
             <div className="video">
-                <div className="video-heading">See how to bring your vision to life</div>
+                <div className="video-heading text-[var(--text-color)] text-[3rem] md:text-[4rem] leading-[50px] font-bold text-center mb-[5rem] mt-[10rem]">
+                    See how to bring your vision to life
+                </div>
                 <div className="video-content relative max-w-[120rem] mx-auto rounded-2xl cursor-pointer overflow-hidden">
                     <img
                         alt=""
@@ -631,6 +635,7 @@ title="YouTube video player"
                 title={'Get started for free!'}
                 desc={"Then use Looka's AI-powered platform to make a logo, business cards & more!"}
             />
+            {showModal && <ModalLogin />}
         </div>
     );
 }
