@@ -20,7 +20,10 @@ function ModalLogin() {
     };
     return (
         <div className="wrapper">
-            <div className="overlay fixed top-0 bottom-0 right-0 left-0 bg-black/70 z-[200]" onClick={() => handleToggle()}></div>
+            <div
+                className="overlay fixed top-0 bottom-0 right-0 left-0 bg-black/70 z-[200]"
+                onClick={() => handleToggle()}
+            ></div>
             <div className="login absolute top-1/2 left-1/2 bg-white p-[4rem] z-[300] -translate-x-1/2 -translate-y-1/2 rounded-[0.8rem] max-w-[37.5rem]">
                 <div className="inner-login">
                     <div className="heading">
