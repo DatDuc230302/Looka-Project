@@ -8,12 +8,16 @@ import { Link } from 'react-router-dom';
 import GetStartFlex from '../../components/GetStartFlex';
 import { useState } from 'react';
 import ModalLogin from '../../components/ModalLogin';
+import { useSelector } from 'react-redux';
 
 const cx = classNames.bind(styles);
 
 function Home() {
     document.title = 'Logo Design &amp; Brand Identity for Entrepreneurs | Looka';
-    const [showModal, setShowModal] = useState(false);
+
+
+    const showMenu = useSelector((state) => state.show);
+
 
     return (
         <div className={cx('wrapper')}>
@@ -635,7 +639,7 @@ title="YouTube video player"
                 title={'Get started for free!'}
                 desc={"Then use Looka's AI-powered platform to make a logo, business cards & more!"}
             />
-            {showModal && <ModalLogin />}
+            {showMenu && <ModalLogin />}
         </div>
     );
 }
