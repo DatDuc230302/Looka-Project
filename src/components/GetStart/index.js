@@ -11,12 +11,12 @@ function GetStart({ title, desc, className, classNameInput, fontText }) {
     const navigate = useNavigate();
 
     const submitInput = () => {
-        valueInput.length > 0 && navigate(`/onboarding/${valueInput}`);
+        valueInput.length > 0 && navigate(`/onboarding/${valueInput.trim()}`);
     };
 
     document.onkeydown = function (e) {
         if (e.which === 13 && valueInput.length > 0) {
-            navigate(`/onboarding/${valueInput}`);
+            navigate(`/onboarding/${valueInput.trim()}`);
         }
     };
 
@@ -35,7 +35,9 @@ function GetStart({ title, desc, className, classNameInput, fontText }) {
                     className={cx('input', `md:max-w-[424px] ${classNameInput && '!bg-white'}`)}
                     placeholder="Enter your company name"
                     value={valueInput}
-                    onChange={(e) => setValueInput(e.target.value)}
+                    onChange={(e) => {
+                        !e.target.value.startsWith(' ') && setValueInput(e.target.value);
+                    }}
                 />
                 <Button onClick={submitInput} primary large className={'md:ml-2 w-full md:w-auto mt-3 md:mt-0'}>
                     Get started
