@@ -1,10 +1,10 @@
-export const pick0 = (state = '', action) => {
+export const backOnboard = (state = false, action) => {
     switch (action.type) {
-        case 'SET0':
+        case 'BACKONBOARD':
             return action.data;
         default:
             return state;
     }
 };
 
-export default pick0;
+export default backOnboard;

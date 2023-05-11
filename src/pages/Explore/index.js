@@ -7,6 +7,8 @@ import HeadlessTippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css';
 import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { backOnboard } from '../../redux/actions/backOnboard';
 
 const cx = className.bind(styles);
 
@@ -71,6 +73,9 @@ function Explore() {
     const [arrColors, setArrColors] = useState(colors);
     const [countImg, setCoutImg] = useState(-1);
 
+    const pick3 = useSelector((state) => state.pick3);
+    const dispath = useDispatch();
+
     const tablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
     const mobile = useMediaQuery({ maxWidth: 767 });
 
@@ -99,11 +104,16 @@ function Explore() {
         navigate(`/editor/${id}`);
     };
 
+    const handleBack = () => {
+        navigate(`/onboarding/${pick3}`);
+        dispath(backOnboard(true));
+    };
+
     return (
         <div className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <div className={cx('header')}>
-                    <FontAwesomeIcon className={cx('icon-back')} icon={faArrowLeft} />
+                    <FontAwesomeIcon onClick={() => handleBack()} className={cx('icon-back')} icon={faArrowLeft} />
                     <div className={cx('header-heart')}>
                         <svg
                             width="22px"

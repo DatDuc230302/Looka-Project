@@ -1,7 +1,7 @@
-export const pick1 = (state = 'Dat', action) => {
-    switch (action.payload) {
-        case 'SET':
-            return state;
+export const pick1 = (state = -1, action) => {
+    switch (action.type) {
+        case 'SET1':
+            return action.data;
         default:
             return state;
     }

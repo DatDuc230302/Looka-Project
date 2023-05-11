@@ -1,10 +1,10 @@
-export const pick0 = (state = '', action) => {
+export const pick3 = (state = '', action) => {
     switch (action.type) {
-        case 'SET0':
+        case 'SET3':
             return action.data;
         default:
             return state;
     }
 };
 
-export default pick0;
+export default pick3;
