@@ -24,13 +24,19 @@ function ModalLogin() {
                         <input placeholder="Email" />
                         <input placeholder="Password" />
                     </div>
-                    <Button primary small className={"mt-[0.8rem] w-full text-[1.4rem]"}>Sign In</Button>
-                    <div className="forgot-pass text-center text-[1.2rem] cursor-pointer text-[var(--primary-color)] my-[0.4rem]">Forgot password?</div>
+                    <Button primary small className={'mt-[0.8rem] w-full text-[1.4rem]'}>
+                        Sign In
+                    </Button>
+                    <div className="forgot-pass text-center text-[1.2rem] cursor-pointer text-[var(--primary-color)] my-[0.4rem]">
+                        Forgot password?
+                    </div>
                     <div className="text-white text-[1.4rem] text-center absolute left-0 -bottom-[3rem] w-full">
                         Don't have an account yet? <span className="cursor-pointer">Sign up</span>
                     </div>
-                    <div className='close absolute right-[2rem] top-[1.2rem] text-[2rem]'>
-                        <span className='text-black text-[1.4rem] font-bold'><FontAwesomeIcon icon={faXmark} /></span>
+                    <div className="close absolute right-[2rem] top-[1.2rem] text-[2rem]">
+                        <span className="text-black text-[1.4rem] font-bold">
+                            <FontAwesomeIcon icon={faXmark} />
+                        </span>
                     </div>
                 </div>
             </div>

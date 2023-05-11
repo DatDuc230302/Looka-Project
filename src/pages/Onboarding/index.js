@@ -451,7 +451,7 @@ function Onboarding() {
                                         onChange={(e) => setValuePick3(e.target.value)}
                                         onBlur={() => setFadeLabel(false)}
                                         onClick={() => setFadeLabel(true)}
-                                        value={valuePick3 || pick3}
+                                        value={valuePick3}
                                         className={cx(
                                             'company-input',
                                             fadeLabel && 'active',
