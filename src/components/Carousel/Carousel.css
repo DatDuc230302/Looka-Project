@@ -10,7 +10,6 @@
 .slick-dots li.slick-active button:before {
     color: var(--primary-color);
     opacity: 1;
-
 }
 
 .slick-dots li button:hover .slick-dots li button:before {

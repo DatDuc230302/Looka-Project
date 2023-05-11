@@ -1,0 +1,45 @@
+.or {
+    text-align: center;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    color: #676e8b;
+    margin: 1.6rem 0;
+}
+
+.or::after,
+.or::before {
+    border-bottom: 1px solid #ccc;
+    content: '';
+    flex: 0 1 50%;
+    height: 4px;
+    position: relative;
+}
+.or::after {
+    margin-left: 10px;
+}
+
+.or::before {
+    margin-right: 10px;
+}
+
+input {
+    appearance: none;
+    background: #fff;
+    border: 1px solid #dae2f2;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    color: #676e8b;
+    font-size: 1.2rem;
+    font-weight: 400;
+    outline: none;
+    padding: 1.4rem;
+    width: 100%;
+}
+input + input {
+    margin-top: 0.8rem;
+}
+
+.custom-btn {
+    width: 100%;
+}
