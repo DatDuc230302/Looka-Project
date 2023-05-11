@@ -1,3 +1,3 @@
 export const pick0 = (string) => {
-    return { type: string, payload: 'SET' };
+    return { type: 'SET0', data: string };
 };
