@@ -45,6 +45,18 @@
   font-size: 1.6rem;
 }
 
+// color + bg
+.black {
+  background-color: #090b17;
+  color: #fff;
+  border-radius: 8px;
+  font-size: 1.6rem;
+
+  &:hover {
+      transform: scale(1.03);
+  }
+}
+
 //Icon
 .icon + .title,
 .title + .icon {
