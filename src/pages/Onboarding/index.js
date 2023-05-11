@@ -214,6 +214,7 @@ function Onboarding() {
     const navigate = useNavigate();
 
     const [valuePick3, setValuePick3] = useState(!url ? 0 : url);
+    const [colorPick2, setColorPick2] = useState(-1);
     const [showOption, setShowOption] = useState(false);
     const [progress, setProgress] = useState(100 / (pages.length + 1));
     const [title, setTitle] = useState(pages[0].title);
@@ -247,8 +248,8 @@ function Onboarding() {
     }, [pick1]);
 
     useEffect(() => {
-        setLogic(pick2);
-    }, [pick2]);
+        setLogic(colorPick2);
+    }, [colorPick2]);
 
     useEffect(() => {
         id === 3 && setLogic(pick3.length);
@@ -299,10 +300,8 @@ function Onboarding() {
                 setLogic(pick1);
                 break;
             case 3:
-                setLogic(pick2);
-                break;
-            case 4:
-                setLogic(pick3.length);
+                colors.filter((item, index) => pick2 === item.color && setColorPick2(item.key));
+                setLogic(colorPick2);
                 break;
             default:
         }
@@ -314,7 +313,8 @@ function Onboarding() {
 
     const handleColor = (color, key) => {
         setColor(color);
-        dispath(setPick2(key));
+        setColorPick2(key);
+        dispath(setPick2(color));
     };
 
     return (
@@ -427,8 +427,8 @@ function Onboarding() {
                                             }}
                                             className={cx(
                                                 'color-item',
-                                                item.key === pick2 && 'active',
-                                                pick2 !== -1 && pick2 !== item.key && 'disable',
+                                                item.key === colorPick2 && 'active',
+                                                colorPick2 !== -1 && colorPick2 !== item.key && 'disable',
                                             )}
                                             key={index}
                                             onClick={() => handleColor(item.color, item.key, index)}

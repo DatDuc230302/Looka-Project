@@ -1,13 +1,17 @@
 import Header from '../../components/Header';
 import classNames from 'classnames/bind';
-import styles from './DefaultLayout.module.scss';
+import styles from './LayoutLooka.module.scss';
+import HeaderSecond from '../../components/HeaderSecond';
 
 const cx = classNames.bind(styles);
 
 function LayoutLooka({ children }) {
     return (
-        <div className="">
-            <div className={cx('content h-[2000px]')}>{children}</div>
+        <div className={cx('wrapper')}>
+            <div className={cx('inner')}>
+                <HeaderSecond />
+                {children}
+            </div>
         </div>
     );
 }
