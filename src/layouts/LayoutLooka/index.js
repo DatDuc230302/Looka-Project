@@ -10,7 +10,7 @@ function LayoutLooka({ children }) {
         <div className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <HeaderSecond />
-                {children}
+                <div className={cx('body')}>{children}</div>
             </div>
         </div>
     );

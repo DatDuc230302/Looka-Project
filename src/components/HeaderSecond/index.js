@@ -40,7 +40,7 @@ function HeaderSecond() {
     };
 
     return (
-        <div className={cx('header')}>
+        <div style={{ height: layout !== 1 && 60 }} className={cx('header')}>
             {layout === 1 ? (
                 <>
                     <FontAwesomeIcon onClick={() => handleBack()} className={cx('icon-back')} icon={faArrowLeft} />
