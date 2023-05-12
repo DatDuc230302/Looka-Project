@@ -530,7 +530,7 @@ title="YouTube video player"
                     />
                 </div>
                 <div className="flex justify-center">
-                    <Button medium text>
+                    <Button medium text className={"!px-16 "}>
                         Contact us
                     </Button>
                 </div>
