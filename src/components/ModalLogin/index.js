@@ -20,7 +20,10 @@ function ModalLogin() {
     };
     return (
         <div className="wrapper">
-            <div className="overlay fixed top-0 bottom-0 right-0 left-0 bg-black/70 z-[200]" onClick={() => handleToggle()}></div>
+            <div
+                className="overlay fixed top-0 bottom-0 right-0 left-0 bg-black/70 z-[200]"
+                onClick={() => handleToggle()}
+            ></div>
             <div className="login absolute top-1/2 left-1/2 bg-white p-[4rem] z-[300] -translate-x-1/2 -translate-y-1/2 rounded-[0.8rem] max-w-[37.5rem]">
                 <div className="inner-login">
                     <div className="heading">
@@ -43,13 +46,16 @@ function ModalLogin() {
                     <div className="text-white text-[1.4rem] text-center absolute left-0 -bottom-[3rem] w-full">
                         Don't have an account yet? <span className="cursor-pointer">Sign up</span>
                     </div>
-                    <div
-                        className="close absolute top-0 right-0 cursor-pointer p-[2rem]"
-                        onClick={() => handleToggle()}
-                    >
-                        <span className="text-black text-[1.4rem] font-bold">
-                            <FontAwesomeIcon icon={faXmark} />
-                        </span>
+
+                    <div className="close absolute right-[2rem] top-[1.2rem] text-[2rem]">
+                        <div
+                            className="close absolute top-0 right-0 cursor-pointer p-[2rem]"
+                            onClick={() => handleToggle()}
+                        >
+                            <span className="text-black text-[1.4rem] font-bold">
+                                <FontAwesomeIcon icon={faXmark} />
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>

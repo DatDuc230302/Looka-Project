@@ -3,7 +3,7 @@ export const show = (state = false, action) => {
         case 'toggle':
             return !action.payload;
         default:
-            return !action.payload;
+            return state;
     }
 };
 
