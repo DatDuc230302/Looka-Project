@@ -20,8 +20,8 @@ function GetStartFlex({ title, desc, className, classNameInput, fontText, black 
         }
     };
     return (
-        <div className={`wrapper px-[2.4rem] py-[8.8rem] pb-[6rem] flex ${className}`}>
-            <div className="w-full pl-[5rem]">
+        <div className={`wrapper px-[2.4rem] py-[8.8rem] pb-[6rem] flex flex-col mb-[100px] md:mb-0 md:flex-row ${className}`}>
+            <div className="w-full md:pl-[5rem]">
                 <div
                     className={`title text-[#fff] font-bold md:w-[46.4rem] ${
                         fontText ? 'text-[3rem] md:text-[4rem]' : 'text-[3.6rem] md:text-[4.8rem]'
@@ -29,7 +29,7 @@ function GetStartFlex({ title, desc, className, classNameInput, fontText, black 
                 >
                     {title}
                 </div>
-                <div className="desc text-[#fff] text-[1.6rem] my-[32px] font-normal md:w-[46.4rem]">{desc}</div>
+                <div className="desc text-[#fff] text-[1.6rem] mt-[12px] mb-[40px] md:my-[32px] font-normal md:w-[46.4rem]">{desc}</div>
             </div>
             <div className="control md:flex items-center justify-center md:w-full">
                 <input

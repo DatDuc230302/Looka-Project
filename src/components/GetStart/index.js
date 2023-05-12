@@ -21,7 +21,7 @@ function GetStart({ title, desc, className, classNameInput, fontText }) {
     };
 
     return (
-        <div className={`wrapper px-[2.4rem] py-[8.8rem] text-center pt-[134px] ${className}`}>
+        <div className={`wrapper px-[2.4rem] py-[8.8rem] text-center md:pt-[134px] ${className}`}>
             <div
                 className={`title text-[var(--text-color)] font-bold ${
                     fontText ? 'text-[3rem] md:text-[4rem]' : 'text-[3.6rem] md:text-[4.8rem]'

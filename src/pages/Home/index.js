@@ -38,7 +38,7 @@ function Home() {
                     The easiest way to design and launch your new business
                 </div>
                 <div className="flex gap-[160px] flex-col">
-                    <div className="wrapper items-center flex flex-col md:flex-row mx-auto px-[32px] gap-20">
+                    <div className="wrapper w-full items-center flex flex-col md:flex-row mx-auto px-[32px] gap-20">
                         <div className="layout-img w-full md:w-[57%]">
                             <img
                                 src="https://cdn.logojoy.com/wp-content/uploads/20210211103713/Kardia-Brand-Logo-Creation-Compressed.jpg"
@@ -46,7 +46,7 @@ function Home() {
                                 className=""
                             />
                         </div>
-                        <div className="layout-text w-[462px]">
+                        <div className="layout-text w-full md:w-[462px]">
                             <div className="step font-bold text-[30px] leading-[38px]">
                                 <span className="number text-[#5340ff]">01.</span> Make a logo in minutes
                             </div>
@@ -60,7 +60,7 @@ function Home() {
                             </Button>
                         </div>
                     </div>
-                    <div className="wrapper items-center flex flex-col md:flex-row mx-auto px-[32px] gap-20">
+                    <div className="wrapper w-full items-center flex flex-col md:flex-row mx-auto px-[32px] gap-20">
                         <div className="layout-img w-full md:w-[57%] md:order-2">
                             <img
                                 src="https://cdn.logojoy.com/wp-content/uploads/20210211103731/Kardia-Brand-Business-Cards-Compressed.jpg"
@@ -68,7 +68,7 @@ function Home() {
                                 className=""
                             />
                         </div>
-                        <div className="layout-text w-[462px]">
+                        <div className="layout-text w-full md:w-[462px]">
                             <div className="step font-bold text-[30px] leading-[38px]">
                                 <span className="number text-[#5340ff]">02.</span> Bring your brand to life
                             </div>
@@ -82,7 +82,7 @@ function Home() {
                             </Button>
                         </div>
                     </div>
-                    <div className="wrapper items-center flex flex-col md:flex-row mx-auto px-[32px] gap-20">
+                    <div className="wrapper w-full items-center flex flex-col md:flex-row mx-auto px-[32px] gap-20">
                         <div className="layout-img w-full md:w-[57%]">
                             <img
                                 src="https://cdn.logojoy.com/wp-content/uploads/20210211103812/Kardia-Brand-Website-Compressed.jpg"
@@ -90,7 +90,7 @@ function Home() {
                                 className=""
                             />
                         </div>
-                        <div className="layout-text w-[462px]">
+                        <div className="layout-text w-full md:w-[462px]">
                             <div className="step font-bold text-[30px] leading-[38px]">
                                 <span className="number text-[#5340ff]">03.</span> Market your business
                             </div>
@@ -438,7 +438,7 @@ title="YouTube video player"
 
             {/* demo // item-product */}
             <div className="demo">
-                <div className="demo-heading text-[3rem] md:text-[4rem] text-center w-full font-bold mb-[7.2rem]">
+                <div className="demo-heading text-[3rem] md:text-[4rem] text-center w-full font-bold mb-[7.2rem] px-[2.4rem] md:px-0">
                     Cool brands designed with Looka
                 </div>
                 <div className="demo-wrapper md:flex px-[3.2rem] gap-[4rem] justify-center">
@@ -515,7 +515,7 @@ title="YouTube video player"
                 </div>
             </div>
             <div className="build-your-brand mt-[12rem] md:mt-[16rem] px-[2.4rem]">
-                <div className="title text-[var(--text-color)] text-[3rem] md:text-[4rem] leading-[50px] font-bold text-center">
+                <div className="title text-[var(--text-color)] text-[3rem] md:text-[4rem] md:leading-[50px] font-bold text-center">
                     We’re here to help build your brand
                 </div>
                 <div className="desc text-[#676e8b] text-[1.6rem] md:px-[2.4rem] max-w-[83.2rem] text-center mx-auto mt-[1.6rem]">
@@ -536,7 +536,7 @@ title="YouTube video player"
                 </div>
             </div>
             <div className="learn-about-desgin mt-[12rem] mv-[4rem] md:mt-[16rem]">
-                <div className="title text-[var(--text-color)] text-[3rem] md:text-[4rem] leading-[50px] font-bold text-center">
+                <div className="title text-[var(--text-color)] text-[3rem] md:text-[4rem] md:leading-[50px] font-bold text-center">
                     Learn about design, branding & entrepreneurship
                 </div>
                 <div className="ct-list-3-col-wrapper md:gap-3">
@@ -548,7 +548,7 @@ title="YouTube video player"
                                 className=""
                             />
                         </div>
-                        <div className="tag text-[#5340ff] text-[1.1rem] uppercase tracking-[0.12rem] cursor-pointer">
+                        <div className="tag text-[#5340ff] text-[1.1rem] uppercase tracking-[0.12rem] cursor-pointer mt-2 md:mt-0">
                             LOGO DESIGN
                         </div>
                         <div className="title text-[2.4rem] leading-[3rem] font-bold mt-[0.8rem] hover:underline cursor-pointer">
@@ -563,7 +563,7 @@ title="YouTube video player"
                                 className=""
                             />
                         </div>
-                        <div className="tag text-[#5340ff] text-[1.1rem] uppercase tracking-[0.12rem] cursor-pointer">
+                        <div className="tag text-[#5340ff] text-[1.1rem] uppercase tracking-[0.12rem] cursor-pointer mt-2 md:mt-0">
                             LOGO DESIGN
                         </div>
                         <div className="title text-[2.4rem] leading-[3rem] font-bold mt-[0.8rem] hover:underline cursor-pointer">
@@ -578,7 +578,7 @@ title="YouTube video player"
                                 className=""
                             />
                         </div>
-                        <div className="tag text-[#5340ff] text-[1.1rem] uppercase tracking-[0.12rem] cursor-pointer">
+                        <div className="tag text-[#5340ff] text-[1.1rem] uppercase tracking-[0.12rem] cursor-pointer mt-2 md:mt-0">
                             LOGO DESIGN
                         </div>
                         <div className="title text-[2.4rem] leading-[3rem] font-bold mt-[0.8rem] hover:underline cursor-pointer">
@@ -593,7 +593,7 @@ title="YouTube video player"
                                 className=""
                             />
                         </div>
-                        <div className="tag text-[#5340ff] text-[1.1rem] uppercase tracking-[0.12rem] cursor-pointer">
+                        <div className="tag text-[#5340ff] text-[1.1rem] uppercase tracking-[0.12rem] cursor-pointer mt-2 md:mt-0">
                             LOGO DESIGN
                         </div>
                         <div className="title text-[2.4rem] leading-[3rem] font-bold mt-[0.8rem] hover:underline cursor-pointer">
@@ -608,7 +608,7 @@ title="YouTube video player"
                                 className=""
                             />
                         </div>
-                        <div className="tag text-[#5340ff] text-[1.1rem] uppercase tracking-[0.12rem] cursor-pointer">
+                        <div className="tag text-[#5340ff] text-[1.1rem] uppercase tracking-[0.12rem] cursor-pointer mt-2 md:mt-0">
                             LOGO DESIGN
                         </div>
                         <div className="title text-[2.4rem] leading-[3rem] font-bold mt-[0.8rem] hover:underline cursor-pointer">
@@ -623,7 +623,7 @@ title="YouTube video player"
                                 className=""
                             />
                         </div>
-                        <div className="tag text-[#5340ff] text-[1.1rem] uppercase tracking-[0.12rem] cursor-pointer">
+                        <div className="tag text-[#5340ff] text-[1.1rem] uppercase tracking-[0.12rem] cursor-pointer mt-2 md:mt-0">
                             LOGO DESIGN
                         </div>
                         <div className="title text-[2.4rem] leading-[3rem] font-bold mt-[0.8rem] hover:underline cursor-pointer">
