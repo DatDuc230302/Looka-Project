@@ -90,7 +90,7 @@ function HeaderSecond() {
                     </div>
                 )}
                 {menu2 && (
-                    <div className="header-center flex items-center justify-between flex-1">
+                    <div className="header-center hidden md:flex items-center justify-between flex-1">
                         <div className="start flex items-center text-[1.4rem] cursor-pointer">
                             <div className="hover:bg-[#f5f6f8] px-[1rem] py-[0.8rem] rounded-[0.8rem]">Saved Logos</div>
                             <Tippy content="Duplicate" offset={[0, 5]}>

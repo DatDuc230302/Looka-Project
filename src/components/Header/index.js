@@ -5,6 +5,7 @@ import { useMediaQuery } from 'react-responsive';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { show } from '../../redux/actions/show';
+import { toggleForm } from '../../redux/actions/toggleForm';
 
 const cx = classNames.bind(styles);
 
@@ -39,12 +40,17 @@ function Header() {
     const [fade, setFade] = useState(false);
     const pc = useMediaQuery({ minWidth: 954 });
     const showMenu = useSelector((state) => state.show);
+    const toggleMenu = useSelector((state) => state.toggleForm);
 
     const dispath = useDispatch();
 
-    const handleToggle = () => {
+    const openLogin = () => {
         dispath(show(!!showMenu));
-        console.log('khang');
+    };
+
+    const openRegister = () => {
+        dispath(show(!!showMenu));
+        dispath(toggleForm(!!toggleMenu));
     };
     useEffect(() => {
         if (pc) {
@@ -71,10 +77,12 @@ function Header() {
                         ))}
                     </div>
                     <div className={cx('nav-btn')}>
-                        <div className={cx('nav-login')} onClick={() => handleToggle()}>
+                        <div className={cx('nav-login')} onClick={() => openLogin()}>
                             Log in
                         </div>
-                        <div className={cx('nav-signup')}>Sign up</div>
+                        <div className={cx('nav-signup')} onClick={() => openRegister()}>
+                            Sign up
+                        </div>
                     </div>
                 </div>
             ) : (
@@ -93,10 +101,12 @@ function Header() {
                                 ))}
                             </div>
                             <div className={cx('more-btn')}>
-                                <div className={cx('more-signup')} onClick={() => handleToggle()}>
+                                <div className={cx('more-signup')} onClick={() => openRegister()}>
                                     Sign up
                                 </div>
-                                <div className={cx('more-login')}>Log in</div>
+                                <div className={cx('more-login')} onClick={() => openLogin()}>
+                                    Log in
+                                </div>
                             </div>
                         </div>
                     )}
