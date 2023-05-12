@@ -5,6 +5,7 @@
     padding: 0 20px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding-left: 23px;
     position: fixed;
     z-index: 1000;
@@ -62,7 +63,7 @@
     height: 40px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     cursor: pointer;
 }
 

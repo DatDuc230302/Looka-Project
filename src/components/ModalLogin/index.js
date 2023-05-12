@@ -46,16 +46,13 @@ function ModalLogin() {
                     <div className="text-white text-[1.4rem] text-center absolute left-0 -bottom-[3rem] w-full">
                         Don't have an account yet? <span className="cursor-pointer">Sign up</span>
                     </div>
-
-                    <div className="close absolute right-[2rem] top-[1.2rem] text-[2rem]">
-                        <div
-                            className="close absolute top-0 right-0 cursor-pointer p-[2rem]"
-                            onClick={() => handleToggle()}
-                        >
-                            <span className="text-black text-[1.4rem] font-bold">
-                                <FontAwesomeIcon icon={faXmark} />
-                            </span>
-                        </div>
+                    <div
+                        className="close absolute top-0 right-0 cursor-pointer p-[2rem]"
+                        onClick={() => handleToggle()}
+                    >
+                        <span className="text-black text-[1.4rem] font-bold">
+                            <FontAwesomeIcon icon={faXmark} />
+                        </span>
                     </div>
                 </div>
             </div>
