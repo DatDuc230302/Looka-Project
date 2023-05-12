@@ -1,14 +1,11 @@
 import className from 'classnames/bind';
 import styles from './Explore.module.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft, faBars } from '@fortawesome/free-solid-svg-icons';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import HeadlessTippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css';
 import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import { backOnboard } from '../../redux/actions/backOnboard';
+import { useSelector } from 'react-redux';
 
 const cx = className.bind(styles);
 
@@ -72,13 +69,11 @@ function Explore() {
 
     const pick3 = useSelector((state) => state.pick3);
     const pick2 = useSelector((state) => state.pick2);
-    const dispath = useDispatch();
 
     const [fade, setFade] = useState(false);
     const [select, setSelect] = useState(false);
     const [color, setColor] = useState(pick2);
     const [arrColors, setArrColors] = useState(colors);
-    const [countImg, setCoutImg] = useState(-1);
 
     const navigate = useNavigate();
 
@@ -94,7 +89,7 @@ function Explore() {
     };
 
     const handleSelect = () => {
-        if (color.length <= 0) {
+        if (color.length > 0) {
             setSelect(false);
         } else {
             setSelect(true);
@@ -117,6 +112,7 @@ function Explore() {
                                     onBlur={() => setFade(false)}
                                     className={cx('control-company', mobile && 'mobile', fade && 'fade')}
                                     placeholder="Company Name"
+                                    value={pick3}
                                 />
                             </div>
                             <div className={cx('control-select')}>
@@ -192,11 +188,7 @@ function Explore() {
                             <div key={index} className={cx('box-empty', mobile && 'mobile')}>
                                 <img
                                     onClick={() => handleImg(item.id)}
-                                    className={cx(
-                                        'item-img',
-                                        index === countImg && 'active',
-                                        countImg !== -1 && index !== countImg && 'disable',
-                                    )}
+                                    className={cx('item-img')}
                                     src={item.img}
                                     alt=""
                                 />

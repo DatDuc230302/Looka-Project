@@ -224,6 +224,7 @@ function Onboarding() {
     const [color, setColor] = useState('');
     const [logic, setLogic] = useState(0);
     const [fadeLabel, setFadeLabel] = useState(false);
+    const [sticky, setSticky] = useState(false);
 
     const pick0 = useSelector((state) => state.pick0);
     const pick1 = useSelector((state) => state.pick1);
@@ -317,6 +318,15 @@ function Onboarding() {
         dispath(setPick2(color));
     };
 
+    // Sticky
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 45) {
+            setSticky(true);
+        } else {
+            setSticky(false);
+        }
+    });
+
     return (
         <div className={cx('wrapper')}>
             {url ? (
@@ -344,13 +354,13 @@ function Onboarding() {
                         <div style={{ width: `${progress}%` }} className={cx('progress')}></div>
                     </div>
                     <div className={cx('body')}>
-                        <div className={cx('box-sticky', mobile && 'mobile')}>
-                            <div className={cx('box', tablet && 'tablet', mobile && 'mobile')}>
+                        <div className={cx('box-sticky', mobile && 'mobile', sticky && 'sticky')}>
+                            <div className={cx('box', tablet && 'tablet', mobile && 'mobile', sticky && 'sticky')}>
                                 <div className={cx('content')}>
-                                    <span style={{ color: color }} className={cx('title')}>
+                                    <span style={{ color: color }} className={cx('title', mobile && 'mobile')}>
                                         {title}
                                     </span>
-                                    <span className={cx('description')}>{description}</span>
+                                    {!sticky && <span className={cx('description')}>{description}</span>}
                                 </div>
                                 <div
                                     onClick={() => handleContinue()}
@@ -451,7 +461,7 @@ function Onboarding() {
                                         onChange={(e) => setValuePick3(e.target.value)}
                                         onBlur={() => setFadeLabel(false)}
                                         onClick={() => setFadeLabel(true)}
-                                        value={valuePick3 || pick3}
+                                        value={valuePick3}
                                         className={cx(
                                             'company-input',
                                             fadeLabel && 'active',

@@ -1,11 +1,16 @@
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css'; // optional
+
 import classNames from 'classnames/bind';
 import styles from './HeaderSecond.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faBars } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate, useParams, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { backOnboard } from '../../redux/actions/backOnboard';
+import Button from '../Button';
+import { DownArrowIcon, DownloadIcon } from '../../assets/Icons';
 
 const cx = classNames.bind(styles);
 
@@ -15,6 +20,7 @@ function HeaderSecond() {
     const navigate = useNavigate();
     const dispath = useDispatch();
     const [layout, setLayout] = useState(0);
+    const [menu2, setMenu2] = useState(false);
 
     const pick3 = useSelector((state) => state.pick3);
 
@@ -23,6 +29,7 @@ function HeaderSecond() {
             setLayout(1);
         } else {
             setLayout(2);
+            setMenu2(true);
         }
     }, [url]);
 
@@ -35,15 +42,16 @@ function HeaderSecond() {
                 navigate('/');
             }
         } else {
+            setMenu2(false);
             navigate('/explore');
         }
     };
 
     return (
-        <div className={cx('header')}>
-            {layout === 1 ? (
-                <>
-                    <FontAwesomeIcon onClick={() => handleBack()} className={cx('icon-back')} icon={faArrowLeft} />
+        <div style={{ height: layout !== 1 && 60 }} className={cx('header')}>
+            <>
+                <FontAwesomeIcon onClick={() => handleBack()} className={cx('icon-back')} icon={faArrowLeft} />
+                {!menu2 && (
                     <div className={cx('header-heart')}>
                         <svg
                             width="22px"
@@ -71,6 +79,8 @@ function HeaderSecond() {
                             </g>
                         </svg>
                     </div>
+                )}
+                {!menu2 && (
                     <div className={cx('header-logo')}>
                         <img
                             className={cx('logo')}
@@ -78,14 +88,37 @@ function HeaderSecond() {
                             alt=""
                         />
                     </div>
-                    <div className={cx('header-menu')}>
-                        <FontAwesomeIcon className={cx('icon-menu')} icon={faBars} />
+                )}
+                {menu2 && (
+                    <div className="header-center flex items-center justify-between flex-1">
+                        <div className="start flex items-center text-[1.4rem] cursor-pointer">
+                            <div className="hover:bg-[#f5f6f8] px-[1rem] py-[0.8rem] rounded-[0.8rem]">Saved Logos</div>
+                            <Tippy content="Duplicate" offset={[0, 5]}>
+                                <div className="hover:bg-[#f5f6f8] px-[1rem] py-[0.8rem] rounded-[0.8rem]">
+                                    Make a Copy
+                                </div>
+                            </Tippy>
+                        </div>
+                        <div className="center flex items-center gap-8 text-[1.4rem] cursor-pointer bg-[#0014280d] h-[4rem] px-[2rem] rounded-full">
+                            <div className="text-[#5340ff]">Logo</div>
+                            <div className="hover:text-[#5340ff]">
+                                <Button rightIcon={<DownArrowIcon className={''} />}>Brand Kit</Button>
+                            </div>
+                        </div>
+                        <div className="end flex items-center gap-8">
+                            <div className="text-[1.4rem] cursor-pointer hover:bg-[#f5f6f8] px-[1rem] py-[0.8rem] rounded-[0.8rem]">
+                                Share
+                            </div>
+                            <Button leftIcon={<DownloadIcon className={'mr-4'} />} primary medium>
+                                Download
+                            </Button>
+                        </div>
                     </div>
-                </>
-            ) : (
-                // Lyaout 2
-                <>HIHI</>
-            )}
+                )}
+                <div className={cx('header-menu')}>
+                    <FontAwesomeIcon className={cx('icon-menu')} icon={faBars} />
+                </div>
+            </>
         </div>
     );
 }
