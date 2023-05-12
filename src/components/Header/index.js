@@ -3,6 +3,8 @@ import styles from './Header.module.scss';
 import { Link } from 'react-router-dom';
 import { useMediaQuery } from 'react-responsive';
 import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { show } from '../../redux/actions/show';
 
 const cx = classNames.bind(styles);
 
@@ -36,7 +38,14 @@ const navigations = [
 function Header() {
     const [fade, setFade] = useState(false);
     const pc = useMediaQuery({ minWidth: 954 });
+    const showMenu = useSelector((state) => state.show);
 
+    const dispath = useDispatch();
+
+    const handleToggle = () => {
+        dispath(show(!!showMenu));
+        console.log('khang');
+    };
     useEffect(() => {
         if (pc) {
             setFade(false);
@@ -62,7 +71,9 @@ function Header() {
                         ))}
                     </div>
                     <div className={cx('nav-btn')}>
-                        <div className={cx('nav-login')}>Log in</div>
+                        <div className={cx('nav-login')} onClick={() => handleToggle()}>
+                            Log in
+                        </div>
                         <div className={cx('nav-signup')}>Sign up</div>
                     </div>
                 </div>
@@ -82,7 +93,7 @@ function Header() {
                                 ))}
                             </div>
                             <div className={cx('more-btn')}>
-                                <div className={cx('more-signup')}>Sign up</div>
+                                <div className={cx('more-signup')} onClick={() => handleToggle()}>Sign up</div>
                                 <div className={cx('more-login')}>Log in</div>
                             </div>
                         </div>
