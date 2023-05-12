@@ -9,9 +9,10 @@ const cx = classNames.bind(styles);
 function GetStart({ title, desc, className, classNameInput, fontText }) {
     const [valueInput, setValueInput] = useState('');
     const navigate = useNavigate();
+    const a = true;
+    if(a) console.log('a');
 
-    const khang = true;
-    console.log(khang);
+
     const submitInput = () => {
         valueInput.length > 0 && navigate(`/onboarding/${valueInput.trim()}`);
     };
