@@ -1,9 +1,10 @@
 .wrapper {
     width: 185px;
-    height: 100vh;
+    height: 699px;
     display: flex;
     flex-direction: column;
     background: rgb(255, 255, 255);
+    position: fixed;
 }
 
 .inner {

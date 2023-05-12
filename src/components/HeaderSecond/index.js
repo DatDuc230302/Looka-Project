@@ -50,7 +50,20 @@ function HeaderSecond() {
     return (
         <div style={{ height: layout !== 1 && 60 }} className={cx('header')}>
             <>
-                <FontAwesomeIcon onClick={() => handleBack()} className={cx('icon-back')} icon={faArrowLeft} />
+                {!menu2 && (
+                    <FontAwesomeIcon onClick={() => handleBack()} className={cx('icon-back')} icon={faArrowLeft} />
+                )}
+                <svg viewBox="0 0 16 16" width="16" height="16">
+                    <g transform="matrix(1.6,0,0,1.6,0,0)">
+                        <path
+                            d="M7.25,9.5,2.9,5.354a.5.5,0,0,1,0-.708L7.25.5"
+                            fill="none"
+                            stroke="#000000"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                        ></path>
+                    </g>
+                </svg>
                 {!menu2 && (
                     <div className={cx('header-heart')}>
                         <svg
