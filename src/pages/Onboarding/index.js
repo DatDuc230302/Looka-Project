@@ -263,6 +263,8 @@ function Onboarding() {
         }
     }, [backOnboard]);
 
+    console.log('HIHI');
+
     const handleContinue = () => {
         if (logic > 0) {
             setId(id + 1);
