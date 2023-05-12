@@ -298,7 +298,7 @@ function Onboarding() {
                 setLogic(pick0.length);
                 break;
             case 2:
-                setLogic(pick1);
+                setLogic(colorPick2);
                 break;
             case 3:
                 colors.filter((item, index) => pick2 === item.color && setColorPick2(item.key));

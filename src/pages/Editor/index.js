@@ -9,6 +9,7 @@ function Editor() {
         <div className={cx('wrapper')}>
             <div className={cx('inner')}>
                 <SideBarEditor />
+                <div className={cx('HIHI')}>Haha</div>
             </div>
         </div>
     );

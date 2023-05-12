@@ -1,11 +1,12 @@
 import className from 'classnames/bind';
 import styles from './Explore.module.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import HeadlessTippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css';
 import { useMediaQuery } from 'react-responsive';
 import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { pick3 as setPick3 } from '../../redux/actions/pick3';
 
 const cx = className.bind(styles);
 
@@ -69,6 +70,7 @@ function Explore() {
 
     const pick3 = useSelector((state) => state.pick3);
     const pick2 = useSelector((state) => state.pick2);
+    const dispath = useDispatch();
 
     const [fade, setFade] = useState(false);
     const [select, setSelect] = useState(false);
@@ -77,6 +79,10 @@ function Explore() {
     const [valueInput, setValueInput] = useState(pick3);
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        dispath(setPick3(valueInput));
+    }, [valueInput]);
 
     const handleColor = (item, id) => {
         setColor(item);
@@ -114,7 +120,7 @@ function Explore() {
                                     onBlur={() => setFade(false)}
                                     className={cx('control-company', mobile && 'mobile', fade && 'fade')}
                                     placeholder="Company Name"
-                                    value={pick3}
+                                    value={valueInput}
                                 />
                             </div>
                             <div className={cx('control-select')}>
