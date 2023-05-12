@@ -74,6 +74,7 @@ function Explore() {
     const [select, setSelect] = useState(false);
     const [color, setColor] = useState(pick2);
     const [arrColors, setArrColors] = useState(colors);
+    const [valueInput, setValueInput] = useState(pick3);
 
     const navigate = useNavigate();
 
@@ -108,6 +109,7 @@ function Explore() {
                         <div className={cx('control-box', mobile && 'mobile')}>
                             <div className={cx('control-input', mobile && 'mobile')}>
                                 <input
+                                    onChange={(e) => setValueInput(e.target.value)}
                                     onClick={() => setFade(true)}
                                     onBlur={() => setFade(false)}
                                     className={cx('control-company', mobile && 'mobile', fade && 'fade')}
