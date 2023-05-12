@@ -357,7 +357,7 @@ function Onboarding() {
                         <div className={cx('box-sticky', mobile && 'mobile', sticky && 'sticky')}>
                             <div className={cx('box', tablet && 'tablet', mobile && 'mobile', sticky && 'sticky')}>
                                 <div className={cx('content')}>
-                                    <span style={{ color: color }} className={cx('title')}>
+                                    <span style={{ color: color }} className={cx('title', mobile && 'mobile')}>
                                         {title}
                                     </span>
                                     {!sticky && <span className={cx('description')}>{description}</span>}

@@ -93,7 +93,9 @@ function Header() {
                                 ))}
                             </div>
                             <div className={cx('more-btn')}>
-                                <div className={cx('more-signup')} onClick={() => handleToggle()}>Sign up</div>
+                                <div className={cx('more-signup')} onClick={() => handleToggle()}>
+                                    Sign up
+                                </div>
                                 <div className={cx('more-login')}>Log in</div>
                             </div>
                         </div>
