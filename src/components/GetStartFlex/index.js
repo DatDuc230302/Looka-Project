@@ -20,7 +20,7 @@ function GetStartFlex({ title, desc, className, classNameInput, fontText, black 
         }
     };
     return (
-        <div className={`wrapper px-[2.4rem] py-[8.8rem] pb-[6rem] flex flex-col mb-[100px] md:mb-0 md:flex-row ${className}`}>
+        <div className={`wrapper px-[2.4rem] py-[8.8rem] pb-[6rem] flex flex-col md:flex-row ${className}`}>
             <div className="w-full md:pl-[5rem]">
                 <div
                     className={`title text-[#fff] font-bold md:w-[46.4rem] ${
