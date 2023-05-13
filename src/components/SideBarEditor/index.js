@@ -253,15 +253,20 @@ const elements = [
     },
 ];
 
-function SideBarEditor() {
+function SideBarEditor({ setId }) {
     const [count, setCount] = useState(1);
+
+    const handleNav = (index) => {
+        setCount(index);
+        setId(index);
+    };
 
     return (
         <div className={cx('wrapper')}>
             <div className={cx('inner')}>
                 {elements.map((item, index) => (
                     <div
-                        onClick={() => setCount(index)}
+                        onClick={() => handleNav(index)}
                         key={index}
                         className={cx('item', item.rule && 'rule', index === count && 'active')}
                     >

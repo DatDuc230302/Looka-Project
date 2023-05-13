@@ -5,6 +5,7 @@
     flex-direction: column;
     background: rgb(255, 255, 255);
     position: fixed;
+    user-select: none;
 }
 
 .inner {
@@ -31,11 +32,11 @@
     }
 
     &:hover {
-        background-color: rgba(0, 0, 0, 0.1);
+        background-color: #f2f3f4;
     }
 
     &.active {
-        background-color: rgba(0, 0, 0, 0.1);
+        background-color: #f2f3f4;
     }
 }
 
