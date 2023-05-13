@@ -15,24 +15,36 @@ const cx = classNames.bind(styles);
 
 const category = [
     {
-        title: 'Sports',
-        key: 'sports',
+        title: 'Clothes',
+        key: 'clothes',
     },
     {
-        title: 'Games',
-        key: 'games',
+        title: 'Company',
+        key: 'company',
     },
     {
-        title: 'Development',
-        key: 'development',
+        title: 'Electronic',
+        key: 'electronic',
     },
     {
-        title: 'Sports',
-        key: 'sports',
+        title: 'Food',
+        key: 'food',
     },
     {
-        title: 'Games',
-        key: 'games',
+        title: 'Institution',
+        key: 'institution',
+    },
+    {
+        title: 'Pet',
+        key: 'pet',
+    },
+    {
+        title: 'Translatation',
+        key: 'translatation',
+    },
+    {
+        title: 'Accessories',
+        key: 'accessories',
     },
 ];
 
