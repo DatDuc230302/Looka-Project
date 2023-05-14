@@ -9,8 +9,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { backOnboard } from '../../redux/actions/backOnboard';
-import Button from '../Button';
-import { DownArrowIcon, DownloadIcon } from '../../assets/Icons';
+
 import { useMediaQuery } from 'react-responsive';
 
 const cx = classNames.bind(styles);
@@ -25,7 +24,7 @@ function HeaderSecond() {
     const navigate = useNavigate();
     const dispath = useDispatch();
     const [layout, setLayout] = useState(0);
-    const [menu2, setMenu2] = useState(false);
+    // const [menu2, setMenu2] = useState(false);
 
     const pick3 = useSelector((state) => state.pick3);
 
@@ -34,7 +33,7 @@ function HeaderSecond() {
             setLayout(1);
         } else {
             setLayout(2);
-            setMenu2(true);
+            // setMenu2(true);
         }
     }, [url]);
 
@@ -47,7 +46,7 @@ function HeaderSecond() {
                 navigate('/');
             }
         } else {
-            setMenu2(false);
+            // setMenu2(false);
             navigate('/explore');
         }
     };
@@ -110,7 +109,11 @@ function HeaderSecond() {
                             </svg>
                         </div>
                         <span className={cx('nav-save')}>Saved Logos</span>
-                        <span className={cx('nav-copy')}>Make a Copy</span>
+
+                        <Tippy content="Duplicate" offset={[0, 0]}>
+                            <div className={cx('nav-copy')}>Make a Copy</div>
+                        </Tippy>
+
                         <div className={cx('nav-vertical')}></div>
                         <div className={cx('nav-actions')}>
                             <div className={cx('navAction-left')}>
@@ -144,43 +147,45 @@ function HeaderSecond() {
                                 </svg>
                             </div>
                             {pc && <span className={cx('navAction-center')}>Undo</span>}
-                            <div className={cx('navAction-right')}>
-                                <svg width="14.4px" height="14.4px" viewBox="0 0 14 14" version="1.1">
-                                    <g
-                                        id="Page-1"
-                                        stroke="none"
-                                        strokeWidth="1"
-                                        fill="none"
-                                        fill-rule="evenodd"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    >
+                            <Tippy content="Repo" offset={[0, 16]}>
+                                <div className={cx('navAction-right')}>
+                                    <svg width="14.4px" height="14.4px" viewBox="0 0 14 14" version="1.1">
                                         <g
-                                            id="Artboard-Copy-39"
-                                            transform="translate(-896.000000, -25.000000)"
-                                            stroke="#DAE2F2"
-                                            strokeWidth="1.4"
+                                            id="Page-1"
+                                            stroke="none"
+                                            strokeWidth="1"
+                                            fill="none"
+                                            fillRule="evenodd"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
                                         >
-                                            <g id="Group-Copy-3" transform="translate(816.000000, 14.000000)">
-                                                <g id="redo" transform="translate(81.000000, 12.000000)">
-                                                    <polyline id="Path" points="9 0.6 11.4 3 9 5.4"></polyline>
-                                                    <path
-                                                        d="M11.4,3 L4.8,3 C2.48040408,3 0.600000063,4.88040408 0.600000063,7.2 C0.600000063,9.51959592 2.48040408,11.4 4.8,11.4 L7.8,11.4"
-                                                        id="Path"
-                                                    ></path>
+                                            <g
+                                                id="Artboard-Copy-39"
+                                                transform="translate(-896.000000, -25.000000)"
+                                                stroke="#DAE2F2"
+                                                strokeWidth="1.4"
+                                            >
+                                                <g id="Group-Copy-3" transform="translate(816.000000, 14.000000)">
+                                                    <g id="redo" transform="translate(81.000000, 12.000000)">
+                                                        <polyline id="Path" points="9 0.6 11.4 3 9 5.4"></polyline>
+                                                        <path
+                                                            d="M11.4,3 L4.8,3 C2.48040408,3 0.600000063,4.88040408 0.600000063,7.2 C0.600000063,9.51959592 2.48040408,11.4 4.8,11.4 L7.8,11.4"
+                                                            id="Path"
+                                                        ></path>
+                                                    </g>
                                                 </g>
                                             </g>
                                         </g>
-                                    </g>
-                                </svg>
-                            </div>
+                                    </svg>
+                                </div>
+                            </Tippy>
                         </div>
                     </div>
                     <div className={cx('tools')}>
                         <span className={cx('tools-logo')}>Logo</span>
                         <div className={cx('tools-brand')}>
                             <span className={cx('brand-title')}>Brand Kit</span>
-                            <svg class="css-b6kj5q" width="9px" height="6px" viewBox="0 0 9 6" version="1.1">
+                            <svg width="9px" height="6px" viewBox="0 0 9 6" version="1.1">
                                 <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
                                     <g
                                         id="Artboard-Copy-39"
@@ -201,7 +206,7 @@ function HeaderSecond() {
                     </div>
                     <div className={cx('btns')}>
                         <span className={cx('btn-share')}>Share</span>
-                        <span className={cx('btn-signup', 'active')}>Sign Up</span>
+                        {/* <span className={cx('btn-signup', 'active')}>Sign Up</span> */}
                         <div className={cx('btn-download')}>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
