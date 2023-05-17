@@ -9,6 +9,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { backOnboard } from '../../redux/actions/backOnboard';
+import { turnFeature } from '../../redux/actions/turnFeature';
 
 import { useMediaQuery } from 'react-responsive';
 
@@ -95,7 +96,7 @@ function HeaderSecond() {
             {layout !== 1 && (
                 <>
                     <div className={cx('nav')}>
-                        <div className={cx('arrow-back')}>
+                        <div onClick={() => handleBack()} className={cx('arrow-back')}>
                             <svg viewBox="0 0 16 16" width="16" height="16">
                                 <g transform="matrix(1.6,0,0,1.6,0,0)">
                                     <path
@@ -108,15 +109,19 @@ function HeaderSecond() {
                                 </g>
                             </svg>
                         </div>
-                        <span className={cx('nav-save')}>{mobile ? 'Saved' : 'Saved Logos'}</span>
+                        <span onClick={() => dispath(turnFeature(true))} className={cx('nav-save')}>
+                            {mobile ? 'Saved' : 'Saved Logos'}
+                        </span>
 
                         <Tippy content="Duplicate" offset={[0, 0]}>
-                            <div className={cx('nav-copy')}>{mobile ? 'Copy' : 'Make a Copy'}</div>
+                            <div onClick={() => dispath(turnFeature(true))} className={cx('nav-copy')}>
+                                {mobile ? 'Copy' : 'Make a Copy'}
+                            </div>
                         </Tippy>
 
                         {pc && <div className={cx('nav-vertical')}></div>}
                         {!mobile && (
-                            <div className={cx('nav-actions')}>
+                            <div onClick={() => dispath(turnFeature(true))} className={cx('nav-actions')}>
                                 <div className={cx('navAction-left')}>
                                     <svg width="14.4px" height="14.4px" viewBox="0 0 14 14" version="1.1">
                                         <g
@@ -184,7 +189,7 @@ function HeaderSecond() {
                         )}
                     </div>
                     {pc && (
-                        <div className={cx('tools')}>
+                        <div onClick={() => dispath(turnFeature(true))} className={cx('tools')}>
                             <span className={cx('tools-logo')}>Logo</span>
                             <div className={cx('tools-brand')}>
                                 <span className={cx('brand-title')}>Brand Kit</span>
@@ -209,9 +214,15 @@ function HeaderSecond() {
                         </div>
                     )}
                     <div className={cx('btns')}>
-                        {pc && <span className={cx('btn-share')}>Share</span>}
-                        {/* <span className={cx('btn-signup', 'active')}>Sign Up</span> */}
-                        <div className={cx('btn-download')}>
+                        {pc && (
+                            <span onClick={() => dispath(turnFeature(true))} className={cx('btn-share')}>
+                                Share
+                            </span>
+                        )}
+                        <span onClick={() => dispath(turnFeature(true))} className={cx('btn-signup', 'active')}>
+                            Sign Up
+                        </span>
+                        <div onClick={() => dispath(turnFeature(true))} className={cx('btn-download')}>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 version="1.1"
