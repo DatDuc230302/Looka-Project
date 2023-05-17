@@ -108,51 +108,20 @@ function HeaderSecond() {
                                 </g>
                             </svg>
                         </div>
-                        <span className={cx('nav-save')}>Saved Logos</span>
+                        <span className={cx('nav-save')}>{mobile ? 'Saved' : 'Saved Logos'}</span>
 
                         <Tippy content="Duplicate" offset={[0, 0]}>
-                            <div className={cx('nav-copy')}>Make a Copy</div>
+                            <div className={cx('nav-copy')}>{mobile ? 'Copy' : 'Make a Copy'}</div>
                         </Tippy>
 
-                        <div className={cx('nav-vertical')}></div>
-                        <div className={cx('nav-actions')}>
-                            <div className={cx('navAction-left')}>
-                                <svg width="14.4px" height="14.4px" viewBox="0 0 14 14" version="1.1">
-                                    <g
-                                        id="Page-1"
-                                        stroke="#DAE2F2"
-                                        strokeWidth="1"
-                                        fill="none"
-                                        fillRule="evenodd"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    >
-                                        <g
-                                            id="Artboard-Copy-39"
-                                            transform="translate(-815.000000, -25.000000)"
-                                            stroke="#DAE2F2"
-                                            strokeWidth="1.4"
-                                        >
-                                            <g id="Group-Copy-3" transform="translate(816.000000, 14.000000)">
-                                                <g id="undo" transform="translate(0.000000, 12.000000)">
-                                                    <polyline id="Path" points="3 0.6 0.6 3 3 5.4"></polyline>
-                                                    <path
-                                                        d="M0.6,3 L7.2,3 C9.51959592,3 11.3999999,4.88040408 11.3999999,7.2 C11.3999999,9.51959592 9.51959592,11.4 7.2,11.4 L4.2,11.4"
-                                                        id="Path"
-                                                    ></path>
-                                                </g>
-                                            </g>
-                                        </g>
-                                    </g>
-                                </svg>
-                            </div>
-                            {pc && <span className={cx('navAction-center')}>Undo</span>}
-                            <Tippy content="Repo" offset={[0, 16]}>
-                                <div className={cx('navAction-right')}>
+                        {pc && <div className={cx('nav-vertical')}></div>}
+                        {!mobile && (
+                            <div className={cx('nav-actions')}>
+                                <div className={cx('navAction-left')}>
                                     <svg width="14.4px" height="14.4px" viewBox="0 0 14 14" version="1.1">
                                         <g
                                             id="Page-1"
-                                            stroke="none"
+                                            stroke="#DAE2F2"
                                             strokeWidth="1"
                                             fill="none"
                                             fillRule="evenodd"
@@ -161,15 +130,15 @@ function HeaderSecond() {
                                         >
                                             <g
                                                 id="Artboard-Copy-39"
-                                                transform="translate(-896.000000, -25.000000)"
+                                                transform="translate(-815.000000, -25.000000)"
                                                 stroke="#DAE2F2"
                                                 strokeWidth="1.4"
                                             >
                                                 <g id="Group-Copy-3" transform="translate(816.000000, 14.000000)">
-                                                    <g id="redo" transform="translate(81.000000, 12.000000)">
-                                                        <polyline id="Path" points="9 0.6 11.4 3 9 5.4"></polyline>
+                                                    <g id="undo" transform="translate(0.000000, 12.000000)">
+                                                        <polyline id="Path" points="3 0.6 0.6 3 3 5.4"></polyline>
                                                         <path
-                                                            d="M11.4,3 L4.8,3 C2.48040408,3 0.600000063,4.88040408 0.600000063,7.2 C0.600000063,9.51959592 2.48040408,11.4 4.8,11.4 L7.8,11.4"
+                                                            d="M0.6,3 L7.2,3 C9.51959592,3 11.3999999,4.88040408 11.3999999,7.2 C11.3999999,9.51959592 9.51959592,11.4 7.2,11.4 L4.2,11.4"
                                                             id="Path"
                                                         ></path>
                                                     </g>
@@ -178,34 +147,69 @@ function HeaderSecond() {
                                         </g>
                                     </svg>
                                 </div>
-                            </Tippy>
-                        </div>
+                                {pc && <span className={cx('navAction-center')}>Undo</span>}
+                                <Tippy content="Repo" offset={[0, 16]}>
+                                    <div className={cx('navAction-right')}>
+                                        <svg width="14.4px" height="14.4px" viewBox="0 0 14 14" version="1.1">
+                                            <g
+                                                id="Page-1"
+                                                stroke="none"
+                                                strokeWidth="1"
+                                                fill="none"
+                                                fillRule="evenodd"
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                            >
+                                                <g
+                                                    id="Artboard-Copy-39"
+                                                    transform="translate(-896.000000, -25.000000)"
+                                                    stroke="#DAE2F2"
+                                                    strokeWidth="1.4"
+                                                >
+                                                    <g id="Group-Copy-3" transform="translate(816.000000, 14.000000)">
+                                                        <g id="redo" transform="translate(81.000000, 12.000000)">
+                                                            <polyline id="Path" points="9 0.6 11.4 3 9 5.4"></polyline>
+                                                            <path
+                                                                d="M11.4,3 L4.8,3 C2.48040408,3 0.600000063,4.88040408 0.600000063,7.2 C0.600000063,9.51959592 2.48040408,11.4 4.8,11.4 L7.8,11.4"
+                                                                id="Path"
+                                                            ></path>
+                                                        </g>
+                                                    </g>
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </div>
+                                </Tippy>
+                            </div>
+                        )}
                     </div>
-                    <div className={cx('tools')}>
-                        <span className={cx('tools-logo')}>Logo</span>
-                        <div className={cx('tools-brand')}>
-                            <span className={cx('brand-title')}>Brand Kit</span>
-                            <svg width="9px" height="6px" viewBox="0 0 9 6" version="1.1">
-                                <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
-                                    <g
-                                        id="Artboard-Copy-39"
-                                        transform="translate(-158.000000, -30.000000)"
-                                        fill="#37373C"
-                                        className={cx('brand-icon')}
-                                    >
-                                        <g id="Group-5" transform="translate(13.000000, 11.000000)">
-                                            <path
-                                                d="M148.796038,24.0734342 L148.230353,23.5077488 L148.209,23.482 L145.146447,20.4192388 C144.97288,20.2456725 144.953595,19.9762481 145.088591,19.7813799 L145.146447,19.712132 L145.712132,19.1464466 C145.907394,18.9511845 146.223977,18.9511845 146.419239,19.1464466 L146.419239,19.1464466 L149.152,21.879 L151.884548,19.1464466 C152.07981,18.9511845 152.396393,18.9511845 152.591655,19.1464466 L153.15734,19.712132 C153.352603,19.9073942 153.352603,20.2239767 153.15734,20.4192388 L150.094,23.482 L150.073434,23.5077488 L149.507749,24.0734342 C149.420966,24.1602174 149.310218,24.2084302 149.196807,24.2180728 L149.10698,24.2180728 C148.993569,24.2084302 148.882822,24.1602174 148.796038,24.0734342 Z"
-                                                id="Combined-Shape"
-                                            ></path>
+                    {pc && (
+                        <div className={cx('tools')}>
+                            <span className={cx('tools-logo')}>Logo</span>
+                            <div className={cx('tools-brand')}>
+                                <span className={cx('brand-title')}>Brand Kit</span>
+                                <svg width="9px" height="6px" viewBox="0 0 9 6" version="1.1">
+                                    <g id="Page-1" stroke="none" strokeWidth="1" fill="none" fillRule="evenodd">
+                                        <g
+                                            id="Artboard-Copy-39"
+                                            transform="translate(-158.000000, -30.000000)"
+                                            fill="#37373C"
+                                            className={cx('brand-icon')}
+                                        >
+                                            <g id="Group-5" transform="translate(13.000000, 11.000000)">
+                                                <path
+                                                    d="M148.796038,24.0734342 L148.230353,23.5077488 L148.209,23.482 L145.146447,20.4192388 C144.97288,20.2456725 144.953595,19.9762481 145.088591,19.7813799 L145.146447,19.712132 L145.712132,19.1464466 C145.907394,18.9511845 146.223977,18.9511845 146.419239,19.1464466 L146.419239,19.1464466 L149.152,21.879 L151.884548,19.1464466 C152.07981,18.9511845 152.396393,18.9511845 152.591655,19.1464466 L153.15734,19.712132 C153.352603,19.9073942 153.352603,20.2239767 153.15734,20.4192388 L150.094,23.482 L150.073434,23.5077488 L149.507749,24.0734342 C149.420966,24.1602174 149.310218,24.2084302 149.196807,24.2180728 L149.10698,24.2180728 C148.993569,24.2084302 148.882822,24.1602174 148.796038,24.0734342 Z"
+                                                    id="Combined-Shape"
+                                                ></path>
+                                            </g>
                                         </g>
                                     </g>
-                                </g>
-                            </svg>
+                                </svg>
+                            </div>
                         </div>
-                    </div>
+                    )}
                     <div className={cx('btns')}>
-                        <span className={cx('btn-share')}>Share</span>
+                        {pc && <span className={cx('btn-share')}>Share</span>}
                         {/* <span className={cx('btn-signup', 'active')}>Sign Up</span> */}
                         <div className={cx('btn-download')}>
                             <svg
