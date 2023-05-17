@@ -95,7 +95,7 @@ function HeaderSecond() {
             {layout !== 1 && (
                 <>
                     <div className={cx('nav')}>
-                        <div className={cx('arrow-back')}>
+                        <div onClick={() => handleBack()} className={cx('arrow-back')}>
                             <svg viewBox="0 0 16 16" width="16" height="16">
                                 <g transform="matrix(1.6,0,0,1.6,0,0)">
                                     <path
@@ -210,7 +210,7 @@ function HeaderSecond() {
                     )}
                     <div className={cx('btns')}>
                         {pc && <span className={cx('btn-share')}>Share</span>}
-                        {/* <span className={cx('btn-signup', 'active')}>Sign Up</span> */}
+                        <span className={cx('btn-signup', 'active')}>Sign Up</span>
                         <div className={cx('btn-download')}>
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
