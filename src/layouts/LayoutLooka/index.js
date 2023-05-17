@@ -1,7 +1,7 @@
-import Header from '../../components/Header';
 import classNames from 'classnames/bind';
 import styles from './LayoutLooka.module.scss';
 import HeaderSecond from '../../components/HeaderSecond';
+import FeatureComing from '../../components/FeatureComing';
 
 const cx = classNames.bind(styles);
 
@@ -12,6 +12,7 @@ function LayoutLooka({ children }) {
                 <HeaderSecond />
                 <div className={cx('body')}>{children}</div>
             </div>
+            <FeatureComing />
         </div>
     );
 }
