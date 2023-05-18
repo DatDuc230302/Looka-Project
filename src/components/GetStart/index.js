@@ -9,8 +9,6 @@ const cx = classNames.bind(styles);
 function GetStart({ title, desc, className, classNameInput, fontText }) {
     const [valueInput, setValueInput] = useState('');
     const navigate = useNavigate();
-    const a = true;
-    if(a) console.log('a');
 
 
     const submitInput = () => {
