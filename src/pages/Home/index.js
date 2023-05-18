@@ -11,22 +11,26 @@ import ModalLogin from '../../components/ModalLogin';
 import { useSelector } from 'react-redux';
 import { InitalData } from '../../components/actions/InitalData';
 import Card from '../../components/Card';
+import Brand from '../../components/Brand';
 
 const cx = classNames.bind(styles);
 
 function Home() {
     const [dataFromDb, setDataFromDb] = useState({});
     const [cardData, setCardData] = useState([]);
+    const [brandData, setBrandData] = useState([]);
+
     useEffect(() => {
         const boardFromDb = InitalData.boards.find((board) => board.id === 'board-1');
+        const brandFromDb = InitalData.brand.find((brand) => brand.id === 'brand-1');
         if (!!boardFromDb) {
             setDataFromDb(boardFromDb);
             setCardData(boardFromDb.cards);
+            setBrandData(brandFromDb.items);
         } else {
             return <div className="">404</div>;
         }
     }, []);
-
 
     document.title = 'Logo Design &amp; Brand Identity for Entrepreneurs | Looka';
 
@@ -282,96 +286,9 @@ title="YouTube video player"
                     Learn about design, branding & entrepreneurship
                 </div>
                 <div className="ct-list-3-col-wrapper md:gap-3">
-                    <div className="ct-item-3-col">
-                        <div className="rounded-xl overflow-auto cursor-pointer">
-                            <img
-                                src="https://cdn.logojoy.com/wp-content/uploads/2019/01/18160343/triumph-768x465.png"
-                                alt=""
-                                className=""
-                            />
-                        </div>
-                        <div className="tag text-[#5340ff] text-[1.1rem] uppercase tracking-[0.12rem] cursor-pointer mt-2 md:mt-0">
-                            LOGO DESIGN
-                        </div>
-                        <div className="title text-[2.4rem] leading-[3rem] font-bold mt-[0.8rem] hover:underline cursor-pointer">
-                            How to Start a Small Business: A “You Can Do It” Guide
-                        </div>
-                    </div>
-                    <div className="ct-item-3-col">
-                        <div className="rounded-xl overflow-auto cursor-pointer">
-                            <img
-                                src="https://cdn.logojoy.com/wp-content/uploads/2019/01/18160343/triumph-768x465.png"
-                                alt=""
-                                className=""
-                            />
-                        </div>
-                        <div className="tag text-[#5340ff] text-[1.1rem] uppercase tracking-[0.12rem] cursor-pointer mt-2 md:mt-0">
-                            LOGO DESIGN
-                        </div>
-                        <div className="title text-[2.4rem] leading-[3rem] font-bold mt-[0.8rem] hover:underline cursor-pointer">
-                            How to Start a Small Business: A “You Can Do It” Guide
-                        </div>
-                    </div>
-                    <div className="ct-item-3-col">
-                        <div className="rounded-xl overflow-auto cursor-pointer">
-                            <img
-                                src="https://cdn.logojoy.com/wp-content/uploads/2019/01/18160343/triumph-768x465.png"
-                                alt=""
-                                className=""
-                            />
-                        </div>
-                        <div className="tag text-[#5340ff] text-[1.1rem] uppercase tracking-[0.12rem] cursor-pointer mt-2 md:mt-0">
-                            LOGO DESIGN
-                        </div>
-                        <div className="title text-[2.4rem] leading-[3rem] font-bold mt-[0.8rem] hover:underline cursor-pointer">
-                            How to Start a Small Business: A “You Can Do It” Guide
-                        </div>
-                    </div>
-                    <div className="ct-item-3-col">
-                        <div className="rounded-xl overflow-auto cursor-pointer">
-                            <img
-                                src="https://cdn.logojoy.com/wp-content/uploads/2019/01/18160343/triumph-768x465.png"
-                                alt=""
-                                className=""
-                            />
-                        </div>
-                        <div className="tag text-[#5340ff] text-[1.1rem] uppercase tracking-[0.12rem] cursor-pointer mt-2 md:mt-0">
-                            LOGO DESIGN
-                        </div>
-                        <div className="title text-[2.4rem] leading-[3rem] font-bold mt-[0.8rem] hover:underline cursor-pointer">
-                            How to Start a Small Business: A “You Can Do It” Guide
-                        </div>
-                    </div>
-                    <div className="ct-item-3-col">
-                        <div className="rounded-xl overflow-auto cursor-pointer">
-                            <img
-                                src="https://cdn.logojoy.com/wp-content/uploads/2019/01/18160343/triumph-768x465.png"
-                                alt=""
-                                className=""
-                            />
-                        </div>
-                        <div className="tag text-[#5340ff] text-[1.1rem] uppercase tracking-[0.12rem] cursor-pointer mt-2 md:mt-0">
-                            LOGO DESIGN
-                        </div>
-                        <div className="title text-[2.4rem] leading-[3rem] font-bold mt-[0.8rem] hover:underline cursor-pointer">
-                            How to Start a Small Business: A “You Can Do It” Guide
-                        </div>
-                    </div>
-                    <div className="ct-item-3-col">
-                        <div className="rounded-xl overflow-auto cursor-pointer">
-                            <img
-                                src="https://cdn.logojoy.com/wp-content/uploads/2019/01/18160343/triumph-768x465.png"
-                                alt=""
-                                className=""
-                            />
-                        </div>
-                        <div className="tag text-[#5340ff] text-[1.1rem] uppercase tracking-[0.12rem] cursor-pointer mt-2 md:mt-0">
-                            LOGO DESIGN
-                        </div>
-                        <div className="title text-[2.4rem] leading-[3rem] font-bold mt-[0.8rem] hover:underline cursor-pointer">
-                            How to Start a Small Business: A “You Can Do It” Guide
-                        </div>
-                    </div>
+                    {brandData.map((brand, index) => (
+                        <Brand key={index} brand={brand}/>
+                    ))}
                 </div>
             </div>
             <GetStartFlex

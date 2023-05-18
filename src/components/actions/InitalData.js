@@ -66,4 +66,47 @@ export const InitalData = {
             ],
         },
     ],
+    brand: [
+        {
+            id: 'brand-1',
+            items: [
+                {
+                    id: 'item-1',
+                    img: 'https://cdn.logojoy.com/wp-content/uploads/2019/01/18160343/triumph.png',
+                    title: 'STARTING A BUSINESS',
+                    desc: 'How to Start a Small Business: A “You Can Do It” Guide',
+                },
+                {
+                    id: 'item-2',
+                    img: 'https://cdn.logojoy.com/wp-content/uploads/20200724135045/AdobeStock_188220116-min-1-2048x1372.jpeg',
+                    title: 'BRANDING',
+                    desc: 'The 6 Core Graphic Design Basics You Should Know',
+                },
+                {
+                    id: 'item-3',
+                    img: 'https://cdn.logojoy.com/wp-content/uploads/2017/09/22144059/Business-Names-Copy-1.jpg',
+                    title: 'STARTING A BUSINESS',
+                    desc: 'How to Come Up with Catchy and Creative Business Name Ideas',
+                },
+                {
+                    id: 'item-4',
+                    img: 'https://cdn.logojoy.com/wp-content/uploads/2019/01/22110455/glo_banner-1024x512.jpg',
+                    title: 'LOGO DESIGN',
+                    desc: 'The Importance of Logos (and Why Your Business Needs One)',
+                },
+                {
+                    id: 'item-5',
+                    img: 'https://cdn.logojoy.com/wp-content/uploads/2019/01/04130109/all-1024x631.png',
+                    title: 'SOCIAL MEDIA FOR BUSINESS',
+                    desc: 'The Ultimate Guide to Using Social Media for Business',
+                },
+                {
+                    id: 'item-6',
+                    img: 'https://cdn.logojoy.com/wp-content/uploads/20190606100723/cosmic_coffee_scene-1024x576.jpg',
+                    title: 'BRANDING',
+                    desc: 'Brand Identity 101: How to Create a Brand You’ll Love (+ FREE Worksheet!)',
+                },
+            ],
+        },
+    ],
 };
