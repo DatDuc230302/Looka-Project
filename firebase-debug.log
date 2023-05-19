@@ -1,0 +1,74 @@
+[debug] [2023-05-17T08:20:28.398Z] ----------------------------------------------------------------------
+[debug] [2023-05-17T08:20:28.400Z] Command:       D:\Software\Nodejs\node.exe C:\Users\kudat\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2023-05-17T08:20:28.400Z] CLI Version:   12.0.1
+[debug] [2023-05-17T08:20:28.401Z] Platform:      win32
+[debug] [2023-05-17T08:20:28.401Z] Node Version:  v18.13.0
+[debug] [2023-05-17T08:20:28.402Z] Time:          Wed May 17 2023 15:20:28 GMT+0700 (Indochina Time)
+[debug] [2023-05-17T08:20:28.402Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-05-17T08:20:28.465Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-05-17T08:20:28.465Z] > authorizing via signed-in user (datduc2303@gmail.com)
+[debug] [2023-05-17T08:20:28.466Z] [iam] checking project looka-15c45 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-05-17T08:20:28.467Z] > refreshing access token with scopes: []
+[debug] [2023-05-17T08:20:28.468Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-05-17T08:20:28.469Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-05-17T08:20:28.813Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2023-05-17T08:20:28.813Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-05-17T08:20:28.814Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/looka-15c45:testIamPermissions [none]
+[debug] [2023-05-17T08:20:28.814Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/looka-15c45:testIamPermissions x-goog-quota-user=projects/looka-15c45
+[debug] [2023-05-17T08:20:28.814Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/looka-15c45:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-05-17T08:20:29.978Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/looka-15c45:testIamPermissions 401
+[debug] [2023-05-17T08:20:29.978Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/looka-15c45:testIamPermissions {"error":{"code":401,"message":"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.","status":"UNAUTHENTICATED","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"ACCESS_TOKEN_TYPE_UNSUPPORTED","metadata":{"method":"google.cloudresourcemanager.v1.Projects.TestIamPermissions","service":"cloudresourcemanager.googleapis.com"}}]}}
+[debug] [2023-05-17T08:20:29.979Z] [iam] error while checking permissions, command may fail: FirebaseError: HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+[debug] [2023-05-17T08:20:29.979Z] > refreshing access token with scopes: []
+[debug] [2023-05-17T08:20:29.979Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-05-17T08:20:29.979Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-05-17T08:20:30.222Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2023-05-17T08:20:30.223Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-05-17T08:20:30.223Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/looka-15c45 [none]
+[debug] [2023-05-17T08:20:30.510Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/looka-15c45 401
+[debug] [2023-05-17T08:20:30.511Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/looka-15c45 {"error":{"code":401,"message":"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.","status":"UNAUTHENTICATED"}}
+[debug] [2023-05-17T08:20:30.511Z] HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+[debug] [2023-05-17T08:20:30.752Z] FirebaseError: HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+    at responseToError (C:\Users\kudat\AppData\Roaming\npm\node_modules\firebase-tools\lib\responseToError.js:49:12)
+    at RetryOperation._fn (C:\Users\kudat\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:288:77)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[error] 
+[error] Error: Failed to get Firebase project looka-15c45. Please make sure the project exists and your account has permission to access it.
+[debug] [2023-05-17T08:21:41.316Z] ----------------------------------------------------------------------
+[debug] [2023-05-17T08:21:41.323Z] Command:       D:\Software\Nodejs\node.exe C:\Users\kudat\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2023-05-17T08:21:41.326Z] CLI Version:   12.0.1
+[debug] [2023-05-17T08:21:41.327Z] Platform:      win32
+[debug] [2023-05-17T08:21:41.328Z] Node Version:  v18.13.0
+[debug] [2023-05-17T08:21:41.330Z] Time:          Wed May 17 2023 15:21:41 GMT+0700 (Indochina Time)
+[debug] [2023-05-17T08:21:41.332Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-05-17T08:21:41.827Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-05-17T08:21:41.828Z] > authorizing via signed-in user (datduc2303@gmail.com)
+[debug] [2023-05-17T08:21:41.829Z] [iam] checking project looka-15c45 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-05-17T08:21:41.836Z] > refreshing access token with scopes: []
+[debug] [2023-05-17T08:21:41.843Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-05-17T08:21:41.843Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-05-17T08:21:42.241Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2023-05-17T08:21:42.242Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-05-17T08:21:42.243Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/looka-15c45:testIamPermissions [none]
+[debug] [2023-05-17T08:21:42.243Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/looka-15c45:testIamPermissions x-goog-quota-user=projects/looka-15c45
+[debug] [2023-05-17T08:21:42.243Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/looka-15c45:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-05-17T08:21:43.378Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/looka-15c45:testIamPermissions 401
+[debug] [2023-05-17T08:21:43.378Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/looka-15c45:testIamPermissions {"error":{"code":401,"message":"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.","status":"UNAUTHENTICATED","details":[{"@type":"type.googleapis.com/google.rpc.ErrorInfo","reason":"ACCESS_TOKEN_TYPE_UNSUPPORTED","metadata":{"service":"cloudresourcemanager.googleapis.com","method":"google.cloudresourcemanager.v1.Projects.TestIamPermissions"}}]}}
+[debug] [2023-05-17T08:21:43.380Z] [iam] error while checking permissions, command may fail: FirebaseError: HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+[debug] [2023-05-17T08:21:43.381Z] > refreshing access token with scopes: []
+[debug] [2023-05-17T08:21:43.382Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-05-17T08:21:43.382Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-05-17T08:21:43.610Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 400
+[debug] [2023-05-17T08:21:43.610Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-05-17T08:21:43.611Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/looka-15c45 [none]
+[debug] [2023-05-17T08:21:43.944Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/looka-15c45 401
+[debug] [2023-05-17T08:21:43.945Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/looka-15c45 {"error":{"code":401,"message":"Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.","status":"UNAUTHENTICATED"}}
+[debug] [2023-05-17T08:21:43.945Z] HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+[debug] [2023-05-17T08:21:44.221Z] FirebaseError: HTTP Error: 401, Request had invalid authentication credentials. Expected OAuth 2 access token, login cookie or other valid authentication credential. See https://developers.google.com/identity/sign-in/web/devconsole-project.
+    at responseToError (C:\Users\kudat\AppData\Roaming\npm\node_modules\firebase-tools\lib\responseToError.js:49:12)
+    at RetryOperation._fn (C:\Users\kudat\AppData\Roaming\npm\node_modules\firebase-tools\lib\apiv2.js:288:77)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+[error] 
+[error] Error: Failed to get Firebase project looka-15c45. Please make sure the project exists and your account has permission to access it.
