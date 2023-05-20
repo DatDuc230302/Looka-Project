@@ -10,6 +10,7 @@ import { pick0 as setPick0 } from '../../redux/actions/pick0';
 import { pick1 as setPick1 } from '../../redux/actions/pick1';
 import { pick2 as setPick2 } from '../../redux/actions/pick2';
 import { pick3 as setPick3 } from '../../redux/actions/pick3';
+import PageError from '../../components/PageError';
 
 const cx = classNames.bind(styles);
 
@@ -490,7 +491,7 @@ function Onboarding() {
                     </div>
                 </div>
             ) : (
-                'Deo co gi het'
+                <PageError />
             )}
         </div>
     );
