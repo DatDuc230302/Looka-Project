@@ -286,7 +286,8 @@ function Onboarding() {
                     setLogic(pick1);
                     break;
                 case 1:
-                    setLogic(pick2);
+                    setLogic(pick2.length);
+                    setColor(pick2);
                     break;
                 case 2:
                     setColor('#000');
@@ -315,6 +316,7 @@ function Onboarding() {
             case 3:
                 colors.filter((item, index) => pick2 === item.color && setColorPick2(item.key));
                 setLogic(colorPick2);
+                setColor(pick2);
                 break;
             default:
         }
