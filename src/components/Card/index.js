@@ -9,7 +9,6 @@ function Card({ card }) {
         }
     }, []);
 
-    console.log(textData);
     return (
         <div className="warpper-item ct-item-3-col">
             <div className="item ">
