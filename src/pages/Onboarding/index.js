@@ -208,6 +208,7 @@ function Onboarding() {
     const navigate = useNavigate();
 
     let newArr = [];
+    const [loading, setLoading] = useState(false);
     const [api1, setApi1] = useState([]);
     const [valuePick3, setValuePick3] = useState(!url ? 0 : url);
     const [colorPick2, setColorPick2] = useState(-1);
@@ -264,7 +265,6 @@ function Onboarding() {
                 case 0:
                     setShowOption(false);
                     setLogic(pick1);
-
                     break;
                 case 1:
                     setLogic(pick2.length);
@@ -303,8 +303,7 @@ function Onboarding() {
         }
     };
 
-    const handleImg = (id, category) => {
-        console.log(category);
+    const handleImg = (id) => {
         dispath(setPick1(id));
     };
 
@@ -330,7 +329,7 @@ function Onboarding() {
     }, []);
 
     const getApi = async () => {
-        let result = await axios.get('http://localhost:5000/looka/getApi');
+        let result = await axios.get('https://server-looka.onrender.com/looka/getApi');
         const data = await result.data;
         setApi1(data);
     };
@@ -436,7 +435,7 @@ function Onboarding() {
                                 {apiPick1.map((item, index) => (
                                     <div
                                         key={index}
-                                        onClick={() => handleImg(item.id, item.category)}
+                                        onClick={() => handleImg(item.id)}
                                         className={cx('box-empty', mobile && 'mobile')}
                                     >
                                         <img
