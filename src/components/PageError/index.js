@@ -1,7 +1,13 @@
 import classNames from 'classnames/bind';
 import styles from './PageError.module.scss';
+import React from 'react';
+// import { listAll } from '../../firebase';
 
 const cx = classNames.bind(styles);
+
+// const on = () => {
+//     listAll('accessories/');
+// };
 
 function PageError() {
     return (
@@ -20,6 +26,7 @@ function PageError() {
                     <a href="/" className={cx('navigate-home')}>
                         Home Page
                     </a>
+                    {/* <button onClick={() => on()}>Click Me</button> */}
                 </div>
             </div>
         </div>

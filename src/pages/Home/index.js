@@ -4,7 +4,6 @@ import GetStart from '../../components/GetStart';
 import CarouselComp from '../../components/Carousel';
 import imgFlex from '../../assets/images/imgFlex';
 import Button from '../../components/Button';
-import { Link } from 'react-router-dom';
 import GetStartFlex from '../../components/GetStartFlex';
 import { useEffect, useState } from 'react';
 import ModalLogin from '../../components/ModalLogin';
@@ -16,7 +15,7 @@ import Brand from '../../components/Brand';
 const cx = classNames.bind(styles);
 
 function Home() {
-    const [dataFromDb, setDataFromDb] = useState({});
+    // const [dataFromDb, setDataFromDb] = useState({});
     const [cardData, setCardData] = useState([]);
     const [brandData, setBrandData] = useState([]);
 
@@ -24,7 +23,7 @@ function Home() {
         const boardFromDb = InitalData.boards.find((board) => board.id === 'board-1');
         const brandFromDb = InitalData.brand.find((brand) => brand.id === 'brand-1');
         if (!!boardFromDb) {
-            setDataFromDb(boardFromDb);
+            // setDataFromDb(boardFromDb);
             setCardData(boardFromDb.cards);
             setBrandData(brandFromDb.items);
         } else {
@@ -287,7 +286,7 @@ title="YouTube video player"
                 </div>
                 <div className="ct-list-3-col-wrapper md:gap-3">
                     {brandData.map((brand, index) => (
-                        <Brand key={index} brand={brand}/>
+                        <Brand key={index} brand={brand} />
                     ))}
                 </div>
             </div>

@@ -10,6 +10,7 @@ const publicRoutes = [
     { path: '/onboarding', component: Onboarding, layout: null },
     { path: '/explore', component: Explore, layout: LayoutLooka },
     { path: '/editor/:key', component: Editor, layout: LayoutLooka },
+    { path: '/editor', component: Editor, layout: null },
 ];
 
 // private routes
