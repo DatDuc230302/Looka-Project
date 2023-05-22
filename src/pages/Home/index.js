@@ -12,12 +12,29 @@ import { InitalData } from '../../components/actions/InitalData';
 import Card from '../../components/Card';
 import Brand from '../../components/Brand';
 
+import { category as categorys } from '../Onboarding';
+
 const cx = classNames.bind(styles);
 
 function Home() {
     // const [dataFromDb, setDataFromDb] = useState({});
     const [cardData, setCardData] = useState([]);
     const [brandData, setBrandData] = useState([]);
+
+    const [dataImgsFromDb, setDataImgsFromDb] = useState([]);
+    const [categorysData, setCategorysData] = useState([]);
+    const [arrCate, setArrCate] = useState([]);
+
+    const handleFilter = () => {
+        if (!!dataImgsFromDb) {
+            const dataImg = dataImgsFromDb.filter((dataImgFromDb) => dataImgFromDb.category === 'Accessories');
+            console.log(dataImg.json());
+        }
+    };
+
+   
+
+
 
     useEffect(() => {
         const boardFromDb = InitalData.boards.find((board) => board.id === 'board-1');
@@ -34,6 +51,8 @@ function Home() {
     document.title = 'Logo Design &amp; Brand Identity for Entrepreneurs | Looka';
 
     const showMenu = useSelector((state) => state.show);
+
+    // console.log(DataImgs.map((dataImg) => console.log(dataImg)));
 
     return (
         <div className={cx('wrapper')}>
