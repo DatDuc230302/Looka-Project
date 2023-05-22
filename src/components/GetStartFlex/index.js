@@ -44,7 +44,6 @@ function GetStartFlex({ title, desc, className, classNameInput, fontText, black 
                 </Button>
             </div>
         </div>
-        
     );
 }
 

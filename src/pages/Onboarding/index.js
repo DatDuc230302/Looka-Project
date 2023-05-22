@@ -16,7 +16,7 @@ import PageError from '../../components/PageError';
 
 const cx = classNames.bind(styles);
 
-const category = [
+export const category = [
     {
         title: 'Clothes',
     },
@@ -440,15 +440,17 @@ function Onboarding() {
                                         onClick={() => handleImg(item.id)}
                                         className={cx('box-empty', mobile && 'mobile')}
                                     >
-                                        <img
-                                            className={cx(
-                                                'item-img',
-                                                item.id === pick1 && 'active',
-                                                pick1 !== -1 && item.id !== pick1 && 'disable',
-                                            )}
-                                            src={item.link}
-                                            alt=""
-                                        />
+                                        <div className="min-h-[195.25px] min-w-[195.25px]">
+                                            <img
+                                                className={cx(
+                                                    'item-img',
+                                                    item.id === pick1 && 'active',
+                                                    pick1 !== -1 && item.id !== pick1 && 'disable',
+                                                )}
+                                                src={item.link}
+                                                alt=""
+                                            />
+                                        </div>
                                     </div>
                                 ))}
                             </div>
