@@ -10,13 +10,13 @@ import { pick0 as setPick0 } from '../../redux/actions/pick0';
 import { pick1 as setPick1 } from '../../redux/actions/pick1';
 import { pick2 as setPick2 } from '../../redux/actions/pick2';
 import { pick3 as setPick3 } from '../../redux/actions/pick3';
-import { apiPick1, apiPick1 as setApiPick1 } from '../../redux/actions/dat/apiPick1';
+import { apiPick1 as setApiPick1 } from '../../redux/actions/dat/apiPick1';
 import axios from 'axios';
 import PageError from '../../components/PageError';
 
 const cx = classNames.bind(styles);
 
-const category = [
+export const category = [
     {
         title: 'Clothes',
     },
@@ -197,8 +197,6 @@ const colors = [
     },
 ];
 
-const arrLoading = [1, 2, 3, 4, 5, 6, 7, 8];
-
 function Onboarding() {
     const tablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
     const mobile = useMediaQuery({ maxWidth: 767 });
@@ -208,7 +206,7 @@ function Onboarding() {
     const navigate = useNavigate();
 
     let newArr = [];
-    const [loading, setLoading] = useState(false);
+    const [opa, setOpa] = useState(true);
     const [api1, setApi1] = useState([]);
     const [valuePick3, setValuePick3] = useState(!url ? 0 : url);
     const [colorPick2, setColorPick2] = useState(-1);
@@ -261,10 +259,7 @@ function Onboarding() {
                 case 0:
                     setShowOption(false);
                     setLogic(pick1);
-<<<<<<< HEAD
-=======
-                    setTimeout(() => setOpa(false), 1500);
->>>>>>> e6cb149a7da6750119cd5c2b50128da55fe49f18
+                    setTimeout(() => setOpa(false), 2000);
                     break;
                 case 1:
                     setLogic(pick2.length);
@@ -293,7 +288,6 @@ function Onboarding() {
                 break;
             case 2:
                 setLogic(pick1);
-                setTimeout(() => setOpa(false), 1500);
                 break;
             case 3:
                 colors.filter((item) => pick2 === item.color && setColorPick2(item.key));
@@ -305,7 +299,6 @@ function Onboarding() {
     };
 
     const handleImg = (id) => {
-        setLogic(id);
         dispath(setPick1(id));
     };
 
@@ -337,15 +330,10 @@ function Onboarding() {
     };
 
     useEffect(() => {
-<<<<<<< HEAD
-        if (api1.length > 0 && pick0.length > 0) {
-            setLogic(pick0.length);
-=======
         setLogic(pick0.length);
         setOpa(true);
+        dispath(setPick1(-1));
         if (api1.length > 0 && pick0.length > 0) {
-            dispath(setPick1(-1));
->>>>>>> e6cb149a7da6750119cd5c2b50128da55fe49f18
             let arr = api1.filter((item) => item.category === pick0);
             for (var i = 0; i < 16; i++) {
                 let rd = Math.floor(Math.random(arr.length) * arr.length);
@@ -354,6 +342,10 @@ function Onboarding() {
             dispath(setApiPick1(newArr));
         }
     }, [pick0]);
+
+    useEffect(() => {
+        setLogic(pick1);
+    }, [pick1]);
 
     return (
         <div className={cx('wrapper')}>
@@ -383,26 +375,51 @@ function Onboarding() {
                     </div>
                     <div className={cx('body')}>
                         <div className={cx('box-sticky', mobile && 'mobile', sticky && 'sticky')}>
-                            <div className={cx('box', tablet && 'tablet', mobile && 'mobile', sticky && 'sticky')}>
-                                <div className={cx('content')}>
-                                    <span style={{ color: color }} className={cx('title', mobile && 'mobile')}>
-                                        {title}
-                                    </span>
-                                    {!sticky && <span className={cx('description')}>{description}</span>}
+                            {api1.length > 0 ? (
+                                <div className={cx('box', tablet && 'tablet', mobile && 'mobile', sticky && 'sticky')}>
+                                    <div className={cx('content')}>
+                                        <span style={{ color: color }} className={cx('title', mobile && 'mobile')}>
+                                            {title}
+                                        </span>
+                                        {!sticky && <span className={cx('description')}>{description}</span>}
+                                    </div>
+                                    <div
+                                        onClick={() => handleContinue()}
+                                        className={cx(
+                                            'btn-continue',
+
+                                            logic > 0 && 'btn-active',
+                                            tablet && 'tablet',
+                                            mobile && 'mobile',
+                                        )}
+                                    >
+                                        <span className={cx('btn-title')}>Continue</span>
+                                        <FontAwesomeIcon className={cx('icon-right')} icon={faArrowRight} />
+                                    </div>
                                 </div>
-                                <div
-                                    onClick={() => handleContinue()}
-                                    className={cx(
-                                        'btn-continue',
-                                        logic > 0 && 'btn-active',
-                                        tablet && 'tablet',
-                                        mobile && 'mobile',
-                                    )}
-                                >
-                                    <span className={cx('btn-title')}>Continue</span>
-                                    <FontAwesomeIcon className={cx('icon-right')} icon={faArrowRight} />
+                            ) : (
+                                <div className={cx('box', tablet && 'tablet', mobile && 'mobile', sticky && 'sticky')}>
+                                    <div className={cx('content')}>
+                                        <span
+                                            style={{ color: color }}
+                                            className={cx('title', mobile && 'mobile', 'loadingApi')}
+                                        ></span>
+                                        {!sticky && <span className={cx('description', 'loadingApi')}></span>}
+                                    </div>
+                                    <div
+                                        onClick={() => handleContinue()}
+                                        className={cx(
+                                            'btn-continue',
+                                            'loadingApi',
+                                            logic > 0 && 'btn-active',
+                                            tablet && 'tablet',
+                                            mobile && 'mobile',
+                                        )}
+                                    >
+                                        <span className={cx('btn-title')}></span>
+                                    </div>
                                 </div>
-                            </div>
+                            )}
                         </div>
                         {layout === 0 && (
                             <>
@@ -440,24 +457,22 @@ function Onboarding() {
                             </>
                         )}
                         {layout === 1 && (
-                            <div className={cx('box-imgs', tablet && 'tablet', mobile && 'mobile')}>
+                            <div className={cx('box-imgs', opa && 'opa', tablet && 'tablet', mobile && 'mobile')}>
                                 {apiPick1.map((item, index) => (
                                     <div
                                         key={index}
                                         onClick={() => handleImg(item.id)}
                                         className={cx('box-empty', mobile && 'mobile')}
                                     >
-                                        <div className="min-h-[195.25px] min-w-[195.25px]">
-                                            <img
-                                                className={cx(
-                                                    'item-img',
-                                                    item.id === pick1 && 'active',
-                                                    pick1 !== -1 && item.id !== pick1 && 'disable',
-                                                )}
-                                                src={item.link}
-                                                alt=""
-                                            />
-                                        </div>
+                                        <img
+                                            className={cx(
+                                                'item-img',
+                                                item.id === pick1 && 'active',
+                                                pick1 !== -1 && item.id !== pick1 && 'disable',
+                                            )}
+                                            src={item.link}
+                                            alt=""
+                                        />
                                     </div>
                                 ))}
                             </div>
