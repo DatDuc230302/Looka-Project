@@ -27,8 +27,9 @@ function HeaderSecond() {
     const [layout, setLayout] = useState(0);
     // const [menu2, setMenu2] = useState(false);
 
+    const khang = true;
     const pick3 = useSelector((state) => state.pick3);
-
+    const number = useSelector((state) => state.AddFavorite);
     useEffect(() => {
         if (url === '/explore') {
             setLayout(1);
@@ -83,6 +84,7 @@ function HeaderSecond() {
                                 </g>
                             </g>
                         </svg>
+                        {number.length > 0 && <div className={cx('count')}>{number.length}</div>}
                     </div>
                     <div className={cx('header-logo')}>
                         <img

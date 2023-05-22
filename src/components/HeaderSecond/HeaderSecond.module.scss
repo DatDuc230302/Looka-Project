@@ -38,9 +38,26 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 
     &:hover {
         background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    .count {
+        content: '';
+        --number: 19px;
+        color: white;
+        position: absolute;
+        top: 0;
+        right: 6px;
+        height: var(--number);
+        width: var(--number);
+        line-height: var(--number);
+        text-align: center;
+        background: rgb(249, 97, 103);
+        border-radius: 50%;
+        font-size: 10px;
     }
 }
 
