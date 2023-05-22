@@ -259,7 +259,7 @@ function Onboarding() {
                 case 0:
                     setShowOption(false);
                     setLogic(pick1);
-                    setTimeout(() => setOpa(false), 2000);
+                    setTimeout(() => setOpa(false), 1500);
                     break;
                 case 1:
                     setLogic(pick2.length);
@@ -288,6 +288,7 @@ function Onboarding() {
                 break;
             case 2:
                 setLogic(pick1);
+                setTimeout(() => setOpa(false), 1500);
                 break;
             case 3:
                 colors.filter((item) => pick2 === item.color && setColorPick2(item.key));
@@ -299,6 +300,7 @@ function Onboarding() {
     };
 
     const handleImg = (id) => {
+        setLogic(id);
         dispath(setPick1(id));
     };
 
@@ -332,8 +334,8 @@ function Onboarding() {
     useEffect(() => {
         setLogic(pick0.length);
         setOpa(true);
-        dispath(setPick1(-1));
         if (api1.length > 0 && pick0.length > 0) {
+            dispath(setPick1(-1));
             let arr = api1.filter((item) => item.category === pick0);
             for (var i = 0; i < 16; i++) {
                 let rd = Math.floor(Math.random(arr.length) * arr.length);
@@ -342,10 +344,6 @@ function Onboarding() {
             dispath(setApiPick1(newArr));
         }
     }, [pick0]);
-
-    useEffect(() => {
-        setLogic(pick1);
-    }, [pick1]);
 
     return (
         <div className={cx('wrapper')}>
