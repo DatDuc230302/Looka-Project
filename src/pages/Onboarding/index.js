@@ -238,10 +238,6 @@ function Onboarding() {
     }, [id]);
 
     useEffect(() => {
-        setLogic(pick1);
-    }, [pick1]);
-
-    useEffect(() => {
         setLogic(colorPick2);
     }, [colorPick2]);
 
@@ -265,6 +261,10 @@ function Onboarding() {
                 case 0:
                     setShowOption(false);
                     setLogic(pick1);
+<<<<<<< HEAD
+=======
+                    setTimeout(() => setOpa(false), 1500);
+>>>>>>> e6cb149a7da6750119cd5c2b50128da55fe49f18
                     break;
                 case 1:
                     setLogic(pick2.length);
@@ -293,6 +293,7 @@ function Onboarding() {
                 break;
             case 2:
                 setLogic(pick1);
+                setTimeout(() => setOpa(false), 1500);
                 break;
             case 3:
                 colors.filter((item) => pick2 === item.color && setColorPick2(item.key));
@@ -304,6 +305,7 @@ function Onboarding() {
     };
 
     const handleImg = (id) => {
+        setLogic(id);
         dispath(setPick1(id));
     };
 
@@ -335,8 +337,15 @@ function Onboarding() {
     };
 
     useEffect(() => {
+<<<<<<< HEAD
         if (api1.length > 0 && pick0.length > 0) {
             setLogic(pick0.length);
+=======
+        setLogic(pick0.length);
+        setOpa(true);
+        if (api1.length > 0 && pick0.length > 0) {
+            dispath(setPick1(-1));
+>>>>>>> e6cb149a7da6750119cd5c2b50128da55fe49f18
             let arr = api1.filter((item) => item.category === pick0);
             for (var i = 0; i < 16; i++) {
                 let rd = Math.floor(Math.random(arr.length) * arr.length);

@@ -27,6 +27,7 @@ function HeaderSecond() {
     const [layout, setLayout] = useState(0);
     // const [menu2, setMenu2] = useState(false);
 
+    const khang = true;
     const pick3 = useSelector((state) => state.pick3);
     const number = useSelector((state) => state.AddFavorite);
     useEffect(() => {
