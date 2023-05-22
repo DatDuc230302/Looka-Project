@@ -405,7 +405,7 @@ function Onboarding() {
                         </div>
                         {layout === 0 && (
                             <>
-                                {/* {api1.length > 0 ? (
+                                {api1.length > 0 ? (
                                     <div
                                         onClick={() => (showOption ? setShowOption(false) : setShowOption(true))}
                                         className={cx('select', mobile && 'mobile')}
@@ -420,8 +420,8 @@ function Onboarding() {
                                     </div>
                                 ) : (
                                     <div className={cx('select', 'loadingApi', mobile && 'mobile')}></div>
-                                )} */}
-                                <div
+                                )}
+                                {/* <div
                                     onClick={() => (showOption ? setShowOption(false) : setShowOption(true))}
                                     className={cx('select', mobile && 'mobile')}
                                 >
@@ -432,7 +432,7 @@ function Onboarding() {
                                         className={cx('icon-down')}
                                         icon={showOption ? faChevronUp : faChevronDown}
                                     />
-                                </div>
+                                </div> */}
                                 {showOption && (
                                     <div className={cx('list-option', tablet && 'tablet', mobile && 'mobile')}>
                                         {category.map((item, index) => (

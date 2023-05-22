@@ -21,21 +21,6 @@ function Home() {
     const [cardData, setCardData] = useState([]);
     const [brandData, setBrandData] = useState([]);
 
-    const [dataImgsFromDb, setDataImgsFromDb] = useState([]);
-    const [categorysData, setCategorysData] = useState([]);
-    const [arrCate, setArrCate] = useState([]);
-
-    const handleFilter = () => {
-        if (!!dataImgsFromDb) {
-            const dataImg = dataImgsFromDb.filter((dataImgFromDb) => dataImgFromDb.category === 'Accessories');
-            console.log(dataImg.json());
-        }
-    };
-
-   
-
-
-
     useEffect(() => {
         const boardFromDb = InitalData.boards.find((board) => board.id === 'board-1');
         const brandFromDb = InitalData.brand.find((brand) => brand.id === 'brand-1');
