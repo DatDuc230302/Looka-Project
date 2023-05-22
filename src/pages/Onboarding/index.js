@@ -236,10 +236,6 @@ function Onboarding() {
     }, [id]);
 
     useEffect(() => {
-        setLogic(pick1);
-    }, [pick1]);
-
-    useEffect(() => {
         setLogic(colorPick2);
     }, [colorPick2]);
 
@@ -335,6 +331,8 @@ function Onboarding() {
 
     useEffect(() => {
         setLogic(pick0.length);
+        setOpa(true);
+        dispath(setPick1(-1));
         if (api1.length > 0 && pick0.length > 0) {
             let arr = api1.filter((item) => item.category === pick0);
             for (var i = 0; i < 16; i++) {
@@ -344,6 +342,10 @@ function Onboarding() {
             dispath(setApiPick1(newArr));
         }
     }, [pick0]);
+
+    useEffect(() => {
+        setLogic(pick1);
+    }, [pick1]);
 
     return (
         <div className={cx('wrapper')}>
