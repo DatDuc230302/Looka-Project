@@ -324,7 +324,7 @@ function Onboarding() {
         }
     });
 
-    //render Layout 1
+    //render Layout 12
     const apiPick1 = useSelector((state) => state.apiPick1);
     useEffect(() => {
         getApi();
