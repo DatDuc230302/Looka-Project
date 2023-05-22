@@ -208,7 +208,7 @@ function Onboarding() {
     const navigate = useNavigate();
 
     let newArr = [];
-    const [loading, setLoading] = useState(false);
+    const [none, setNone] = useState(true);
     const [api1, setApi1] = useState([]);
     const [valuePick3, setValuePick3] = useState(!url ? 0 : url);
     const [colorPick2, setColorPick2] = useState(-1);
@@ -263,6 +263,7 @@ function Onboarding() {
             progress < 100 && setProgress(progress + 100 / (pages.length + 1));
             switch (id) {
                 case 0:
+                    setTimeout(() => setNone(false), 3000);
                     setShowOption(false);
                     setLogic(pick1);
                     break;
@@ -289,6 +290,7 @@ function Onboarding() {
         setId(id - 1);
         switch (id) {
             case 1:
+                setNone(false);
                 setLogic(pick0.length);
                 break;
             case 2:
@@ -431,7 +433,7 @@ function Onboarding() {
                             </>
                         )}
                         {layout === 1 && (
-                            <div className={cx('box-imgs', tablet && 'tablet', mobile && 'mobile')}>
+                            <div className={cx('box-imgs', none && 'none', tablet && 'tablet', mobile && 'mobile')}>
                                 {apiPick1.map((item, index) => (
                                     <div
                                         key={index}
