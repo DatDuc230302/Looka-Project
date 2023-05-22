@@ -208,7 +208,6 @@ function Onboarding() {
     const navigate = useNavigate();
 
     let newArr = [];
-    const [none, setNone] = useState(true);
     const [api1, setApi1] = useState([]);
     const [valuePick3, setValuePick3] = useState(!url ? 0 : url);
     const [colorPick2, setColorPick2] = useState(-1);
@@ -263,7 +262,6 @@ function Onboarding() {
             progress < 100 && setProgress(progress + 100 / (pages.length + 1));
             switch (id) {
                 case 0:
-                    setTimeout(() => setNone(false), 3000);
                     setShowOption(false);
                     setLogic(pick1);
                     break;
@@ -290,7 +288,6 @@ function Onboarding() {
         setId(id - 1);
         switch (id) {
             case 1:
-                setNone(false);
                 setLogic(pick0.length);
                 break;
             case 2:
@@ -337,8 +334,8 @@ function Onboarding() {
     };
 
     useEffect(() => {
+        setLogic(pick0.length);
         if (api1.length > 0 && pick0.length > 0) {
-            setLogic(pick0.length);
             let arr = api1.filter((item) => item.category === pick0);
             for (var i = 0; i < 16; i++) {
                 let rd = Math.floor(Math.random(arr.length) * arr.length);
@@ -347,6 +344,15 @@ function Onboarding() {
             dispath(setApiPick1(newArr));
         }
     }, [pick0]);
+
+    const [skeleton, setSkeleton] = useState(true);
+    useEffect(() => {
+        if (apiPick1.length > 0) {
+            setSkeleton(!skeleton);
+        } else {
+            setSkeleton(!skeleton);
+        }
+    }, [api1.length]);
 
     return (
         <div className={cx('wrapper')}>
@@ -399,7 +405,7 @@ function Onboarding() {
                         </div>
                         {layout === 0 && (
                             <>
-                                {api1.length > 0 ? (
+                                {/* {api1.length > 0 ? (
                                     <div
                                         onClick={() => (showOption ? setShowOption(false) : setShowOption(true))}
                                         className={cx('select', mobile && 'mobile')}
@@ -414,7 +420,19 @@ function Onboarding() {
                                     </div>
                                 ) : (
                                     <div className={cx('select', 'loadingApi', mobile && 'mobile')}></div>
-                                )}
+                                )} */}
+                                <div
+                                    onClick={() => (showOption ? setShowOption(false) : setShowOption(true))}
+                                    className={cx('select', mobile && 'mobile')}
+                                >
+                                    <div className={cx('slect-title')}>
+                                        {pick0.length > 0 ? pick0 : 'Company, Electronic, Clothes ...'}
+                                    </div>
+                                    <FontAwesomeIcon
+                                        className={cx('icon-down')}
+                                        icon={showOption ? faChevronUp : faChevronDown}
+                                    />
+                                </div>
                                 {showOption && (
                                     <div className={cx('list-option', tablet && 'tablet', mobile && 'mobile')}>
                                         {category.map((item, index) => (
@@ -433,24 +451,22 @@ function Onboarding() {
                             </>
                         )}
                         {layout === 1 && (
-                            <div className={cx('box-imgs', none && 'none', tablet && 'tablet', mobile && 'mobile')}>
+                            <div className={cx('box-imgs', tablet && 'tablet', mobile && 'mobile')}>
                                 {apiPick1.map((item, index) => (
                                     <div
                                         key={index}
                                         onClick={() => handleImg(item.id)}
                                         className={cx('box-empty', mobile && 'mobile')}
                                     >
-                                        <div className="min-h-[195.25px] min-w-[195.25px]">
-                                            <img
-                                                className={cx(
-                                                    'item-img',
-                                                    item.id === pick1 && 'active',
-                                                    pick1 !== -1 && item.id !== pick1 && 'disable',
-                                                )}
-                                                src={item.link}
-                                                alt=""
-                                            />
-                                        </div>
+                                        <img
+                                            className={cx(
+                                                'item-img',
+                                                item.id === pick1 && 'active',
+                                                pick1 !== -1 && item.id !== pick1 && 'disable',
+                                            )}
+                                            src={item.link}
+                                            alt=""
+                                        />
                                     </div>
                                 ))}
                             </div>
