@@ -9,6 +9,7 @@ import { toggleForm } from './toggleForm';
 import { turnFeature } from './turnFeature';
 import { apiPick1 } from './dat/apiPick1';
 import { AddFavorite } from './khang/AddFavorite';
+import { storeLike } from './storeLike';
 
 export const allReducers = combineReducers({
     pick0,
@@ -21,4 +22,5 @@ export const allReducers = combineReducers({
     turnFeature,
     apiPick1,
     AddFavorite,
+    storeLike
 });

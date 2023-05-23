@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { AddFavorite as setAddFavorite } from '../../redux/actions/khang/AddFavorite';
 import PageError from '../../components/PageError';
+import ModalStore from '../../components/ModalStore';
 
 const cx = className.bind(styles);
 
@@ -52,17 +53,53 @@ const colors = [
 
 const imgs = [
     { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 1, liked: false },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 2, liked: false },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 3, liked: false },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 4, liked: false },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 5, liked: false },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 6, liked: false },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 7, liked: false },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 8, liked: false },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 9, liked: false },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 10, liked: false },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 11, liked: false },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 12, liked: false },
+    { img: 'https://www.elle.vn/wp-content/uploads/2017/07/25/hinh-anh-dep-1.jpg', id: 2, liked: false },
+    {
+        img: 'https://i.pinimg.com/originals/aa/85/93/aa8593ec681632f7a80ce6180e9e1413.jpg',
+        id: 3,
+        liked: false,
+    },
+    {
+        img: 'https://img5.thuthuatphanmem.vn/uploads/2021/07/15/hinh-anh-vu-tru-cuc-dep_025858517.jpg',
+        id: 4,
+        liked: false,
+    },
+    {
+        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzMBQ0v51qqcvPOKmozP7tGkD8tIA9CetToOdGDb7nNg&s',
+        id: 5,
+        liked: false,
+    },
+    {
+        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiq3z1nvvxL9CEw1DltjeTgCIxFdydwXJDTCFJ0iPdpg&s',
+        id: 6,
+        liked: false,
+    },
+    {
+        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3q6Bk239Yx-ruA4RMxsq26goNRP7C7-KsJb9R4wZOQw&s',
+        id: 7,
+        liked: false,
+    },
+    {
+        img: 'https://thcs-thptlongphu.edu.vn/wp-content/uploads/2023/03/hinh-nen-vu-tru2b252812529.jpg',
+        id: 8,
+        liked: false,
+    },
+    {
+        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4Rjc6jkFLCf5PsJjUjAr6n8aeyYGhcCuM1K-VpuFX&s',
+        id: 9,
+        liked: false,
+    },
+    {
+        img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvt2lTZPMCzLInS6BxrRfbhQssruj4QEUGuoZFNN7DHg&s',
+        id: 10,
+        liked: false,
+    },
+    {
+        img: 'https://thcs-thptlongphu.edu.vn/wp-content/uploads/2023/03/hinh-nen-vu-tru2b252812529.jpg',
+        id: 11,
+        liked: false,
+    },
+    { img: 'https://vapa.vn/wp-content/uploads/2022/12/anh-nen-vu-tru-002.jpg', id: 12, liked: false },
 ];
 
 function Explore() {
@@ -133,6 +170,7 @@ function Explore() {
 
     return (
         <div className={cx('wrapper')}>
+
             {/* {pick3.length > 0 ? (
                 <div className={cx('inner')}>
                     <div className={cx('body')}>
@@ -500,78 +538,6 @@ function Explore() {
                                         className={cx('buy-heart')}
                                         onClick={() => handleAddFavotire(item.id, item.img)}
                                     >
-                                        {/* {imgs[index].liked ? (
-                                            <svg
-                                                width="20px"
-                                                height="17px"
-                                                viewBox="0 0 20 17"
-                                                version="1.1"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                            >
-                                                <g
-                                                    id="001"
-                                                    stroke="none"
-                                                    strokeWidth="1"
-                                                    fill="none"
-                                                    fillRule="evenodd"
-                                                    transform="translate(-608.000000, -1064.000000)"
-                                                >
-                                                    <g
-                                                        id="Group-6-Copy"
-                                                        transform="translate(155.000000, 667.000000)"
-                                                        fill="#F96167"
-                                                    >
-                                                        <g id="Group-4">
-                                                            <g id="card">
-                                                                <g id="Group-4-Copy">
-                                                                    <g
-                                                                        id="Group-2"
-                                                                        transform="translate(415.000000, 359.000000)"
-                                                                    >
-                                                                        <path
-                                                                            d="M57.7339015,43.4210068 C57.7339015,44.969359 57.0811648,46.3684421 56.03628,47.3526072 L55.9629104,47.4234468 L48.7524464,54.593431 L48.6816067,54.6637647 C48.231016,55.1120784 47.5031386,55.1120784 47.0522948,54.6637647 L46.9814552,54.593431 L39.7709912,47.4234468 L39.6976215,47.3526072 C38.6527367,46.3684421 38,44.969359 38,43.4184768 C38,40.4330917 40.4211979,38.0118938 43.409113,38.0118938 C45.1489853,38.0118938 46.6986026,38.8359106 47.6870687,40.1133013 C47.7773892,40.2299337 47.9565123,40.2299337 48.0468329,40.1133013 C49.0355519,38.8359106 50.5851692,38.0118938 52.3273185,38.0118938 C55.3127036,38.0118938 57.7339015,40.4330917 57.7339015,43.4210068 Z"
-                                                                            id="ic_heart_fill"
-                                                                        ></path>
-                                                                    </g>
-                                                                </g>
-                                                            </g>
-                                                        </g>
-                                                    </g>
-                                                </g>
-                                            </svg>
-                                        ) : (
-                                            <svg
-                                                width="23.1px"
-                                                height="19.95px"
-                                                viewBox="0 0 22 19"
-                                                version="1.1"
-                                                xmlns="http://www.w3.org/2000/svg"
-                                                xmlnsXlink="http://www.w3.org/1999/xlink"
-                                            >
-                                                <title>ic_heart</title>
-                                                <desc>Created with Sketch.</desc>
-                                                <defs></defs>
-                                                <g
-                                                    id="001"
-                                                    stroke="none"
-                                                    strokeWidth="1"
-                                                    fill="none"
-                                                    fillRule="evenodd"
-                                                    transform="translate(-29.000000, -26.000000)"
-                                                >
-                                                    <g
-                                                        id="ic_heart"
-                                                        transform="translate(30.000000, 26.000000)"
-                                                        stroke="#000000"
-                                                    >
-                                                        <path
-                                                            d="M19.7339015,6.42100677 C19.7339015,7.96935904 19.0811648,9.36844206 18.03628,10.3526072 L17.9629104,10.4234468 L10.7524464,17.593431 L10.6816067,17.6637647 C10.231016,18.1120784 9.50313859,18.1120784 9.05229484,17.6637647 L8.98145519,17.593431 L1.77099116,10.4234468 L1.69762153,10.3526072 C0.652736744,9.36844206 0,7.96935904 0,6.41847678 C0,3.43309167 2.42119792,1.01189375 5.40911301,1.01189375 C7.14898533,1.01189375 8.6986026,1.83591064 9.68706867,3.11330127 C9.77738922,3.22993369 9.95651233,3.22993369 10.0468329,3.11330127 C11.0355519,1.83591064 12.5851692,1.01189375 14.3273185,1.01189375 C17.3127036,1.01189375 19.7339015,3.43309167 19.7339015,6.42100677 Z"
-                                                            id="Page-1"
-                                                        ></path>
-                                                    </g>
-                                                </g>
-                                            </svg>
-                                        )} */}
                                         {addFavorite.filter((i) => i.id === item.id).length > 0 ? (
                                             <svg
                                                 width="23.1px"

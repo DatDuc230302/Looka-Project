@@ -11,6 +11,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import { backOnboard } from '../../redux/actions/backOnboard';
 import { turnFeature } from '../../redux/actions/turnFeature';
 import { useMediaQuery } from 'react-responsive';
+import { storeLike as setStoreLike } from '../../redux/actions/storeLike.js';
+
+
 
 const cx = classNames.bind(styles);
 
@@ -26,9 +29,9 @@ function HeaderSecond() {
     const [layout, setLayout] = useState(0);
     // const [menu2, setMenu2] = useState(false);
 
-    const khang = true;
     const pick3 = useSelector((state) => state.pick3);
     const number = useSelector((state) => state.AddFavorite);
+    const storeLike = useSelector((state) => state.storeLike);
 
     useEffect(() => {
         if (url === '/explore') {
@@ -53,12 +56,16 @@ function HeaderSecond() {
         }
     };
 
+    const handleOpenStore = () => {
+        dispath(setStoreLike(storeLike))
+    };
+
     return (
         <div style={{ height: layout !== 1 && 60 }} className={cx('header')}>
             {layout === 1 && (
                 <>
                     <FontAwesomeIcon onClick={() => handleBack()} className={cx('icon-back')} icon={faArrowLeft} />
-                    <div className={cx('header-heart')}>
+                    <div className={cx('header-heart')} onClick={() => handleOpenStore()}>
                         <svg
                             width="22px"
                             height="19px"
@@ -328,6 +335,7 @@ function HeaderSecond() {
                     </div>
                 )}
             </p> */}
+
         </div>
     );
 }
