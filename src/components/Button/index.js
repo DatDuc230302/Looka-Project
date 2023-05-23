@@ -15,6 +15,7 @@ function Button({
     small = false,
     large = false,
     medium = false,
+    smallMixMedium = false,
     black,
     children,
     leftIcon,
@@ -53,6 +54,7 @@ function Button({
         small,
         large,
         text,
+        smallMixMedium,
         medium,
         black,
         disable,
@@ -61,7 +63,7 @@ function Button({
 
     return (
         <Comp className={classes} {...props}>
-            <span className={(leftIcon || rightIcon) ? "flex items-center" : ""}>
+            <span className={leftIcon || rightIcon ? 'flex items-center' : ''}>
                 {leftIcon && <span className={cx('icon')}>{leftIcon}</span>}
                 <span className={cx('title')}>{children}</span>
                 {rightIcon && <span className={cx('icon')}>{rightIcon}</span>}
