@@ -1,0 +1,29 @@
+.control {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -80%);
+    background: #fffffff2;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 8px;
+    padding-right: 15px;
+    border-radius: 8px;
+    gap: 10px;
+    opacity: 0;
+    transition: all 0.3s ease-out;
+
+    .trash {
+        font-size: 1.6rem;
+        padding: 14px;
+
+     
+    }
+}
+
+.items {
+    &:hover .control {
+        opacity: 1;
+        transform: translate(-50%, -125%);
+    }
+}
