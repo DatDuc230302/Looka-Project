@@ -6,12 +6,17 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import PageError from '../../components/PageError';
 import axios from 'axios';
+import { useMediaQuery } from 'react-responsive';
 
 const cx = classNames.bind(styles);
 
 function Editor() {
     const [api, setApi] = useState([]);
     const [id, setId] = useState(-1);
+
+    const pc = useMediaQuery({ minWidth: 992 });
+    const tablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
+    const mobile = useMediaQuery({ maxWidth: 767 });
 
     const params = useParams();
     const url = params.key;
@@ -40,7 +45,7 @@ function Editor() {
             ) : (
                 <PageError />
             )} */}
-            <div className={cx('inner')}>
+            <div className={cx('inner', tablet && 'tablet', mobile && 'mobile')}>
                 <SideBarEditor setId={setId} />
                 <div className={cx('body')}>
                     <div className={cx('preview-box')}>
