@@ -10,7 +10,6 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { backOnboard } from '../../redux/actions/backOnboard';
 import { turnFeature } from '../../redux/actions/turnFeature';
-
 import { useMediaQuery } from 'react-responsive';
 
 const cx = classNames.bind(styles);
@@ -30,6 +29,7 @@ function HeaderSecond() {
     const khang = true;
     const pick3 = useSelector((state) => state.pick3);
     const number = useSelector((state) => state.AddFavorite);
+
     useEffect(() => {
         if (url === '/explore') {
             setLayout(1);
