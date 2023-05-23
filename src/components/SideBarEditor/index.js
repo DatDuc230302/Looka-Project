@@ -1,6 +1,9 @@
 import classNames from 'classnames/bind';
 import styles from './SideBarEditor.module.scss';
 import { useState } from 'react';
+import { useMediaQuery } from 'react-responsive';
+import { useSelector, useDispatch } from 'react-redux';
+import { turnFeature } from '../../redux/actions/turnFeature';
 
 const cx = classNames.bind(styles);
 
@@ -254,27 +257,39 @@ const elements = [
 ];
 
 function SideBarEditor({ setId }) {
-    const [count, setCount] = useState(1);
+    const [count, setCount] = useState(0);
+
+    const pc = useMediaQuery({ minWidth: 992 });
+    const tablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
+    const mobile = useMediaQuery({ maxWidth: 767 });
+
+    const dispath = useDispatch();
 
     const handleNav = (index) => {
-        setCount(index);
-        setId(index);
+        if (index !== 0) {
+            dispath(turnFeature(true));
+        } else {
+            setCount(index);
+            setId(index);
+        }
     };
 
     return (
-        <div className={cx('wrapper')}>
-            <div className={cx('inner')}>
-                {elements.map((item, index) => (
-                    <div
-                        onClick={() => handleNav(index)}
-                        key={index}
-                        className={cx('item', item.rule && 'rule', index === count && 'active')}
-                    >
-                        {item.icon}
-                        <span className={cx('item-title')}>{item.title}</span>
-                    </div>
-                ))}
-            </div>
+        <div className={cx('wrapper', tablet && 'tablet', mobile && 'mobile')}>
+            {pc && (
+                <div className={cx('inner', tablet && 'tablet', mobile && 'mobile')}>
+                    {elements.map((item, index) => (
+                        <div
+                            onClick={() => handleNav(index)}
+                            key={index}
+                            className={cx('item', item.rule && 'rule', index === count && 'active')}
+                        >
+                            {item.icon}
+                            <span className={cx('item-title')}>{item.title}</span>
+                        </div>
+                    ))}
+                </div>
+            )}
         </div>
     );
 }
