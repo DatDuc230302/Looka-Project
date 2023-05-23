@@ -1,0 +1,21 @@
+.wrapper {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    user-select: none;
+}
+
+.inner {
+    padding: 10px;
+    background-color: rgb(130, 130, 130);
+    border-radius: 10px;
+    font-size: 2rem;
+    transform: translateY(100px);
+    transition: all linear 0.25s;
+    opacity: 0;
+
+    &.fade {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

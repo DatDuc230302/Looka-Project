@@ -5,6 +5,7 @@
     padding: 0 20px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding-left: 23px;
     position: fixed;
     z-index: 1000;
@@ -37,9 +38,26 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
 
     &:hover {
         background-color: rgba(0, 0, 0, 0.2);
+    }
+
+    .count {
+        content: '';
+        --number: 19px;
+        color: white;
+        position: absolute;
+        top: 0;
+        right: 6px;
+        height: var(--number);
+        width: var(--number);
+        line-height: var(--number);
+        text-align: center;
+        background: rgb(249, 97, 103);
+        border-radius: 50%;
+        font-size: 10px;
     }
 }
 
@@ -62,11 +80,195 @@
     height: 40px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     cursor: pointer;
 }
 
 .icon-menu {
     width: 20px;
     height: 20px;
+}
+
+// Header Layout 2
+
+.nav {
+    display: flex;
+    height: 100%;
+    align-items: center;
+}
+
+.arrow-back {
+    height: 36px;
+    display: flex;
+    align-items: center;
+    padding: 0px 10px;
+    border-radius: 10px;
+    margin-left: -10px;
+    margin-right: 10px;
+    cursor: pointer;
+    &:hover {
+        background-color: #f2f3f4;
+    }
+}
+
+.nav-save,
+.nav-copy {
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    height: 36px;
+    margin-left: -5px;
+    margin-top: 1px;
+    margin-right: 9px;
+    font-size: 1.4rem;
+    color: rgb(9, 11, 23);
+    border-radius: 10px;
+    cursor: pointer;
+    &:hover {
+        background-color: #f2f3f4;
+    }
+}
+
+.nav-vertical {
+    border-left: 1px solid rgb(218, 226, 242);
+    width: 1px;
+    margin-left: 1px;
+    height: 25px;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+    height: 36px;
+    margin-left: 22px;
+}
+
+.navAction-left {
+    transform: translateY(-1px);
+    cursor: pointer;
+    margin-right: 8.4px;
+}
+
+.navAction-center {
+    font-size: 1.4rem;
+    line-height: 20px;
+    color: #dae2f2;
+}
+
+.navAction-right {
+    margin-left: 22px;
+    transform: translateY(-1px);
+    cursor: pointer;
+}
+
+.tools {
+    display: flex;
+    height: 40px;
+    background-color: #f2f3f4;
+    border-radius: 50px;
+    align-items: center;
+    padding: 0 15px;
+    transform: translateX(52px);
+    width: 176.43px;
+}
+
+.tools-logo {
+    font-size: 1.5rem;
+    color: #5340ff;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0 10px;
+    padding-top: 1px;
+}
+
+.tools-brand {
+    width: 92.45px;
+    display: flex;
+    align-items: center;
+    padding: 0px 4px 0px 10px;
+    font-size: 1.5rem;
+    color: rgb(34, 34, 34);
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 1px;
+
+    &:hover {
+        & .brand-icon {
+            fill: #5340ff;
+            margin-left: 2px;
+        }
+
+        & .brand-title {
+            color: #5340ff;
+        }
+    }
+}
+
+.brand-title {
+    padding-right: 7px;
+}
+
+.btns {
+    display: flex;
+    align-items: center;
+}
+
+.btn-share {
+    margin-right: 10px;
+    width: 68.09px;
+}
+
+.btn-signup {
+    margin-right: 20px;
+    width: 78.85px;
+}
+
+.btn-share,
+.btn-signup {
+    padding-top: 1px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    color: rgb(9, 11, 23);
+    cursor: pointer;
+    border-radius: 10px;
+
+    &:hover {
+        background-color: #f2f3f4;
+    }
+
+    &.active {
+        background-color: #f2f3f4;
+    }
+}
+
+.btn-download {
+    background-color: #5340ff;
+    width: 148.61px;
+    height: 43.2px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    margin-right: 8px;
+
+    cursor: pointer;
+
+    &:hover {
+        background-color: #7869f7;
+    }
+}
+
+.download-icon {
+    margin-left: 25px;
+    transform: translateY(0.4px);
+}
+
+.download-title {
+    font-weight: 400;
+    color: white;
+    font-size: 1.5rem;
+    margin-top: 1px;
+    margin-left: 11px;
 }

@@ -13,13 +13,13 @@ import { getAnalytics } from 'firebase/analytics';
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-    apiKey: 'AIzaSyAUJfa6OKTZJoBkHv6SZWJZ2kL2q25KM5o',
-    authDomain: 'looka-15c45.firebaseapp.com',
-    projectId: 'looka-15c45',
-    storageBucket: 'looka-15c45.appspot.com',
-    messagingSenderId: '580222647400',
-    appId: '1:580222647400:web:8f30926dbed01cca37cfdd',
-    measurementId: 'G-6JTX4H5SZ3',
+    apiKey: 'AIzaSyBGYd29ntirxAoeTT9WbUY15pVRwdyu6hw',
+    authDomain: 'looka-project-435e3.firebaseapp.com',
+    projectId: 'looka-project-435e3',
+    storageBucket: 'looka-project-435e3.appspot.com',
+    messagingSenderId: '784021190678',
+    appId: '1:784021190678:web:d6ca7bd8f122a7039add37',
+    measurementId: 'G-EYRWFT9SL3',
 };
 
 // Initialize Firebase

@@ -10,29 +10,36 @@ import { pick0 as setPick0 } from '../../redux/actions/pick0';
 import { pick1 as setPick1 } from '../../redux/actions/pick1';
 import { pick2 as setPick2 } from '../../redux/actions/pick2';
 import { pick3 as setPick3 } from '../../redux/actions/pick3';
+import { apiPick1 as setApiPick1 } from '../../redux/actions/dat/apiPick1';
+import axios from 'axios';
+import PageError from '../../components/PageError';
 
 const cx = classNames.bind(styles);
 
-const category = [
+export const category = [
     {
-        title: 'Sports',
-        key: 'sports',
+        title: 'Clothes',
     },
     {
-        title: 'Games',
-        key: 'games',
+        title: 'Company',
     },
     {
-        title: 'Development',
-        key: 'development',
+        title: 'Electronic',
     },
     {
-        title: 'Sports',
-        key: 'sports',
+        title: 'Food',
     },
     {
-        title: 'Games',
-        key: 'games',
+        title: 'Institution',
+    },
+    {
+        title: 'Pet',
+    },
+    {
+        title: 'Translatation',
+    },
+    {
+        title: 'Accessories',
     },
 ];
 
@@ -61,21 +68,6 @@ const pages = [
         id: 3,
         layout: 3,
     },
-];
-
-const imgs = [
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', key: 1 },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', key: 2 },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', key: 3 },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', key: 4 },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', key: 5 },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', key: 6 },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', key: 7 },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', key: 9 },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', key: 10 },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', key: 11 },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', key: 12 },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', key: 13 },
 ];
 
 const colors = [
@@ -213,6 +205,9 @@ function Onboarding() {
     const url = params.key;
     const navigate = useNavigate();
 
+    let newArr = [];
+    const [opa, setOpa] = useState(true);
+    const [api1, setApi1] = useState([]);
     const [valuePick3, setValuePick3] = useState(!url ? 0 : url);
     const [colorPick2, setColorPick2] = useState(-1);
     const [showOption, setShowOption] = useState(false);
@@ -224,6 +219,7 @@ function Onboarding() {
     const [color, setColor] = useState('');
     const [logic, setLogic] = useState(0);
     const [fadeLabel, setFadeLabel] = useState(false);
+    const [sticky, setSticky] = useState(false);
 
     const pick0 = useSelector((state) => state.pick0);
     const pick1 = useSelector((state) => state.pick1);
@@ -238,14 +234,6 @@ function Onboarding() {
         pages.filter((item) => item.id === id && setId(item.id));
         pages.filter((item) => item.id === id && setLayout(item.layout));
     }, [id]);
-
-    useEffect(() => {
-        setLogic(pick0.length);
-    }, [pick0.length]);
-
-    useEffect(() => {
-        setLogic(pick1);
-    }, [pick1]);
 
     useEffect(() => {
         setLogic(colorPick2);
@@ -271,9 +259,11 @@ function Onboarding() {
                 case 0:
                     setShowOption(false);
                     setLogic(pick1);
+                    setTimeout(() => setOpa(false), 2000);
                     break;
                 case 1:
-                    setLogic(pick2);
+                    setLogic(pick2.length);
+                    setColor(pick2);
                     break;
                 case 2:
                     setColor('#000');
@@ -300,15 +290,16 @@ function Onboarding() {
                 setLogic(pick1);
                 break;
             case 3:
-                colors.filter((item, index) => pick2 === item.color && setColorPick2(item.key));
+                colors.filter((item) => pick2 === item.color && setColorPick2(item.key));
                 setLogic(colorPick2);
+                setColor(pick2);
                 break;
             default:
         }
     };
 
-    const handleImg = (key) => {
-        dispath(setPick1(key));
+    const handleImg = (id) => {
+        dispath(setPick1(id));
     };
 
     const handleColor = (color, key) => {
@@ -316,6 +307,45 @@ function Onboarding() {
         setColorPick2(key);
         dispath(setPick2(color));
     };
+
+    // Sticky
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 45) {
+            setSticky(true);
+        } else {
+            setSticky(false);
+        }
+    });
+
+    //render Layout 12
+    const apiPick1 = useSelector((state) => state.apiPick1);
+    useEffect(() => {
+        getApi();
+    }, []);
+
+    const getApi = async () => {
+        let result = await axios.get('https://server-looka.onrender.com/looka/getApi');
+        const data = await result.data;
+        setApi1(data);
+    };
+
+    useEffect(() => {
+        setLogic(pick0.length);
+        setOpa(true);
+        dispath(setPick1(-1));
+        if (api1.length > 0 && pick0.length > 0) {
+            let arr = api1.filter((item) => item.category === pick0);
+            for (var i = 0; i < 16; i++) {
+                let rd = Math.floor(Math.random(arr.length) * arr.length);
+                arr.filter((item, index) => rd === index && newArr.push(item));
+            }
+            dispath(setApiPick1(newArr));
+        }
+    }, [pick0]);
+
+    useEffect(() => {
+        setLogic(pick1);
+    }, [pick1]);
 
     return (
         <div className={cx('wrapper')}>
@@ -344,47 +374,78 @@ function Onboarding() {
                         <div style={{ width: `${progress}%` }} className={cx('progress')}></div>
                     </div>
                     <div className={cx('body')}>
-                        <div className={cx('box-sticky', mobile && 'mobile')}>
-                            <div className={cx('box', tablet && 'tablet', mobile && 'mobile')}>
-                                <div className={cx('content')}>
-                                    <span style={{ color: color }} className={cx('title')}>
-                                        {title}
-                                    </span>
-                                    <span className={cx('description')}>{description}</span>
+                        <div className={cx('box-sticky', mobile && 'mobile', sticky && 'sticky')}>
+                            {api1.length > 0 ? (
+                                <div className={cx('box', tablet && 'tablet', mobile && 'mobile', sticky && 'sticky')}>
+                                    <div className={cx('content')}>
+                                        <span style={{ color: color }} className={cx('title', mobile && 'mobile')}>
+                                            {title}
+                                        </span>
+                                        {!sticky && <span className={cx('description')}>{description}</span>}
+                                    </div>
+                                    <div
+                                        onClick={() => handleContinue()}
+                                        className={cx(
+                                            'btn-continue',
+
+                                            logic > 0 && 'btn-active',
+                                            tablet && 'tablet',
+                                            mobile && 'mobile',
+                                        )}
+                                    >
+                                        <span className={cx('btn-title')}>Continue</span>
+                                        <FontAwesomeIcon className={cx('icon-right')} icon={faArrowRight} />
+                                    </div>
                                 </div>
-                                <div
-                                    onClick={() => handleContinue()}
-                                    className={cx(
-                                        'btn-continue',
-                                        logic > 0 && 'btn-active',
-                                        tablet && 'tablet',
-                                        mobile && 'mobile',
-                                    )}
-                                >
-                                    <span className={cx('btn-title')}>Continue</span>
-                                    <FontAwesomeIcon className={cx('icon-right')} icon={faArrowRight} />
+                            ) : (
+                                <div className={cx('box', tablet && 'tablet', mobile && 'mobile', sticky && 'sticky')}>
+                                    <div className={cx('content')}>
+                                        <span
+                                            style={{ color: color }}
+                                            className={cx('title', mobile && 'mobile', 'loadingApi')}
+                                        ></span>
+                                        {!sticky && <span className={cx('description', 'loadingApi')}></span>}
+                                    </div>
+                                    <div
+                                        onClick={() => handleContinue()}
+                                        className={cx(
+                                            'btn-continue',
+                                            'loadingApi',
+                                            logic > 0 && 'btn-active',
+                                            tablet && 'tablet',
+                                            mobile && 'mobile',
+                                        )}
+                                    >
+                                        <span className={cx('btn-title')}></span>
+                                    </div>
                                 </div>
-                            </div>
+                            )}
                         </div>
                         {layout === 0 && (
                             <>
-                                <div
-                                    onClick={() => (showOption ? setShowOption(false) : setShowOption(true))}
-                                    className={cx('select', mobile && 'mobile')}
-                                >
-                                    <span className={cx('slect-title')}>
-                                        {pick0.length > 0 ? pick0 : 'Sports, Games, Development...'}
-                                    </span>
-                                    <FontAwesomeIcon
-                                        className={cx('icon-down')}
-                                        icon={showOption ? faChevronUp : faChevronDown}
-                                    />
-                                </div>
+                                {api1.length > 0 ? (
+                                    <div
+                                        onClick={() => (showOption ? setShowOption(false) : setShowOption(true))}
+                                        className={cx('select', mobile && 'mobile')}
+                                    >
+                                        <div className={cx('slect-title')}>
+                                            {pick0.length > 0 ? pick0 : 'Company, Electronic, Clothes ...'}
+                                        </div>
+                                        <FontAwesomeIcon
+                                            className={cx('icon-down')}
+                                            icon={showOption ? faChevronUp : faChevronDown}
+                                        />
+                                    </div>
+                                ) : (
+                                    <div className={cx('select', 'loadingApi', mobile && 'mobile')}></div>
+                                )}
                                 {showOption && (
                                     <div className={cx('list-option', tablet && 'tablet', mobile && 'mobile')}>
                                         {category.map((item, index) => (
                                             <span
-                                                onClick={() => dispath(setPick0(item.title))}
+                                                onClick={() => {
+                                                    dispath(setPick0(item.title));
+                                                }}
                                                 key={index}
                                                 className={cx('option')}
                                             >
@@ -396,20 +457,20 @@ function Onboarding() {
                             </>
                         )}
                         {layout === 1 && (
-                            <div className={cx('box-imgs', tablet && 'tablet', mobile && 'mobile')}>
-                                {imgs.map((item, index) => (
+                            <div className={cx('box-imgs', opa && 'opa', tablet && 'tablet', mobile && 'mobile')}>
+                                {apiPick1.map((item, index) => (
                                     <div
                                         key={index}
-                                        onClick={() => handleImg(item.key)}
+                                        onClick={() => handleImg(item.id)}
                                         className={cx('box-empty', mobile && 'mobile')}
                                     >
                                         <img
                                             className={cx(
                                                 'item-img',
-                                                item.key === pick1 && 'active',
-                                                pick1 !== -1 && item.key !== pick1 && 'disable',
+                                                item.id === pick1 && 'active',
+                                                pick1 !== -1 && item.id !== pick1 && 'disable',
                                             )}
-                                            src={item.img}
+                                            src={item.link}
                                             alt=""
                                         />
                                     </div>
@@ -451,7 +512,7 @@ function Onboarding() {
                                         onChange={(e) => setValuePick3(e.target.value)}
                                         onBlur={() => setFadeLabel(false)}
                                         onClick={() => setFadeLabel(true)}
-                                        value={valuePick3 || pick3}
+                                        value={valuePick3}
                                         className={cx(
                                             'company-input',
                                             fadeLabel && 'active',
@@ -466,7 +527,7 @@ function Onboarding() {
                     </div>
                 </div>
             ) : (
-                'Deo co gi het'
+                <PageError />
             )}
         </div>
     );

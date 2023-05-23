@@ -4,20 +4,40 @@ import GetStart from '../../components/GetStart';
 import CarouselComp from '../../components/Carousel';
 import imgFlex from '../../assets/images/imgFlex';
 import Button from '../../components/Button';
-import { Link } from 'react-router-dom';
 import GetStartFlex from '../../components/GetStartFlex';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ModalLogin from '../../components/ModalLogin';
 import { useSelector } from 'react-redux';
+import { InitalData } from '../../components/actions/InitalData';
+import Card from '../../components/Card';
+import Brand from '../../components/Brand';
+
+import { category as categorys } from '../Onboarding';
 
 const cx = classNames.bind(styles);
 
 function Home() {
-    document.title = 'Logo Design &amp; Brand Identity for Entrepreneurs | Looka';
+    // const [dataFromDb, setDataFromDb] = useState({});
+    const [cardData, setCardData] = useState([]);
+    const [brandData, setBrandData] = useState([]);
 
+    useEffect(() => {
+        const boardFromDb = InitalData.boards.find((board) => board.id === 'board-1');
+        const brandFromDb = InitalData.brand.find((brand) => brand.id === 'brand-1');
+        if (!!boardFromDb) {
+            // setDataFromDb(boardFromDb);
+            setCardData(boardFromDb.cards);
+            setBrandData(brandFromDb.items);
+        } else {
+            return <div className="">404</div>;
+        }
+    }, []);
+
+    document.title = 'Logo Design &amp; Brand Identity for Entrepreneurs | Looka';
 
     const showMenu = useSelector((state) => state.show);
 
+    // console.log(DataImgs.map((dataImg) => console.log(dataImg)));
 
     return (
         <div className={cx('wrapper')}>
@@ -38,7 +58,7 @@ function Home() {
                     The easiest way to design and launch your new business
                 </div>
                 <div className="flex gap-[160px] flex-col">
-                    <div className="wrapper items-center flex flex-col md:flex-row mx-auto px-[32px] gap-20">
+                    <div className="wrapper w-full items-center flex flex-col md:flex-row mx-auto px-[32px] gap-20">
                         <div className="layout-img w-full md:w-[57%]">
                             <img
                                 src="https://cdn.logojoy.com/wp-content/uploads/20210211103713/Kardia-Brand-Logo-Creation-Compressed.jpg"
@@ -46,7 +66,7 @@ function Home() {
                                 className=""
                             />
                         </div>
-                        <div className="layout-text w-[462px]">
+                        <div className="layout-text w-full md:w-[462px]">
                             <div className="step font-bold text-[30px] leading-[38px]">
                                 <span className="number text-[#5340ff]">01.</span> Make a logo in minutes
                             </div>
@@ -60,7 +80,7 @@ function Home() {
                             </Button>
                         </div>
                     </div>
-                    <div className="wrapper items-center flex flex-col md:flex-row mx-auto px-[32px] gap-20">
+                    <div className="wrapper w-full items-center flex flex-col md:flex-row mx-auto px-[32px] gap-20">
                         <div className="layout-img w-full md:w-[57%] md:order-2">
                             <img
                                 src="https://cdn.logojoy.com/wp-content/uploads/20210211103731/Kardia-Brand-Business-Cards-Compressed.jpg"
@@ -68,7 +88,7 @@ function Home() {
                                 className=""
                             />
                         </div>
-                        <div className="layout-text w-[462px]">
+                        <div className="layout-text w-full md:w-[462px]">
                             <div className="step font-bold text-[30px] leading-[38px]">
                                 <span className="number text-[#5340ff]">02.</span> Bring your brand to life
                             </div>
@@ -82,7 +102,7 @@ function Home() {
                             </Button>
                         </div>
                     </div>
-                    <div className="wrapper items-center flex flex-col md:flex-row mx-auto px-[32px] gap-20">
+                    <div className="wrapper w-full items-center flex flex-col md:flex-row mx-auto px-[32px] gap-20">
                         <div className="layout-img w-full md:w-[57%]">
                             <img
                                 src="https://cdn.logojoy.com/wp-content/uploads/20210211103812/Kardia-Brand-Website-Compressed.jpg"
@@ -90,7 +110,7 @@ function Home() {
                                 className=""
                             />
                         </div>
-                        <div className="layout-text w-[462px]">
+                        <div className="layout-text w-full md:w-[462px]">
                             <div className="step font-bold text-[30px] leading-[38px]">
                                 <span className="number text-[#5340ff]">03.</span> Market your business
                             </div>
@@ -123,280 +143,9 @@ function Home() {
                 </div>
             </div>
             <div className="ct-list-3-col-wrapper">
-                <div className="warpper-item ct-item-3-col">
-                    <div className="item ">
-                        <div className="w-[7.2rem] h-[7.2rem]">
-                            <img
-                                className="h-full w-full object-cover"
-                                src="https://cdn.logojoy.com/wp-content/uploads/2018/12/14162409/ic_shirt.svg"
-                                alt=""
-                            />
-                        </div>
-                        <div className="title text-[1.8rem] mt-[3rem] font-bold leading-[2.3rem] my-[2.4rem]">
-                            1. Logo designs
-                        </div>
-                        <div className="flex flex-col gap-[1.6rem]">
-                            <div className="flex items-center gap-3 text-[#676e8b] text-[1.4rem] leading-[2.2rem]">
-                                {/* checkIcon */}
-                                <img
-                                    src="https://cdn.looka.com/images/icons/ic_checkmark_circle.svg"
-                                    alt=""
-                                    className=""
-                                />
-                                <div className="text">Instantly generate 100s of custom logo mockups</div>
-                            </div>
-                            <div className="flex items-center gap-3 text-[#676e8b] text-[1.4rem] leading-[2.2rem]">
-                                {/* checkIcon */}
-                                <img
-                                    src="https://cdn.looka.com/images/icons/ic_checkmark_circle.svg"
-                                    alt=""
-                                    className=""
-                                />
-                                <div className="text">
-                                    Change colors, symbols, sizing, and more with Looka’s easy-to-use editor
-                                </div>
-                            </div>
-                            <div className="flex items-center gap-3 text-[#676e8b] text-[1.4rem] leading-[2.2rem]">
-                                {/* checkIcon */}
-                                <img
-                                    src="https://cdn.looka.com/images/icons/ic_checkmark_circle.svg"
-                                    alt=""
-                                    className=""
-                                />
-                                <div className="text">Instantly generate 100s of custom logo mockups</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="warpper-item ct-item-3-col">
-                    <div className="item ">
-                        <div className="w-[7.2rem] h-[7.2rem]">
-                            <img
-                                className="h-full w-full object-cover"
-                                src="https://cdn.logojoy.com/wp-content/uploads/2018/12/14162409/ic_shirt.svg"
-                                alt=""
-                            />
-                        </div>
-                        <div className="title text-[1.8rem] mt-[3rem] font-bold leading-[2.3rem] my-[2.4rem]">
-                            1. Logo designs
-                        </div>
-                        <div className="flex flex-col gap-[1.6rem]">
-                            <div className="flex items-center gap-3 text-[#676e8b] text-[1.4rem] leading-[2.2rem]">
-                                {/* checkIcon */}
-                                <img
-                                    src="https://cdn.looka.com/images/icons/ic_checkmark_circle.svg"
-                                    alt=""
-                                    className=""
-                                />
-                                <div className="text">Instantly generate 100s of custom logo mockups</div>
-                            </div>
-                            <div className="flex items-center gap-3 text-[#676e8b] text-[1.4rem] leading-[2.2rem]">
-                                {/* checkIcon */}
-                                <img
-                                    src="https://cdn.looka.com/images/icons/ic_checkmark_circle.svg"
-                                    alt=""
-                                    className=""
-                                />
-                                <div className="text">
-                                    Change colors, symbols, sizing, and more with Looka’s easy-to-use editor
-                                </div>
-                            </div>
-                            <div className="flex items-center gap-3 text-[#676e8b] text-[1.4rem] leading-[2.2rem]">
-                                {/* checkIcon */}
-                                <img
-                                    src="https://cdn.looka.com/images/icons/ic_checkmark_circle.svg"
-                                    alt=""
-                                    className=""
-                                />
-                                <div className="text">Instantly generate 100s of custom logo mockups</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="warpper-item ct-item-3-col">
-                    <div className="item ">
-                        <div className="w-[7.2rem] h-[7.2rem]">
-                            <img
-                                className="h-full w-full object-cover"
-                                src="https://cdn.logojoy.com/wp-content/uploads/2018/12/14162409/ic_shirt.svg"
-                                alt=""
-                            />
-                        </div>
-                        <div className="title text-[1.8rem] mt-[3rem] font-bold leading-[2.3rem] my-[2.4rem]">
-                            1. Logo designs
-                        </div>
-                        <div className="flex flex-col gap-[1.6rem]">
-                            <div className="flex items-center gap-3 text-[#676e8b] text-[1.4rem] leading-[2.2rem]">
-                                {/* checkIcon */}
-                                <img
-                                    src="https://cdn.looka.com/images/icons/ic_checkmark_circle.svg"
-                                    alt=""
-                                    className=""
-                                />
-                                <div className="text">Instantly generate 100s of custom logo mockups</div>
-                            </div>
-                            <div className="flex items-center gap-3 text-[#676e8b] text-[1.4rem] leading-[2.2rem]">
-                                {/* checkIcon */}
-                                <img
-                                    src="https://cdn.looka.com/images/icons/ic_checkmark_circle.svg"
-                                    alt=""
-                                    className=""
-                                />
-                                <div className="text">
-                                    Change colors, symbols, sizing, and more with Looka’s easy-to-use editor
-                                </div>
-                            </div>
-                            <div className="flex items-center gap-3 text-[#676e8b] text-[1.4rem] leading-[2.2rem]">
-                                {/* checkIcon */}
-                                <img
-                                    src="https://cdn.looka.com/images/icons/ic_checkmark_circle.svg"
-                                    alt=""
-                                    className=""
-                                />
-                                <div className="text">Instantly generate 100s of custom logo mockups</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="warpper-item ct-item-3-col">
-                    <div className="item ">
-                        <div className="w-[7.2rem] h-[7.2rem]">
-                            <img
-                                className="h-full w-full object-cover"
-                                src="https://cdn.logojoy.com/wp-content/uploads/2018/12/14162409/ic_shirt.svg"
-                                alt=""
-                            />
-                        </div>
-                        <div className="title text-[1.8rem] mt-[3rem] font-bold leading-[2.3rem] my-[2.4rem]">
-                            1. Logo designs
-                        </div>
-                        <div className="flex flex-col gap-[1.6rem]">
-                            <div className="flex items-center gap-3 text-[#676e8b] text-[1.4rem] leading-[2.2rem]">
-                                {/* checkIcon */}
-                                <img
-                                    src="https://cdn.looka.com/images/icons/ic_checkmark_circle.svg"
-                                    alt=""
-                                    className=""
-                                />
-                                <div className="text">Instantly generate 100s of custom logo mockups</div>
-                            </div>
-                            <div className="flex items-center gap-3 text-[#676e8b] text-[1.4rem] leading-[2.2rem]">
-                                {/* checkIcon */}
-                                <img
-                                    src="https://cdn.looka.com/images/icons/ic_checkmark_circle.svg"
-                                    alt=""
-                                    className=""
-                                />
-                                <div className="text">
-                                    Change colors, symbols, sizing, and more with Looka’s easy-to-use editor
-                                </div>
-                            </div>
-                            <div className="flex items-center gap-3 text-[#676e8b] text-[1.4rem] leading-[2.2rem]">
-                                {/* checkIcon */}
-                                <img
-                                    src="https://cdn.looka.com/images/icons/ic_checkmark_circle.svg"
-                                    alt=""
-                                    className=""
-                                />
-                                <div className="text">Instantly generate 100s of custom logo mockups</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="warpper-item ct-item-3-col">
-                    <div className="item ">
-                        <div className="w-[7.2rem] h-[7.2rem]">
-                            <img
-                                className="h-full w-full object-cover"
-                                src="https://cdn.logojoy.com/wp-content/uploads/2018/12/14162409/ic_shirt.svg"
-                                alt=""
-                            />
-                        </div>
-                        <div className="title text-[1.8rem] mt-[3rem] font-bold leading-[2.3rem] my-[2.4rem]">
-                            1. Logo designs
-                        </div>
-                        <div className="flex flex-col gap-[1.6rem]">
-                            <div className="flex items-center gap-3 text-[#676e8b] text-[1.4rem] leading-[2.2rem]">
-                                {/* checkIcon */}
-                                <img
-                                    src="https://cdn.looka.com/images/icons/ic_checkmark_circle.svg"
-                                    alt=""
-                                    className=""
-                                />
-                                <div className="text">Instantly generate 100s of custom logo mockups</div>
-                            </div>
-                            <div className="flex items-center gap-3 text-[#676e8b] text-[1.4rem] leading-[2.2rem]">
-                                {/* checkIcon */}
-                                <img
-                                    src="https://cdn.looka.com/images/icons/ic_checkmark_circle.svg"
-                                    alt=""
-                                    className=""
-                                />
-                                <div className="text">
-                                    Change colors, symbols, sizing, and more with Looka’s easy-to-use editor
-                                </div>
-                            </div>
-                            <div className="flex items-center gap-3 text-[#676e8b] text-[1.4rem] leading-[2.2rem]">
-                                {/* checkIcon */}
-                                <img
-                                    src="https://cdn.looka.com/images/icons/ic_checkmark_circle.svg"
-                                    alt=""
-                                    className=""
-                                />
-                                <div className="text">Instantly generate 100s of custom logo mockups</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="warpper-item ct-item-3-col">
-                    <div className="item ">
-                        <div className="w-[7.2rem] h-[7.2rem]">
-                            <img
-                                className="h-full w-full object-cover"
-                                src="https://cdn.logojoy.com/wp-content/uploads/2018/12/14162409/ic_shirt.svg"
-                                alt=""
-                            />
-                        </div>
-                        <div className="title text-[1.8rem] mt-[3rem] font-bold leading-[2.3rem] my-[2.4rem]">
-                            1. Logo designs
-                        </div>
-                        <div className="flex flex-col gap-[1.6rem]">
-                            <div className="flex items-center gap-3 text-[#676e8b] text-[1.4rem] leading-[2.2rem]">
-                                {/* checkIcon */}
-                                <img
-                                    src="https://cdn.looka.com/images/icons/ic_checkmark_circle.svg"
-                                    alt=""
-                                    className=""
-                                />
-                                <div className="text">Instantly generate 100s of custom logo mockups</div>
-                            </div>
-                            <div className="flex items-center gap-3 text-[#676e8b] text-[1.4rem] leading-[2.2rem]">
-                                {/* checkIcon */}
-                                <img
-                                    src="https://cdn.looka.com/images/icons/ic_checkmark_circle.svg"
-                                    alt=""
-                                    className=""
-                                />
-                                <div className="text">
-                                    300+ branded templates personalized to your logo’s design—including invoices,
-                                    flyers, and email signatures
-                                </div>
-                            </div>
-                            <div className="flex items-center gap-3 text-[#676e8b] text-[1.4rem] leading-[2.2rem]">
-                                {/* checkIcon */}
-                                <img
-                                    src="https://cdn.looka.com/images/icons/ic_checkmark_circle.svg"
-                                    alt=""
-                                    className=""
-                                />
-                                <div className="text">
-                                    Get access to over $3,000 in exclusive partner offers to accelerate every part of
-                                    your business
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {cardData.map((card, index) => (
+                    <Card key={index} card={card} />
+                ))}
             </div>
             <div className="video">
                 <div className="video-heading text-[var(--text-color)] text-[3rem] md:text-[4rem] leading-[50px] font-bold text-center mb-[5rem] mt-[10rem]">
@@ -438,7 +187,7 @@ title="YouTube video player"
 
             {/* demo // item-product */}
             <div className="demo">
-                <div className="demo-heading text-[3rem] md:text-[4rem] text-center w-full font-bold mb-[7.2rem]">
+                <div className="demo-heading text-[3rem] md:text-[4rem] text-center w-full font-bold mb-[7.2rem] px-[2.4rem] md:px-0">
                     Cool brands designed with Looka
                 </div>
                 <div className="demo-wrapper md:flex px-[3.2rem] gap-[4rem] justify-center">
@@ -515,7 +264,7 @@ title="YouTube video player"
                 </div>
             </div>
             <div className="build-your-brand mt-[12rem] md:mt-[16rem] px-[2.4rem]">
-                <div className="title text-[var(--text-color)] text-[3rem] md:text-[4rem] leading-[50px] font-bold text-center">
+                <div className="title text-[var(--text-color)] text-[3rem] md:text-[4rem] md:leading-[50px] font-bold text-center">
                     We’re here to help build your brand
                 </div>
                 <div className="desc text-[#676e8b] text-[1.6rem] md:px-[2.4rem] max-w-[83.2rem] text-center mx-auto mt-[1.6rem]">
@@ -530,106 +279,19 @@ title="YouTube video player"
                     />
                 </div>
                 <div className="flex justify-center">
-                    <Button medium text>
+                    <Button medium text className={'!px-16 '}>
                         Contact us
                     </Button>
                 </div>
             </div>
             <div className="learn-about-desgin mt-[12rem] mv-[4rem] md:mt-[16rem]">
-                <div className="title text-[var(--text-color)] text-[3rem] md:text-[4rem] leading-[50px] font-bold text-center">
+                <div className="title text-[var(--text-color)] text-[3rem] md:text-[4rem] md:leading-[50px] font-bold text-center">
                     Learn about design, branding & entrepreneurship
                 </div>
                 <div className="ct-list-3-col-wrapper md:gap-3">
-                    <div className="ct-item-3-col">
-                        <div className="rounded-xl overflow-auto cursor-pointer">
-                            <img
-                                src="https://cdn.logojoy.com/wp-content/uploads/2019/01/18160343/triumph-768x465.png"
-                                alt=""
-                                className=""
-                            />
-                        </div>
-                        <div className="tag text-[#5340ff] text-[1.1rem] uppercase tracking-[0.12rem] cursor-pointer">
-                            LOGO DESIGN
-                        </div>
-                        <div className="title text-[2.4rem] leading-[3rem] font-bold mt-[0.8rem] hover:underline cursor-pointer">
-                            How to Start a Small Business: A “You Can Do It” Guide
-                        </div>
-                    </div>
-                    <div className="ct-item-3-col">
-                        <div className="rounded-xl overflow-auto cursor-pointer">
-                            <img
-                                src="https://cdn.logojoy.com/wp-content/uploads/2019/01/18160343/triumph-768x465.png"
-                                alt=""
-                                className=""
-                            />
-                        </div>
-                        <div className="tag text-[#5340ff] text-[1.1rem] uppercase tracking-[0.12rem] cursor-pointer">
-                            LOGO DESIGN
-                        </div>
-                        <div className="title text-[2.4rem] leading-[3rem] font-bold mt-[0.8rem] hover:underline cursor-pointer">
-                            How to Start a Small Business: A “You Can Do It” Guide
-                        </div>
-                    </div>
-                    <div className="ct-item-3-col">
-                        <div className="rounded-xl overflow-auto cursor-pointer">
-                            <img
-                                src="https://cdn.logojoy.com/wp-content/uploads/2019/01/18160343/triumph-768x465.png"
-                                alt=""
-                                className=""
-                            />
-                        </div>
-                        <div className="tag text-[#5340ff] text-[1.1rem] uppercase tracking-[0.12rem] cursor-pointer">
-                            LOGO DESIGN
-                        </div>
-                        <div className="title text-[2.4rem] leading-[3rem] font-bold mt-[0.8rem] hover:underline cursor-pointer">
-                            How to Start a Small Business: A “You Can Do It” Guide
-                        </div>
-                    </div>
-                    <div className="ct-item-3-col">
-                        <div className="rounded-xl overflow-auto cursor-pointer">
-                            <img
-                                src="https://cdn.logojoy.com/wp-content/uploads/2019/01/18160343/triumph-768x465.png"
-                                alt=""
-                                className=""
-                            />
-                        </div>
-                        <div className="tag text-[#5340ff] text-[1.1rem] uppercase tracking-[0.12rem] cursor-pointer">
-                            LOGO DESIGN
-                        </div>
-                        <div className="title text-[2.4rem] leading-[3rem] font-bold mt-[0.8rem] hover:underline cursor-pointer">
-                            How to Start a Small Business: A “You Can Do It” Guide
-                        </div>
-                    </div>
-                    <div className="ct-item-3-col">
-                        <div className="rounded-xl overflow-auto cursor-pointer">
-                            <img
-                                src="https://cdn.logojoy.com/wp-content/uploads/2019/01/18160343/triumph-768x465.png"
-                                alt=""
-                                className=""
-                            />
-                        </div>
-                        <div className="tag text-[#5340ff] text-[1.1rem] uppercase tracking-[0.12rem] cursor-pointer">
-                            LOGO DESIGN
-                        </div>
-                        <div className="title text-[2.4rem] leading-[3rem] font-bold mt-[0.8rem] hover:underline cursor-pointer">
-                            How to Start a Small Business: A “You Can Do It” Guide
-                        </div>
-                    </div>
-                    <div className="ct-item-3-col">
-                        <div className="rounded-xl overflow-auto cursor-pointer">
-                            <img
-                                src="https://cdn.logojoy.com/wp-content/uploads/2019/01/18160343/triumph-768x465.png"
-                                alt=""
-                                className=""
-                            />
-                        </div>
-                        <div className="tag text-[#5340ff] text-[1.1rem] uppercase tracking-[0.12rem] cursor-pointer">
-                            LOGO DESIGN
-                        </div>
-                        <div className="title text-[2.4rem] leading-[3rem] font-bold mt-[0.8rem] hover:underline cursor-pointer">
-                            How to Start a Small Business: A “You Can Do It” Guide
-                        </div>
-                    </div>
+                    {brandData.map((brand, index) => (
+                        <Brand key={index} brand={brand} />
+                    ))}
                 </div>
             </div>
             <GetStartFlex
