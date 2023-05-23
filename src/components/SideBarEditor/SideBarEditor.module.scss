@@ -1,19 +1,36 @@
 .wrapper {
-    width: 185px;
+    min-width: 185px;
     height: 699px;
     display: flex;
     flex-direction: column;
     background: rgb(255, 255, 255);
-    position: fixed;
     user-select: none;
+    position: relative;
+
+    &.tablet {
+        min-width: 0;
+    }
+
+    &.mobile {
+        min-width: 0;
+    }
 }
 
 .inner {
-    width: 100%;
+    position: fixed;
+    width: 185px;
     height: 100%;
     padding: 0 10px;
     padding-top: 10px;
     border-right: 1px solid rgba(0, 0, 0, 0.05);
+
+    &.tablet {
+        width: 0;
+    }
+
+    &.mobile {
+        width: 0;
+    }
 }
 
 .item {

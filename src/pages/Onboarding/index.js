@@ -235,22 +235,6 @@ function Onboarding() {
         pages.filter((item) => item.id === id && setLayout(item.layout));
     }, [id]);
 
-    useEffect(() => {
-        setLogic(colorPick2);
-    }, [colorPick2]);
-
-    useEffect(() => {
-        id === 3 && setLogic(pick3.length);
-    }, [pick3.length]);
-
-    useEffect(() => {
-        if (backOnboard) {
-            setLogic(pick3.length);
-            setId(3);
-            setProgress(80);
-        }
-    }, [backOnboard]);
-
     const handleContinue = () => {
         if (logic > 0) {
             setId(id + 1);
@@ -330,10 +314,11 @@ function Onboarding() {
     };
 
     useEffect(() => {
-        setLogic(pick0.length);
         setOpa(true);
-        dispath(setPick1(-1));
+        setLogic(pick0.length);
+        console.log(logic);
         if (api1.length > 0 && pick0.length > 0) {
+            dispath(setPick1(-1));
             let arr = api1.filter((item) => item.category === pick0);
             for (var i = 0; i < 16; i++) {
                 let rd = Math.floor(Math.random(arr.length) * arr.length);
@@ -346,6 +331,26 @@ function Onboarding() {
     useEffect(() => {
         setLogic(pick1);
     }, [pick1]);
+
+    useEffect(() => {
+        setLogic(colorPick2);
+    }, [colorPick2]);
+
+    useEffect(() => {
+        id === 3 && setLogic(pick3.length);
+    }, [pick3.length]);
+
+    useEffect(() => {
+        dispath(setPick3(valuePick3));
+    }, [valuePick3]);
+
+    useEffect(() => {
+        if (backOnboard) {
+            setLogic(pick3.length);
+            setId(3);
+            setProgress(80);
+        }
+    }, [backOnboard]);
 
     return (
         <div className={cx('wrapper')}>
