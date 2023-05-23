@@ -282,7 +282,8 @@ function SideBarEditor({ setId }) {
             setLimit(elements.length);
         }
     }, [tablet, mobile, pc]);
-
+    //d
+    const d = 'd';
     return (
         <div className={cx('wrapper', tablet && 'tablet', mobile && 'mobile')}>
             {
