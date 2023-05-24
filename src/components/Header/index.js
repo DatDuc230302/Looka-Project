@@ -63,7 +63,8 @@ function Header() {
             <Link to={'/'} className={cx('header-logo')}>
                 <img
                     className={cx('logo')}
-                    src="https://looka.com/wp-content/themes/looka/images/logos/looka_logo_black.svg"
+                    // src="https://looka.com/wp-content/themes/looka/images/logos/looka_logo_black.svg"
+                    src={require('../../assets/images/Logan.jpg')}
                     alt=""
                 />
             </Link>

@@ -362,11 +362,7 @@ function Onboarding() {
                             <div className={cx('back')}></div>
                         )}
                         <div className={cx('header-logo')}>
-                            <img
-                                className={cx('logo')}
-                                src="https://s3.amazonaws.com/cdn.looka.com/images/logos/looka_logo_black.svg"
-                                alt=""
-                            />
+                            <img className={cx('logo')} src={require('../../assets/images/Logan.jpg')} alt="" />
                         </div>
                         <div className={cx('header-menu')}>
                             <FontAwesomeIcon className={cx('icon-menu')} icon={faBars} />

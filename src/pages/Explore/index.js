@@ -52,18 +52,18 @@ const colors = [
 ];
 
 const imgs = [
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 1, liked: false },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 2, liked: false },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 3, liked: false },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 4, liked: false },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 5, liked: false },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 6, liked: false },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 7, liked: false },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 8, liked: false },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 9, liked: false },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 10, liked: false },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 11, liked: false },
-    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 12, liked: false },
+    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 1 },
+    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 2 },
+    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 3 },
+    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 4 },
+    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 5 },
+    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 6 },
+    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 7 },
+    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 8 },
+    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 9 },
+    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 10 },
+    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 11 },
+    { img: 'https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png', id: 12 },
 ];
 
 function Explore() {
@@ -82,24 +82,6 @@ function Explore() {
 
     //add Favorite
     const dispatch = useDispatch();
-
-    // const [liked, setLiked] = useState(true);
-    // // let arrLike = [];
-    // // const handleStoreLiked = (index) => {
-    // //     if (!arrLike.includes(index)) {
-    // //         arrLike.push(index);
-    // //         imgs[index].liked = true;
-    // //     } else {
-    // //         arrLike.splice(arrLike.indexOf(index), 1);
-    // //         imgs[index].liked = false;
-    // //     }
-    // //     console.log(arrLike);
-    // // };
-    // // const addFavoriteHandle = (index, link) => {
-    // //     handleStoreLiked(index);
-    // //     dispatch(setAddFavorite(arrLike));
-    // //     console.log(addFavorite);
-    // // };
 
     const navigate = useNavigate();
 
@@ -131,7 +113,9 @@ function Explore() {
     };
 
     useEffect(() => {
-        dispatch(setPick3(valueInput));
+        if (valueInput.length > 0) {
+            dispatch(setPick3(valueInput));
+        }
     }, [valueInput]);
 
     return (
