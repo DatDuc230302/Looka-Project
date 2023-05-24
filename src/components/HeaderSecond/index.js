@@ -5,7 +5,7 @@ import classNames from 'classnames/bind';
 import styles from './HeaderSecond.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowLeft, faBars } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, json } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { backOnboard } from '../../redux/actions/backOnboard';
@@ -13,11 +13,10 @@ import { turnFeature } from '../../redux/actions/turnFeature';
 import { useMediaQuery } from 'react-responsive';
 import { storeLike as setStoreLike } from '../../redux/actions/storeLike.js';
 
-
-
 const cx = classNames.bind(styles);
 
 function HeaderSecond() {
+    const key = 'favoriteList';
     const pc = useMediaQuery({ minWidth: 992 });
     const tablet = useMediaQuery({ minWidth: 768, maxWidth: 900 });
     const mobile = useMediaQuery({ maxWidth: 767 });
@@ -27,10 +26,27 @@ function HeaderSecond() {
     const navigate = useNavigate();
     const dispath = useDispatch();
     const [layout, setLayout] = useState(0);
+
+    const stateFav = useSelector((state) => state.AddFavorite);
+
+    const [storageLike, setStorageLike] = useState(JSON.parse(localStorage.getItem(key)) || []);
+
+    useEffect(() => {
+        setStorageLike(JSON.parse(localStorage.getItem(key)));
+    }, [stateFav]);
+
+    // useEffect(() => {
+    //     const storedData = localStorage.getItem(key);
+    //     if (storedData) {
+    //         const parsedData = JSON.parse(storedData);
+    //         setStorageLike(parsedData);
+    //         console.log(JSON.parse(storedData));
+    //     }
+    // }, [stateFav]);
+
     // const [menu2, setMenu2] = useState(false);
 
     const pick3 = useSelector((state) => state.pick3);
-    const number = useSelector((state) => state.AddFavorite);
     const storeLike = useSelector((state) => state.storeLike);
 
     useEffect(() => {
@@ -57,7 +73,7 @@ function HeaderSecond() {
     };
 
     const handleOpenStore = () => {
-        dispath(setStoreLike(storeLike))
+        dispath(setStoreLike(storeLike));
     };
 
     return (
@@ -91,7 +107,7 @@ function HeaderSecond() {
                                 </g>
                             </g>
                         </svg>
-                        {number.length > 0 && <div className={cx('count')}>{number.length}</div>}
+                        {Array.isArray(storageLike) && <div className={cx('count')}>{storageLike.length}</div>}
                     </div>
                     <div className={cx('header-logo')}>
                         <img
@@ -335,7 +351,6 @@ function HeaderSecond() {
                     </div>
                 )}
             </p> */}
-
         </div>
     );
 }

@@ -57,6 +57,18 @@
     font-size: 1.4rem;
 }
 
+.custom {
+    padding: 12px 25px;
+}
+.textCustom {
+    color: var(--primary-color);
+    border-radius: 4px !important;
+    border-color: var(--primary-color);
+    &:hover {
+        transform: scale(1.03);
+    }
+}
+
 .smallMixMedium {
     border-radius: 8px;
     font-size: 1.4rem;
