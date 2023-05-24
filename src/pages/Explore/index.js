@@ -9,6 +9,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { AddFavorite as setAddFavorite } from '../../redux/actions/khang/AddFavorite';
 import { pick3 as setPick3 } from '../../redux/actions/pick3';
 import PageError from '../../components/PageError';
+import axios from 'axios';
 
 const cx = className.bind(styles);
 
@@ -120,7 +121,7 @@ function Explore() {
 
     return (
         <div className={cx('wrapper')}>
-            {pick3.length > 0 ? (
+            {pick3.length > 0 || true ? (
                 <div className={cx('inner')}>
                     <div className={cx('body')}>
                         <div className={cx('control')}>
