@@ -70,6 +70,8 @@ const imgs = [
 
 const arrLoading = [1, 2, 3, 4, 5, 6, 7, 8];
 
+var f = '';
+
 function Explore() {
     const tablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
     const mobile = useMediaQuery({ maxWidth: 767 });
