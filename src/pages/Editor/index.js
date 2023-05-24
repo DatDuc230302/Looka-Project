@@ -39,8 +39,7 @@ function Editor() {
     //     setApi(data);
     // };
 
-    const linkIMg =
-        'https://firebasestorage.googleapis.com/v0/b/looka-e5275.appspot.com/o/clothes%2Fdownload%20(1).jpeg?alt=media&token=49373e40-50ef-4174-943e-0fb98a7122b2';
+    const linkIMg = `data:image/png;base64,${apiLogo[url]}`;
 
     const handleDownloadClick = () => {
         const imageUrl = linkIMg; // Đường dẫn đến hình ảnh cần tải về
@@ -58,8 +57,12 @@ function Editor() {
                                 className={cx('previewBox-img')}
                                 src={`data:image/png;base64,` + apiLogo[url]}
                                 alt=""
-                                onClick={handleDownloadClick}
                             />
+                        </div>
+                    </div>
+                    <div className={cx('start')}>
+                        <div onClick={handleDownloadClick} className={cx('start-btn')}>
+                            Download
                         </div>
                     </div>
                 </div>

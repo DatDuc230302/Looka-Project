@@ -5,10 +5,13 @@ import classNames from 'classnames/bind';
 import styles from './ModalStore.module.scss';
 import { storeLike as setStoreLike } from '../../redux/actions/storeLike';
 import { useSelector, useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
 
 const cx = classNames.bind(styles);
 
 function ModalStore() {
+    const key = 'favoriteList';
+
     const storeLike = useSelector((state) => state.storeLike);
     const AddFavorite = useSelector((state) => state.AddFavorite);
 
@@ -17,9 +20,16 @@ function ModalStore() {
     const handleCloseStore = () => {
         dispath(setStoreLike(storeLike));
     };
+    const stateFav = useSelector((state) => state.AddFavorite);
+
+    const [storageLike, setStorageLike] = useState(JSON.parse(localStorage.getItem(key)) || []);
+
+    useEffect(() => {
+        setStorageLike(JSON.parse(localStorage.getItem(key)));
+    }, [stateFav]);
 
     return (
-        <div className="">
+        <div style={{ display: 'none' }} className="">
             <div
                 className={`overlay top-0 bottom-0 right-0 left-0 bg-black/70 z-[2100] ${storeLike ? 'fixed' : ''}`}
                 onClick={() => handleCloseStore()}
@@ -30,7 +40,10 @@ function ModalStore() {
                 }`}
             >
                 <div className="header flex justify-between items-center p-[12px]">
-                    <div className="close text-4xl px-[9px] py-[5px] cursor-pointer hover:bg-[#f5f6f8] hover:rounded-xl">
+                    <div
+                        onClick={() => handleCloseStore()}
+                        className="close text-4xl px-[9px] py-[5px] cursor-pointer hover:bg-[#f5f6f8] hover:rounded-xl"
+                    >
                         <FontAwesomeIcon icon={faXmark} />
                     </div>
                     <div className="saved text-[16px] font-bold ml-[30px]">Your Saved Logos</div>
@@ -40,8 +53,8 @@ function ModalStore() {
                 </div>
                 <div className="container overflow-y-scroll w-full h-[calc(100%_-_80px)] pt-[12px] pl-[12px]">
                     <div className="wrapper flex flex-wrap flex-row pr-[12px] h-full w-full">
-                        {AddFavorite.length > 0 &&
-                            AddFavorite.map((item, index) => (
+                        {Array.isArray(storageLike) &&
+                            storageLike.map((item, index) => (
                                 <div
                                     className={cx(
                                         'items',
@@ -67,6 +80,31 @@ function ModalStore() {
                                     </div>
                                 </div>
                             ))}
+                    </div>
+                </div>
+            </div>
+
+            <div className="fixed top-0 left-0 right-0 bottom-0 z-[2999]">
+                <div className="modal rounded-2xl px-[40px] py-[20px] fixed left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-white z-[3000]">
+                    <div className="opacity-50 hover:opacity-100 cursor-pointer absolute right-[12px] top-[12px]">
+                        <img src="https://cdn.logojoy.com/app-explore-page/close.svg" alt="" className="" />
+                    </div>
+                    <div className="">Delete your logo</div>
+                    <div className="">Are you sure you want to delete this logo?</div>
+                    <div className="">
+                        <img
+                            src="https://cdn.logojoy.com/app-explore-page/img_delete%402x.png"
+                            alt=""
+                            className="w-[200px]"
+                        />
+                    </div>
+                    <div className="control">
+                        <Button textCustom custom>
+                            Cancel
+                        </Button>
+                        <Button primary custom>
+                            Confirm
+                        </Button>
                     </div>
                 </div>
             </div>
