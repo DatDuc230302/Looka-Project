@@ -22,7 +22,9 @@ function Editor() {
     const params = useParams();
     const url = params.key;
     const navigate = useNavigate();
+    console.log(url);
 
+    const apiLogo = useSelector((state) => state.apiLogo);
     const pick3 = useSelector((state) => state.pick3);
     const apiPick1 = useSelector((state) => state.apiPick1);
 
@@ -37,8 +39,7 @@ function Editor() {
     //     setApi(data);
     // };
 
-    const linkIMg =
-        'https://firebasestorage.googleapis.com/v0/b/looka-e5275.appspot.com/o/clothes%2Fdownload%20(1).jpeg?alt=media&token=49373e40-50ef-4174-943e-0fb98a7122b2';
+    const linkIMg = `data:image/png;base64,${apiLogo[url]}`;
 
     const handleDownloadClick = () => {
         const imageUrl = linkIMg; // Đường dẫn đến hình ảnh cần tải về
@@ -47,27 +48,27 @@ function Editor() {
     };
     return (
         <div className={cx('wrapper')}>
-            {/* {url && pick3.length > 0 ? (
-                <div className={cx('inner')}>
+            {url && pick3.length > 0 ? (
+                <div className={cx('inner', tablet && 'tablet', mobile && 'mobile')}>
                     <SideBarEditor setId={setId} />
-                    <div className={cx('body')}></div>
+                    <div className={cx('body')}>
+                        <div className={cx('preview-box')}>
+                            <img
+                                className={cx('previewBox-img')}
+                                src={`data:image/png;base64,` + apiLogo[url]}
+                                alt=""
+                            />
+                        </div>
+                    </div>
+                    <div className={cx('start')}>
+                        <div onClick={handleDownloadClick} className={cx('start-btn')}>
+                            Download
+                        </div>
+                    </div>
                 </div>
             ) : (
                 <PageError />
-            )} */}
-            <div className={cx('inner', tablet && 'tablet', mobile && 'mobile')}>
-                <SideBarEditor setId={setId} />
-                <div className={cx('body')}>
-                    <div className={cx('preview-box')}>
-                        <img
-                            className={cx('previewBox-img')}
-                            src="https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png"
-                            alt=""
-                            onClick={handleDownloadClick}
-                        />
-                    </div>
-                </div>
-            </div>
+            )}
         </div>
     );
 }
