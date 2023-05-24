@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { AddFavorite as setAddFavorite } from '../../redux/actions/khang/AddFavorite';
 import { pick3 as setPick3 } from '../../redux/actions/pick3';
+import { apiLogo, apiLogo as setApiLogo } from '../../redux/actions/dat/apiLogo';
 import PageError from '../../components/PageError';
 import axios from 'axios';
 
@@ -74,6 +75,7 @@ function Explore() {
     const mobile = useMediaQuery({ maxWidth: 767 });
 
     const apiPick1 = useSelector((state) => state.apiPick1);
+    const apiLogo = useSelector((state) => state.apiLogo);
     const pick1 = useSelector((state) => state.pick1);
     const pick3 = useSelector((state) => state.pick3);
     const pick2 = useSelector((state) => state.pick2);
@@ -110,8 +112,9 @@ function Explore() {
         }
     };
 
-    const handleImg = (id) => {
-        navigate(`/editor/${id}`);
+    const handleImg = (index) => {
+        dispatch(setApiLogo(api));
+        navigate(`/editor/${index}`);
     };
 
     const handleAddFavotire = (index, img) => {
@@ -128,18 +131,15 @@ function Explore() {
         postData();
     }, []);
 
-    // const postData = async () => {
-    //     let result = await axios.post('http://127.0.0.1:5000/api', {
-    //         link: 'https://firebasestorage.googleapis.com/v0/b/looka-e5275.appspot.com/o/clothes%2Fdownload%20(1).jpeg?alt=media&token=49373e40-50ef-4174-943e-0fb98a7122b2',
-    //     });
-    //     setApi(result.data);
-    // };
-
     const postData = async () => {
-        const link = apiPick1.filter((item) => item.id === pick1)[0].link;
-        const body = { company: pick3, link: link, color: pick2 };
-        let result = await axios.post('http://localhost:5000/api', body);
-        setApi(result.data);
+        if (apiLogo.length > 0) {
+            setApi(apiLogo);
+        } else {
+            const link = apiPick1.filter((item) => item.id === pick1)[0].link;
+            const body = { company: pick3, link: link, color: pick2 };
+            let result = await axios.post('http://localhost:5000/api', body);
+            setApi(result.data);
+        }
     };
 
     return (
@@ -234,7 +234,7 @@ function Explore() {
                                 ? api.map((item, index) => (
                                       <div key={index} className={cx('box-empty', mobile && 'mobile')}>
                                           <img
-                                              // onClick={() => handleImg(item.id)}
+                                              onClick={() => handleImg(index)}
                                               className={cx('item-img')}
                                               src={`data:image/png;base64,` + item}
                                               alt=""

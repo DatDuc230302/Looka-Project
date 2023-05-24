@@ -10,7 +10,7 @@ import { turnFeature } from './turnFeature';
 import { apiPick1 } from './dat/apiPick1';
 import { AddFavorite } from './khang/AddFavorite';
 import { storeLike } from './storeLike';
-
+import { apiLogo } from './dat/apiLogo';
 export const allReducers = combineReducers({
     pick0,
     pick1,
@@ -22,5 +22,6 @@ export const allReducers = combineReducers({
     turnFeature,
     apiPick1,
     AddFavorite,
-    storeLike
+    storeLike,
+    apiLogo,
 });

@@ -22,7 +22,9 @@ function Editor() {
     const params = useParams();
     const url = params.key;
     const navigate = useNavigate();
+    console.log(url);
 
+    const apiLogo = useSelector((state) => state.apiLogo);
     const pick3 = useSelector((state) => state.pick3);
     const apiPick1 = useSelector((state) => state.apiPick1);
 
@@ -47,27 +49,23 @@ function Editor() {
     };
     return (
         <div className={cx('wrapper')}>
-            {/* {url && pick3.length > 0 ? (
-                <div className={cx('inner')}>
+            {url && pick3.length > 0 ? (
+                <div className={cx('inner', tablet && 'tablet', mobile && 'mobile')}>
                     <SideBarEditor setId={setId} />
-                    <div className={cx('body')}></div>
+                    <div className={cx('body')}>
+                        <div className={cx('preview-box')}>
+                            <img
+                                className={cx('previewBox-img')}
+                                src={`data:image/png;base64,` + apiLogo[url]}
+                                alt=""
+                                onClick={handleDownloadClick}
+                            />
+                        </div>
+                    </div>
                 </div>
             ) : (
                 <PageError />
-            )} */}
-            <div className={cx('inner', tablet && 'tablet', mobile && 'mobile')}>
-                <SideBarEditor setId={setId} />
-                <div className={cx('body')}>
-                    <div className={cx('preview-box')}>
-                        <img
-                            className={cx('previewBox-img')}
-                            src="https://s3.amazonaws.com/cdn-test.logojoy.com/assets/inspiration/new/14.png"
-                            alt=""
-                            onClick={handleDownloadClick}
-                        />
-                    </div>
-                </div>
-            </div>
+            )}
         </div>
     );
 }
