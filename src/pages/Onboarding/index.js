@@ -197,6 +197,8 @@ const colors = [
     },
 ];
 
+const arrLoading = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+
 function Onboarding() {
     const tablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
     const mobile = useMediaQuery({ maxWidth: 767 });
@@ -451,24 +453,31 @@ function Onboarding() {
                             </>
                         )}
                         {layout === 1 && (
-                            <div className={cx('box-imgs', opa && 'opa', tablet && 'tablet', mobile && 'mobile')}>
-                                {apiPick1.map((item, index) => (
-                                    <div
-                                        key={index}
-                                        onClick={() => handleImg(item.id)}
-                                        className={cx('box-empty', mobile && 'mobile')}
-                                    >
-                                        <img
-                                            className={cx(
-                                                'item-img',
-                                                item.id === pick1 && 'active',
-                                                pick1 !== -1 && item.id !== pick1 && 'disable',
-                                            )}
-                                            src={item.link}
-                                            alt=""
-                                        />
-                                    </div>
-                                ))}
+                            <div className={cx('box-imgs', tablet && 'tablet', mobile && 'mobile')}>
+                                {!opa &&
+                                    apiPick1.map((item, index) => (
+                                        <div
+                                            key={index}
+                                            onClick={() => handleImg(item.id)}
+                                            className={cx('box-empty', mobile && 'mobile', opa && 'opa')}
+                                        >
+                                            <img
+                                                className={cx(
+                                                    'item-img',
+                                                    item.id === pick1 && 'active',
+                                                    pick1 !== -1 && item.id !== pick1 && 'disable',
+                                                )}
+                                                src={item.link}
+                                                alt=""
+                                            />
+                                        </div>
+                                    ))}
+                                {opa &&
+                                    arrLoading.map((item, index) => (
+                                        <div key={index} className={cx('box-empty', mobile && 'mobile')}>
+                                            <div className={cx('item-img', 'loadingApi')}></div>
+                                        </div>
+                                    ))}
                             </div>
                         )}
                         {layout === 2 && (
