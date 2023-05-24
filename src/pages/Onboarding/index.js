@@ -81,6 +81,7 @@ const colors = [
             </div>
         ),
         color: '#6296D9',
+        color2: 'blue',
         background: `linear-gradient(to right, rgb(116, 181, 235), rgb(61, 84, 178))`,
         boxShadow: `rgba(67, 102, 208, 0.3) 0px 10px 40px -10px`,
         key: 1,
@@ -95,6 +96,7 @@ const colors = [
             </div>
         ),
         color: '#A15BD6',
+        color2: 'purple',
         background: `linear-gradient(to right, rgb(192, 108, 233), rgb(103, 59, 179))`,
         boxShadow: `rgba(84, 30, 181, 0.3) 0px 10px 40px -10px;}`,
         key: 2,
@@ -109,6 +111,7 @@ const colors = [
             </div>
         ),
         color: '#D159B5',
+        color2: 'pink',
         background: `linear-gradient(to right, rgb(231, 112, 226), rgb(173, 45, 105))`,
         boxShadow: ` rgba(194, 59, 171, 0.3) 0px 10px 40px -10px`,
         key: 3,
@@ -123,6 +126,7 @@ const colors = [
             </div>
         ),
         color: '#D7494B',
+        color2: 'red',
         background: `linear-gradient(to right, rgb(243, 91, 103), rgb(162, 37, 21))`,
         boxShadow: `rgba(234, 27, 27, 0.3) 0px 10px 40px -10px`,
         key: 4,
@@ -137,6 +141,7 @@ const colors = [
             </div>
         ),
         color: '#E98845',
+        color2: 'orange',
         background: `linear-gradient(to right, rgb(246, 170, 87), rgb(211, 82, 41))`,
         boxShadow: `rgba(234, 97, 0, 0.3) 0px 10px 40px -10px`,
         key: 5,
@@ -151,6 +156,7 @@ const colors = [
             </div>
         ),
         color: '#F5C721',
+        color2: 'yellow',
         background: `linear-gradient(to right, rgb(250, 238, 48), rgb(239, 165, 18))`,
         boxShadow: `rgba(238, 198, 23, 0.3) 0px 10px 40px -10px`,
         key: 6,
@@ -163,6 +169,7 @@ const colors = [
             </div>
         ),
         color: '#8ECF53',
+        color2: 'green',
         background: `linear-gradient(to right, rgb(188, 234, 106), rgb(87, 178, 55))`,
         boxShadow: `rgba(18, 171, 15, 0.3) 0px 10px 40px -10px`,
         key: 7,
@@ -177,6 +184,7 @@ const colors = [
             </div>
         ),
         color: '#66B6BF',
+        color2: 'teal',
         background: `linear-gradient(to right, rgb(142, 228, 224), rgb(54, 140, 161))`,
         boxShadow: `rgba(67, 189, 190, 0.3) 0px 10px 40px -10px`,
         key: 8,
@@ -191,6 +199,7 @@ const colors = [
             </div>
         ),
         color: '#7E7E7E',
+        color2: 'brown',
         background: `linear-gradient(to right, rgb(158, 158, 158), rgb(76, 76, 76))`,
         boxShadow: `rgba(0, 0, 0, 0.2) 0px 10px 40px -10px`,
         key: 9,
@@ -210,6 +219,7 @@ function Onboarding() {
     let newArr = [];
     const [opa, setOpa] = useState(true);
     const [api1, setApi1] = useState([]);
+    const [colorPost, setColorPost] = useState('');
     const [valuePick3, setValuePick3] = useState(!url ? 0 : url);
     const [colorPick2, setColorPick2] = useState(-1);
     const [showOption, setShowOption] = useState(false);
@@ -274,10 +284,17 @@ function Onboarding() {
                 case 3:
                     navigate('/explore');
                     dispath(setPick3(valuePick3));
+                    postData();
                     break;
                 default:
             }
         }
+    };
+
+    const postData = async () => {
+        const link = api1.filter((item) => item.id === pick1)[0].link;
+        const body = { company: valuePick3, link: link, color: colorPost };
+        axios.post('http://localhost:1000/api', body);
     };
 
     const handleBack = () => {
@@ -306,7 +323,8 @@ function Onboarding() {
         dispath(setPick1(id));
     };
 
-    const handleColor = (color, key) => {
+    const handleColor = (color, key, color2) => {
+        setColorPost(color2);
         setColor(color);
         setColorPick2(key);
         dispath(setPick2(color));
@@ -491,7 +509,7 @@ function Onboarding() {
                                                 colorPick2 !== -1 && colorPick2 !== item.key && 'disable',
                                             )}
                                             key={index}
-                                            onClick={() => handleColor(item.color, item.key, index)}
+                                            onClick={() => handleColor(item.color, item.key, item.color2, index)}
                                         >
                                             {item.item}
                                         </div>
