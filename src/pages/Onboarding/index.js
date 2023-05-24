@@ -81,6 +81,7 @@ const colors = [
             </div>
         ),
         color: '#6296D9',
+        color2: 'blue',
         background: `linear-gradient(to right, rgb(116, 181, 235), rgb(61, 84, 178))`,
         boxShadow: `rgba(67, 102, 208, 0.3) 0px 10px 40px -10px`,
         key: 1,
@@ -95,6 +96,7 @@ const colors = [
             </div>
         ),
         color: '#A15BD6',
+        color2: 'purple',
         background: `linear-gradient(to right, rgb(192, 108, 233), rgb(103, 59, 179))`,
         boxShadow: `rgba(84, 30, 181, 0.3) 0px 10px 40px -10px;}`,
         key: 2,
@@ -109,6 +111,7 @@ const colors = [
             </div>
         ),
         color: '#D159B5',
+        color2: 'pink',
         background: `linear-gradient(to right, rgb(231, 112, 226), rgb(173, 45, 105))`,
         boxShadow: ` rgba(194, 59, 171, 0.3) 0px 10px 40px -10px`,
         key: 3,
@@ -123,6 +126,7 @@ const colors = [
             </div>
         ),
         color: '#D7494B',
+        color2: 'red',
         background: `linear-gradient(to right, rgb(243, 91, 103), rgb(162, 37, 21))`,
         boxShadow: `rgba(234, 27, 27, 0.3) 0px 10px 40px -10px`,
         key: 4,
@@ -137,6 +141,7 @@ const colors = [
             </div>
         ),
         color: '#E98845',
+        color2: 'orange',
         background: `linear-gradient(to right, rgb(246, 170, 87), rgb(211, 82, 41))`,
         boxShadow: `rgba(234, 97, 0, 0.3) 0px 10px 40px -10px`,
         key: 5,
@@ -151,6 +156,7 @@ const colors = [
             </div>
         ),
         color: '#F5C721',
+        color2: 'yellow',
         background: `linear-gradient(to right, rgb(250, 238, 48), rgb(239, 165, 18))`,
         boxShadow: `rgba(238, 198, 23, 0.3) 0px 10px 40px -10px`,
         key: 6,
@@ -163,6 +169,7 @@ const colors = [
             </div>
         ),
         color: '#8ECF53',
+        color2: 'green',
         background: `linear-gradient(to right, rgb(188, 234, 106), rgb(87, 178, 55))`,
         boxShadow: `rgba(18, 171, 15, 0.3) 0px 10px 40px -10px`,
         key: 7,
@@ -177,6 +184,7 @@ const colors = [
             </div>
         ),
         color: '#66B6BF',
+        color2: 'teal',
         background: `linear-gradient(to right, rgb(142, 228, 224), rgb(54, 140, 161))`,
         boxShadow: `rgba(67, 189, 190, 0.3) 0px 10px 40px -10px`,
         key: 8,
@@ -191,11 +199,14 @@ const colors = [
             </div>
         ),
         color: '#7E7E7E',
+        color2: 'brown',
         background: `linear-gradient(to right, rgb(158, 158, 158), rgb(76, 76, 76))`,
         boxShadow: `rgba(0, 0, 0, 0.2) 0px 10px 40px -10px`,
         key: 9,
     },
 ];
+
+const arrLoading = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 function Onboarding() {
     const tablet = useMediaQuery({ minWidth: 768, maxWidth: 991 });
@@ -208,6 +219,7 @@ function Onboarding() {
     let newArr = [];
     const [opa, setOpa] = useState(true);
     const [api1, setApi1] = useState([]);
+    const [colorPost, setColorPost] = useState('');
     const [valuePick3, setValuePick3] = useState(!url ? 0 : url);
     const [colorPick2, setColorPick2] = useState(-1);
     const [showOption, setShowOption] = useState(false);
@@ -254,7 +266,7 @@ function Onboarding() {
     const handleContinue = () => {
         if (logic > 0) {
             setId(id + 1);
-            progress < 100 && setProgress(progress + 100 / (pages.length + 1));
+            progress < 100 && valuePick3.length < 15 && setProgress(progress + 100 / (pages.length + 1));
             switch (id) {
                 case 0:
                     setShowOption(false);
@@ -270,8 +282,11 @@ function Onboarding() {
                     setLogic(valuePick3.length);
                     break;
                 case 3:
-                    navigate('/explore');
-                    dispath(setPick3(valuePick3));
+                    if (valuePick3.length < 15) {
+                        navigate('/explore');
+                        dispath(setPick3(valuePick3));
+                        dispath(setPick2(colorPost));
+                    }
                     break;
                 default:
             }
@@ -304,7 +319,8 @@ function Onboarding() {
         dispath(setPick1(id));
     };
 
-    const handleColor = (color, key) => {
+    const handleColor = (color, key, color2) => {
+        setColorPost(color2);
         setColor(color);
         setColorPick2(key);
         dispath(setPick2(color));
@@ -360,11 +376,7 @@ function Onboarding() {
                             <div className={cx('back')}></div>
                         )}
                         <div className={cx('header-logo')}>
-                            <img
-                                className={cx('logo')}
-                                src="https://s3.amazonaws.com/cdn.looka.com/images/logos/looka_logo_black.svg"
-                                alt=""
-                            />
+                            <img className={cx('logo')} src={require('../../assets/images/Logan.jpg')} alt="" />
                         </div>
                         <div className={cx('header-menu')}>
                             <FontAwesomeIcon className={cx('icon-menu')} icon={faBars} />
@@ -386,7 +398,7 @@ function Onboarding() {
                                         className={cx(
                                             'btn-continue',
 
-                                            logic > 0 && 'btn-active',
+                                            logic > 0 && valuePick3.length < 15 && 'btn-active',
                                             tablet && 'tablet',
                                             mobile && 'mobile',
                                         )}
@@ -451,24 +463,31 @@ function Onboarding() {
                             </>
                         )}
                         {layout === 1 && (
-                            <div className={cx('box-imgs', opa && 'opa', tablet && 'tablet', mobile && 'mobile')}>
-                                {apiPick1.map((item, index) => (
-                                    <div
-                                        key={index}
-                                        onClick={() => handleImg(item.id)}
-                                        className={cx('box-empty', mobile && 'mobile')}
-                                    >
-                                        <img
-                                            className={cx(
-                                                'item-img',
-                                                item.id === pick1 && 'active',
-                                                pick1 !== -1 && item.id !== pick1 && 'disable',
-                                            )}
-                                            src={item.link}
-                                            alt=""
-                                        />
-                                    </div>
-                                ))}
+                            <div className={cx('box-imgs', tablet && 'tablet', mobile && 'mobile')}>
+                                {!opa &&
+                                    apiPick1.map((item, index) => (
+                                        <div
+                                            key={index}
+                                            onClick={() => handleImg(item.id)}
+                                            className={cx('box-empty', mobile && 'mobile', opa && 'opa')}
+                                        >
+                                            <img
+                                                className={cx(
+                                                    'item-img',
+                                                    item.id === pick1 && 'active',
+                                                    pick1 !== -1 && item.id !== pick1 && 'disable',
+                                                )}
+                                                src={item.link}
+                                                alt=""
+                                            />
+                                        </div>
+                                    ))}
+                                {opa &&
+                                    arrLoading.map((item, index) => (
+                                        <div key={index} className={cx('box-empty', mobile && 'mobile')}>
+                                            <div className={cx('item-img', 'loadingApi')}></div>
+                                        </div>
+                                    ))}
                             </div>
                         )}
                         {layout === 2 && (
@@ -486,7 +505,7 @@ function Onboarding() {
                                                 colorPick2 !== -1 && colorPick2 !== item.key && 'disable',
                                             )}
                                             key={index}
-                                            onClick={() => handleColor(item.color, item.key, index)}
+                                            onClick={() => handleColor(item.color, item.key, item.color2, index)}
                                         >
                                             {item.item}
                                         </div>
@@ -515,6 +534,9 @@ function Onboarding() {
                                         )}
                                         type="text"
                                     />
+                                    {valuePick3.length > 15 && (
+                                        <span className={cx('warning')}>Tên không được dài quá 15 ký tự</span>
+                                    )}
                                 </div>
                             </div>
                         )}
