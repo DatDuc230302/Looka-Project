@@ -303,7 +303,6 @@ title="YouTube video player"
                 desc={"Then use Looka's AI-powered platform to make a logo, business cards & more!"}
             />
             {showMenu && <ModalLogin />}
-
         </div>
     );
 }

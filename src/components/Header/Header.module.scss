@@ -2,7 +2,7 @@
     user-select: none;
     height: 70px;
     position: fixed;
-    top:0;
+    top: 0;
     left: 0;
     right: 0;
     width: 100%;
@@ -19,11 +19,13 @@
     height: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .logo {
-    width: 90.76px;
-    height: 20px;
+    display: flex;
+    object-fit: cover;
+    height: 28px;
 }
 
 .nav {

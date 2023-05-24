@@ -67,8 +67,7 @@
 }
 
 .logo {
-    width: 80px;
-    height: 17.63px;
+    height: 28px;
     flex-shrink: 0;
 }
 
@@ -330,9 +329,15 @@
     flex: 1 1 calc(33% - 50px);
     margin: 25px;
     cursor: pointer;
+    transition: all linear 0.2s;
 
     &.mobile {
         margin: 10px;
+    }
+
+    &.opa {
+        opacity: 0;
+        visibility: hidden;
     }
 }
 
