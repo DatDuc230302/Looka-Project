@@ -266,7 +266,7 @@ function Onboarding() {
     const handleContinue = () => {
         if (logic > 0) {
             setId(id + 1);
-            progress < 100 && setProgress(progress + 100 / (pages.length + 1));
+            progress < 100 && valuePick3.length < 15 && setProgress(progress + 100 / (pages.length + 1));
             switch (id) {
                 case 0:
                     setShowOption(false);
@@ -282,19 +282,15 @@ function Onboarding() {
                     setLogic(valuePick3.length);
                     break;
                 case 3:
-                    navigate('/explore');
-                    dispath(setPick3(valuePick3));
-                    postData();
+                    if (valuePick3.length < 15) {
+                        navigate('/explore');
+                        dispath(setPick3(valuePick3));
+                        dispath(setPick2(colorPost));
+                    }
                     break;
                 default:
             }
         }
-    };
-
-    const postData = async () => {
-        const link = api1.filter((item) => item.id === pick1)[0].link;
-        const body = { company: valuePick3, link: link, color: colorPost };
-        axios.post('http://localhost:1000/api', body);
     };
 
     const handleBack = () => {
@@ -402,7 +398,7 @@ function Onboarding() {
                                         className={cx(
                                             'btn-continue',
 
-                                            logic > 0 && 'btn-active',
+                                            logic > 0 && valuePick3.length < 15 && 'btn-active',
                                             tablet && 'tablet',
                                             mobile && 'mobile',
                                         )}
@@ -538,6 +534,9 @@ function Onboarding() {
                                         )}
                                         type="text"
                                     />
+                                    {valuePick3.length > 15 && (
+                                        <span className={cx('warning')}>Tên không được dài quá 15 ký tự</span>
+                                    )}
                                 </div>
                             </div>
                         )}

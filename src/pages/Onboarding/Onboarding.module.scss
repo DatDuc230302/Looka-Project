@@ -508,6 +508,15 @@
 .company {
     border-radius: 10px;
     position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.warning {
+    color: red;
+    margin-left: 4px;
+    font-size: 1.5rem;
+    margin-top: 20px;
 }
 
 .company-label {

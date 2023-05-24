@@ -10,7 +10,6 @@ function GetStart({ title, desc, className, classNameInput, fontText }) {
     const [valueInput, setValueInput] = useState('');
     const navigate = useNavigate();
 
-
     const submitInput = () => {
         valueInput.length > 0 && navigate(`/onboarding/${valueInput.trim()}`);
     };
