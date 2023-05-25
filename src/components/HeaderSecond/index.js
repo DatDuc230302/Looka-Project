@@ -46,6 +46,7 @@ function HeaderSecond() {
 
     // const [menu2, setMenu2] = useState(false);
 
+    const pick2 = useSelector((state) => state.pick2);
     const pick3 = useSelector((state) => state.pick3);
     const storeLike = useSelector((state) => state.storeLike);
 
@@ -62,6 +63,7 @@ function HeaderSecond() {
         if (url === '/explore') {
             if (pick3.length > 0) {
                 navigate(`/onboarding/${pick3}`);
+                console.log(pick2);
                 dispath(backOnboard(true));
             } else {
                 navigate('/');

@@ -361,6 +361,19 @@ function Onboarding() {
         }
     }, [pick0]);
 
+    useEffect(() => {
+        switch (pick2) {
+            case 'blue':
+                dispath(setPick2(0));
+                break;
+            case 'purple':
+                dispath(setPick2(1));
+                break;
+            default:
+                console.log('HI');
+        }
+    }, []);
+
     return (
         <div className={cx('wrapper')}>
             {url ? (
